@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B30B624939FB18B7C83D5437 /* Pods_packd_v2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA361FAB6D4E546B4E237334 /* Pods_packd_v2.framework */; };
 		E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518A71DA6E74400363CB0 /* AppDelegate.swift */; };
 		E3D518AA1DA6E74400363CB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518A91DA6E74400363CB0 /* ViewController.swift */; };
 		E3D518AD1DA6E74400363CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D518AB1DA6E74400363CB0 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A69FE0D2AF329264549FAFD /* Pods-packd-v2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-packd-v2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-packd-v2/Pods-packd-v2.debug.xcconfig"; sourceTree = "<group>"; };
+		504E94DA1CBAD62808049288 /* Pods-packd-v2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-packd-v2.release.xcconfig"; path = "Pods/Target Support Files/Pods-packd-v2/Pods-packd-v2.release.xcconfig"; sourceTree = "<group>"; };
+		BA361FAB6D4E546B4E237334 /* Pods_packd_v2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_packd_v2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D518A41DA6E74400363CB0 /* packd-v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "packd-v2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D518A71DA6E74400363CB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3D518A91DA6E74400363CB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B30B624939FB18B7C83D5437 /* Pods_packd_v2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D1272F334342EFDB7C6F95F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A69FE0D2AF329264549FAFD /* Pods-packd-v2.debug.xcconfig */,
+				504E94DA1CBAD62808049288 /* Pods-packd-v2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8DB8DB77BD32CF647FC9A6DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA361FAB6D4E546B4E237334 /* Pods_packd_v2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E3D5189B1DA6E74400363CB0 = {
 			isa = PBXGroup;
 			children = (
 				E3D518A61DA6E74400363CB0 /* packd-v2 */,
 				E3D518A51DA6E74400363CB0 /* Products */,
+				8D1272F334342EFDB7C6F95F /* Pods */,
+				8DB8DB77BD32CF647FC9A6DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3D518B61DA6E74400363CB0 /* Build configuration list for PBXNativeTarget "packd-v2" */;
 			buildPhases = (
+				8529A923C6C2ADB8049F5434 /* [CP] Check Pods Manifest.lock */,
 				E3D518A01DA6E74400363CB0 /* Sources */,
 				E3D518A11DA6E74400363CB0 /* Frameworks */,
 				E3D518A21DA6E74400363CB0 /* Resources */,
+				1EFE05A1CC79AD781E84B066 /* [CP] Embed Pods Frameworks */,
+				CF4DCE4B10E2AE8FEF5701DF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1EFE05A1CC79AD781E84B066 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-packd-v2/Pods-packd-v2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8529A923C6C2ADB8049F5434 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CF4DCE4B10E2AE8FEF5701DF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-packd-v2/Pods-packd-v2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E3D518A01DA6E74400363CB0 /* Sources */ = {
@@ -257,6 +332,7 @@
 		};
 		E3D518B71DA6E74400363CB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A69FE0D2AF329264549FAFD /* Pods-packd-v2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8QDA7X8A4L;
@@ -270,6 +346,7 @@
 		};
 		E3D518B81DA6E74400363CB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 504E94DA1CBAD62808049288 /* Pods-packd-v2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8QDA7X8A4L;
@@ -300,6 +377,7 @@
 				E3D518B81DA6E74400363CB0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
