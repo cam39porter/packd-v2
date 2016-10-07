@@ -56,6 +56,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCellConstants.reuseIdentifier, for: indexPath) as! MainCell
         cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
+        cell.collectionViewController = MainCellConstants.viewControllerDictionary[indexPath.item]
         return cell
     }
     
@@ -65,6 +66,34 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     // START: Collection View Flow Layout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
+    var lastVisibleItemIndexPath: IndexPath? = nil
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print(mainCollectionView.indexPathsForVisibleItems)
+        
+        let visibleIndexPath = mainCollectionView.indexPathsForVisibleItems[0]
+       
+        if lastVisibleItemIndexPath == nil {
+            print("setting last visible index \(visibleIndexPath)")
+            lastVisibleItemIndexPath = visibleIndexPath
+        } else if lastVisibleItemIndexPath == visibleIndexPath {
+            return
+        }
+        
+        if let lastVisibleCell = mainCollectionView.cellForItem(at: lastVisibleItemIndexPath!) as? FoldableCell {
+            print("preparing cell for reuse")
+            lastVisibleCell.prepareForReuse()
+        }
+        
+        if let visibleCell = mainCollectionView.cellForItem(at: visibleIndexPath) as? FoldableCell {
+            print("adding view controller")
+            MainCellConstants.viewControllerDictionary[visibleIndexPath.item]?.collectionView?.reloadData()
+            visibleCell.collectionViewController = MainCellConstants.viewControllerDictionary[visibleIndexPath.item]
+        }
+        
+        // update last visible index path 
+        
     }
     // END: Collection View Flow Layout Delegate
 }
