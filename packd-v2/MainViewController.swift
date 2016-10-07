@@ -33,7 +33,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         layout.minimumLineSpacing = 0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = UIColor.white
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -52,7 +52,9 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCellConstants.reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCellConstants.reuseIdentifier, for: indexPath) as! MainCell
+        
+        cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
         
         return cell
     }

@@ -13,6 +13,9 @@
 		E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518BD1DA6EEB900363CB0 /* UIViewExtension.swift */; };
 		E3D518C11DA6EF7C00363CB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */; };
 		E3D518C31DA6F3D500363CB0 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C21DA6F3D500363CB0 /* MainCell.swift */; };
+		E3D518C61DA72BE200363CB0 /* CenterCellFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C51DA72BE200363CB0 /* CenterCellFlowLayout.swift */; };
+		E3D518C81DA72C2D00363CB0 /* FoldableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C71DA72C2D00363CB0 /* FoldableViewController.swift */; };
+		E3D518CA1DA72C5500363CB0 /* FoldableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C91DA72C5500363CB0 /* FoldableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		E3D518BD1DA6EEB900363CB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E3D518C21DA6F3D500363CB0 /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		E3D518C51DA72BE200363CB0 /* CenterCellFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellFlowLayout.swift; sourceTree = "<group>"; };
+		E3D518C71DA72C2D00363CB0 /* FoldableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldableViewController.swift; sourceTree = "<group>"; };
+		E3D518C91DA72C5500363CB0 /* FoldableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 				E3D518A71DA6E74400363CB0 /* AppDelegate.swift */,
 				E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */,
 				E3D518C21DA6F3D500363CB0 /* MainCell.swift */,
+				E3D518C41DA72BB200363CB0 /* Foldable Collection */,
 				E3D518BF1DA6EEC200363CB0 /* Extensions */,
 				E3D518BA1DA6EB4500363CB0 /* Supporting Files */,
 			);
@@ -110,6 +117,16 @@
 				E3D518BD1DA6EEB900363CB0 /* UIViewExtension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		E3D518C41DA72BB200363CB0 /* Foldable Collection */ = {
+			isa = PBXGroup;
+			children = (
+				E3D518C51DA72BE200363CB0 /* CenterCellFlowLayout.swift */,
+				E3D518C71DA72C2D00363CB0 /* FoldableViewController.swift */,
+				E3D518C91DA72C5500363CB0 /* FoldableCell.swift */,
+			);
+			name = "Foldable Collection";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,10 +251,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3D518C61DA72BE200363CB0 /* CenterCellFlowLayout.swift in Sources */,
 				E3D518C11DA6EF7C00363CB0 /* MainViewController.swift in Sources */,
 				E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */,
+				E3D518C81DA72C2D00363CB0 /* FoldableViewController.swift in Sources */,
 				E3D518C31DA6F3D500363CB0 /* MainCell.swift in Sources */,
 				E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */,
+				E3D518CA1DA72C5500363CB0 /* FoldableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
