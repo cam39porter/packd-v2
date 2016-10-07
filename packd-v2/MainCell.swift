@@ -11,17 +11,35 @@ import UIKit
 struct MainCellConstants {
     static let reuseIdentifier: String = "mainCell"
     
+    static let establishmentsCellIndex = 0
+    static let friendsCellIndex = 1
+    static let perksCellIndex = 2
+    
+    
     static let establishmentImage = UIImage(named: "establishments_bg")
     static let friendsImage = UIImage(named: "friends_bg")
     static let perksImage = UIImage(named: "perks_bg")
     
-    static let backgroundImageDictionary: [Int:UIImage] = [0 : MainCellConstants.establishmentImage!,
-                                                           1 : MainCellConstants.friendsImage!,
-                                                           2 : MainCellConstants.perksImage!]
+    static let backgroundImageDictionary: [Int:UIImage] = [MainCellConstants.establishmentsCellIndex : MainCellConstants.establishmentImage!,
+                                                           MainCellConstants.friendsCellIndex : MainCellConstants.friendsImage!,
+                                                           MainCellConstants.perksCellIndex : MainCellConstants.perksImage!]
+    
+    static let viewControllerDictionary: [Int:PageableViewController] = [MainCellConstants.establishmentsCellIndex :
+                                                                            EstablishmentsViewController(collectionViewLayout:MainCellConstants.layout),
+                                                                         MainCellConstants.friendsCellIndex :
+                                                                            FriendsViewController(collectionViewLayout: MainCellConstants.layout),
+                                                                         MainCellConstants.perksCellIndex :
+                                                                            PerksViewController(collectionViewLayout: MainCellConstants.layout)]
     
     static let establishmentIndex = 0
     static let friendsIndex = 1
     static let perksIndex = 2
+    
+    static let layout: UICollectionViewFlowLayout = {
+        let l = CenterCellFlowLayout()
+        l.scrollDirection = .horizontal
+        return l
+    }()
 }
 
 class MainCell: UICollectionViewCell {
@@ -46,31 +64,18 @@ class MainCell: UICollectionViewCell {
         
         if let cv = collectionViewController?.collectionView {
             
-            // Delay collecton view appearing
-            let when = DispatchTime.now() + 1
-            DispatchQueue.main.asyncAfter(deadline: when){
-        
-                self.addSubview(cv)
+            self.addSubview(cv)
             
-                cv.anchorWithConstantsTo(top: self.topAnchor,
-                                         left: self.leftAnchor,
-                                         bottom: self.bottomAnchor,
-                                         right: self.rightAnchor,
-                                         topConstant: 0,
-                                         leftConstant: 0,
-                                         bottomConstant: 0,
-                                         rightConstant: 0)
-              
-            }
+            cv.anchorWithConstantsTo(top: self.topAnchor,
+                                     left: self.leftAnchor,
+                                     bottom: self.bottomAnchor,
+                                     right: self.rightAnchor,
+                                     topConstant: 0,
+                                     leftConstant: 0,
+                                     bottomConstant: 0)
         }
         
     }
-    
-    let layout: UICollectionViewFlowLayout = {
-        let l = CenterCellFlowLayout()
-        l.scrollDirection = .horizontal
-        return l
-    }()
     
     var collectionViewController: PageableViewController? {
         willSet {

@@ -17,8 +17,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
         setupViews()
     }
-
-
+    
     private func setupViews() {
         view.addSubview(mainCollectionView)
         
@@ -26,8 +25,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
                                     left: view.leftAnchor,
                                     bottom: view.bottomAnchor,
                                     right: view.rightAnchor)
+        
     }
-    
     
     lazy var mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -56,24 +55,10 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCellConstants.reuseIdentifier, for: indexPath) as! MainCell
-        
         cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
-        
-        switch indexPath.item {
-        case 0:
-            cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
-            cell.collectionViewController = EstablishmentsViewController(collectionViewLayout: cell.layout)
-        case 1:
-            cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
-        case 3:
-            cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
-        default:
-            break
-        }
-        
-        
         return cell
     }
+    
     // END: Collection View Datasource
     
     
