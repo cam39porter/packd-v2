@@ -9,11 +9,11 @@
 import UIKit
 
 struct FoldableCellConstants {
-    static let foldedHeight: CGFloat = 100
-    static let halfUnfoldedHeight: CGFloat = FoldableCellConstants.foldedHeight * 2
-    static let fullyUnfoldedHeight: CGFloat = FoldableCellConstants.halfUnfoldedHeight * 2
+    static let foldedHeight: CGFloat = FoldableCellConstants.halfUnfoldedHeight / 2
+    static let halfUnfoldedHeight: CGFloat = FoldableCellConstants.fullyUnfoldedHeight / 2
+    static let fullyUnfoldedHeight: CGFloat = width * (6765.0 / 4181.0)
     
-    static let width: CGFloat = UIScreen.main.bounds.width - 88
+    static let width: CGFloat = UIScreen.main.bounds.width - 100
     
     enum FoldState {
         case folded
@@ -83,7 +83,6 @@ class FoldableCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = 2.0
         self.layer.shadowOffset = CGSize(width: 0, height: 3)
-        self.layer.cornerRadius = 12
         self.backgroundColor = UIColor.black
     }
     

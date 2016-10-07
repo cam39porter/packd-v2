@@ -32,8 +32,6 @@ class PageableViewController: FoldableViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath) as! FoldableCell
         
-        cell.backgroundColor = UIColor.black
-        
         return cell
     }
     

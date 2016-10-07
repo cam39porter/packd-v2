@@ -46,17 +46,22 @@ class MainCell: UICollectionViewCell {
         
         if let cv = collectionViewController?.collectionView {
             
+            // Delay collecton view appearing
+            let when = DispatchTime.now() + 1
+            DispatchQueue.main.asyncAfter(deadline: when){
+        
+                self.addSubview(cv)
             
-            addSubview(cv)
-            
-            cv.anchorWithConstantsTo(top: self.topAnchor,
-                                     left: self.leftAnchor,
-                                     bottom: self.bottomAnchor,
-                                     right: self.rightAnchor,
-                                     topConstant: 0,
-                                     leftConstant: 0,
-                                     bottomConstant: 0,
-                                     rightConstant: 0)
+                cv.anchorWithConstantsTo(top: self.topAnchor,
+                                         left: self.leftAnchor,
+                                         bottom: self.bottomAnchor,
+                                         right: self.rightAnchor,
+                                         topConstant: 0,
+                                         leftConstant: 0,
+                                         bottomConstant: 0,
+                                         rightConstant: 0)
+              
+            }
         }
         
     }

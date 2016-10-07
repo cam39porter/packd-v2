@@ -18,6 +18,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupViews()
     }
 
+
     private func setupViews() {
         view.addSubview(mainCollectionView)
         
@@ -35,7 +36,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
-        
+        collectionView.showsVerticalScrollIndicator = false 
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
