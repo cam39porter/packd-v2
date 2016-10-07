@@ -9,9 +9,9 @@
 import UIKit
 
 struct FoldableCellConstants {
-    static let foldedHeight: CGFloat = 44
-    static let halfUnfoldedHeight: CGFloat = 88
-    static let fullyUnfoldedHeight: CGFloat = 88 * 2
+    static let foldedHeight: CGFloat = 100
+    static let halfUnfoldedHeight: CGFloat = FoldableCellConstants.foldedHeight * 2
+    static let fullyUnfoldedHeight: CGFloat = FoldableCellConstants.halfUnfoldedHeight * 2
     
     static let width: CGFloat = UIScreen.main.bounds.width - 88
     
@@ -31,6 +31,8 @@ struct FoldableCellConstants {
             return fullyUnfoldedHeight
         }
     }
+    
+    static let reuseIdentifier = "foldableCell"
 }
 
 class FoldableCell: UICollectionViewCell {

@@ -30,13 +30,51 @@ class MainCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupViews()
+        setupImageView()
     }
     
-    func setupViews() {
+    override func prepareForReuse() {
+        collectionViewController?.collectionView?.removeFromSuperview()
+        collectionViewController = nil
+    }
+    
+    func setupImageView() {
         addSubview(imageView)
-
-
+    }
+    
+    private func setupCollectionView() {
+        
+        if let cv = collectionViewController?.collectionView {
+            
+            
+            addSubview(cv)
+            
+            cv.anchorWithConstantsTo(top: self.topAnchor,
+                                     left: self.leftAnchor,
+                                     bottom: self.bottomAnchor,
+                                     right: self.rightAnchor,
+                                     topConstant: 0,
+                                     leftConstant: 0,
+                                     bottomConstant: 0,
+                                     rightConstant: 0)
+        }
+        
+    }
+    
+    let layout: UICollectionViewFlowLayout = {
+        let l = CenterCellFlowLayout()
+        l.scrollDirection = .horizontal
+        return l
+    }()
+    
+    var collectionViewController: PageableViewController? {
+        willSet {
+            newValue?.setupViewController()
+        }
+        
+        didSet {
+            setupCollectionView()
+        }
     }
     
     let imageView: UIImageView = {

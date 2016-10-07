@@ -27,6 +27,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
                                     right: view.rightAnchor)
     }
     
+    
     lazy var mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -43,6 +44,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
 
         return collectionView
     }()
+    
     // END: View
     
     
@@ -55,6 +57,19 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCellConstants.reuseIdentifier, for: indexPath) as! MainCell
         
         cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
+        
+        switch indexPath.item {
+        case 0:
+            cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
+            cell.collectionViewController = EstablishmentsViewController(collectionViewLayout: cell.layout)
+        case 1:
+            cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
+        case 3:
+            cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
+        default:
+            break
+        }
+        
         
         return cell
     }
