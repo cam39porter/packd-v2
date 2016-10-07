@@ -20,6 +20,7 @@
 		E3D518D01DA73D8900363CB0 /* PageableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518CF1DA73D8900363CB0 /* PageableViewController.swift */; };
 		E3D518D51DA81B4700363CB0 /* PerksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518D41DA81B4700363CB0 /* PerksViewController.swift */; };
 		E3D518D71DA81B6200363CB0 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518D61DA81B6200363CB0 /* FriendsViewController.swift */; };
+		E3D518DC1DA82EBF00363CB0 /* DatabaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		E3D518CF1DA73D8900363CB0 /* PageableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageableViewController.swift; sourceTree = "<group>"; };
 		E3D518D41DA81B4700363CB0 /* PerksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerksViewController.swift; sourceTree = "<group>"; };
 		E3D518D61DA81B6200363CB0 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		E3D518A61DA6E74400363CB0 /* packd-v2 */ = {
 			isa = PBXGroup;
 			children = (
+				E3D518DA1DA82EAB00363CB0 /* Model */,
 				E3D518A71DA6E74400363CB0 /* AppDelegate.swift */,
 				E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */,
 				E3D518C21DA6F3D500363CB0 /* MainCell.swift */,
@@ -155,6 +158,14 @@
 				E3D518D41DA81B4700363CB0 /* PerksViewController.swift */,
 			);
 			name = Collections;
+			sourceTree = "<group>";
+		};
+		E3D518DA1DA82EAB00363CB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 				E3D518C31DA6F3D500363CB0 /* MainCell.swift in Sources */,
 				E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */,
 				E3D518CA1DA72C5500363CB0 /* FoldableCell.swift in Sources */,
+				E3D518DC1DA82EBF00363CB0 /* DatabaseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
