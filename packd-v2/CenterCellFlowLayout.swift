@@ -46,7 +46,7 @@ class CenterCellFlowLayout: UICollectionViewFlowLayout {
                     
                     
                 }
-                
+
                 return CGPoint(x: round(candidateAttributes!.center.x - halfWidth), y: proposedContentOffset.y)
                 
             }

@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = mainViewController
         
         return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

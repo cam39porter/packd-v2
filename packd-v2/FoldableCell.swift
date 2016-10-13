@@ -9,11 +9,11 @@
 import UIKit
 
 struct FoldableCellConstants {
-    static let foldedHeight: CGFloat = FoldableCellConstants.halfUnfoldedHeight / 2
-    static let halfUnfoldedHeight: CGFloat = FoldableCellConstants.fullyUnfoldedHeight / 2
-    static let fullyUnfoldedHeight: CGFloat = width * (6765.0 / 4181.0)
+    static let foldedHeight: CGFloat = 88
+    static let halfUnfoldedHeight: CGFloat = 88 * 2
+    static let fullyUnfoldedHeight: CGFloat = 88 * 4
     
-    static let width: CGFloat = UIScreen.main.bounds.width - 100
+    static let width: CGFloat = UIScreen.main.bounds.width - 88
     
     enum FoldState {
         case folded

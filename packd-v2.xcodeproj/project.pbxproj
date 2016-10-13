@@ -21,6 +21,8 @@
 		E3D518D51DA81B4700363CB0 /* PerksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518D41DA81B4700363CB0 /* PerksViewController.swift */; };
 		E3D518D71DA81B6200363CB0 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518D61DA81B6200363CB0 /* FriendsViewController.swift */; };
 		E3D518DC1DA82EBF00363CB0 /* DatabaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */; };
+		E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36451DAF12AD001B0F5C /* Size.swift */; };
+		E3DA36481DAFD883001B0F5C /* NavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		E3D518D41DA81B4700363CB0 /* PerksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerksViewController.swift; sourceTree = "<group>"; };
 		E3D518D61DA81B6200363CB0 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseObject.swift; sourceTree = "<group>"; };
+		E3DA36451DAF12AD001B0F5C /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 				E3D518A71DA6E74400363CB0 /* AppDelegate.swift */,
 				E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */,
 				E3D518C21DA6F3D500363CB0 /* MainCell.swift */,
+				E3DA36491DAFDCEC001B0F5C /* Navigation */,
 				E3D518D81DA81B7400363CB0 /* Collections */,
 				E3D518C41DA72BB200363CB0 /* Foldable Collection */,
 				E3D518BF1DA6EEC200363CB0 /* Extensions */,
@@ -126,6 +131,7 @@
 		E3D518BF1DA6EEC200363CB0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E3DA36451DAF12AD001B0F5C /* Size.swift */,
 				E3D518BD1DA6EEB900363CB0 /* UIViewExtension.swift */,
 			);
 			name = Extensions;
@@ -166,6 +172,14 @@
 				E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E3DA36491DAFDCEC001B0F5C /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */,
+			);
+			name = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,11 +307,13 @@
 				E3D518D01DA73D8900363CB0 /* PageableViewController.swift in Sources */,
 				E3D518C61DA72BE200363CB0 /* CenterCellFlowLayout.swift in Sources */,
 				E3D518C11DA6EF7C00363CB0 /* MainViewController.swift in Sources */,
+				E3DA36481DAFD883001B0F5C /* NavigationButtons.swift in Sources */,
 				E3D518CE1DA7397000363CB0 /* EstablishmentsViewController.swift in Sources */,
 				E3D518D51DA81B4700363CB0 /* PerksViewController.swift in Sources */,
 				E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */,
 				E3D518D71DA81B6200363CB0 /* FriendsViewController.swift in Sources */,
 				E3D518C81DA72C2D00363CB0 /* FoldableViewController.swift in Sources */,
+				E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */,
 				E3D518C31DA6F3D500363CB0 /* MainCell.swift in Sources */,
 				E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */,
 				E3D518CA1DA72C5500363CB0 /* FoldableCell.swift in Sources */,
@@ -326,6 +342,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -375,6 +392,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

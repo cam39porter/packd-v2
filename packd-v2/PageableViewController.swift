@@ -24,7 +24,6 @@ class PageableViewController: FoldableViewController {
         collectionView?.backgroundColor = UIColor.clear
         collectionView?.register(FoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
         
-        foldStatesOfCells = [.fullyUnfolded, .fullyUnfolded, .fullyUnfolded]
     }
     // END: Pageable
     
