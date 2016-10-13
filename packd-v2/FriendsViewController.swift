@@ -18,5 +18,10 @@ class FriendsViewController: PageableViewController {
         
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
     // START: Collection View Datasource
 }

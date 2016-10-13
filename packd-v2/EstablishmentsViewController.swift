@@ -31,6 +31,7 @@ class EstablishmentsViewController: PageableViewController {
     }
     
     private func fetchEstablishments() {
+        print("fetching establishments")
         Establishment.getAllEstablishments { (establishment) in
             self.establishments.append(establishment!)
             self.collectionView?.reloadData()

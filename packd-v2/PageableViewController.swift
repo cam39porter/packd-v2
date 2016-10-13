@@ -30,11 +30,6 @@ class PageableViewController: FoldableViewController {
     // END: Pageable
     
     // START: Collection View Datasource
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath) as! FoldableCell
-        
-        return cell
-    }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = FoldableCellConstants.fullyUnfoldedHeight

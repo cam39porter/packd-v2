@@ -9,7 +9,8 @@
 import UIKit
 
 struct MainCellConstants {
-    static let reuseIdentifier: String = "mainCell"
+    static let establishmentReuseIdentifier: String = "establishmentCell"
+    static let friendsReuseIdentifier: String = "friendsCell"
     
     static let establishmentsCellIndex = 0
     static let friendsCellIndex = 1
@@ -51,41 +52,56 @@ class MainCell: UICollectionViewCell {
         setupImageView()
     }
     
-    override func prepareForReuse() {
-        collectionViewController?.collectionView?.removeFromSuperview()
-        collectionViewController = nil
-    }
-    
     func setupImageView() {
         addSubview(imageView)
     }
     
-    private func setupCollectionView() {
-        
-        if let cv = collectionViewController?.collectionView {
-            
-            self.addSubview(cv)
-            
-            cv.anchorWithConstantsTo(top: self.topAnchor,
-                                     left: self.leftAnchor,
-                                     bottom: self.bottomAnchor,
-                                     right: self.rightAnchor,
-                                     topConstant: 0,
-                                     leftConstant: 0,
-                                     bottomConstant: 0)
+    
+    func setCollectionViewController(forIndexPath indexPath: IndexPath, withCollectionVC collectionViewController: PageableViewController?) {
+        switch indexPath.item {
+        case MainCellConstants.establishmentIndex:
+            establishmentCollectionVC = collectionViewController as? EstablishmentsViewController
+        case MainCellConstants.friendsIndex:
+            friendsCollectionVC = collectionViewController as? FriendsViewController
+        default:
+            return 
         }
-        
     }
     
-    var collectionViewController: PageableViewController? {
+    var establishmentCollectionVC: EstablishmentsViewController? {
         willSet {
             newValue?.setupViewController()
         }
         
         didSet {
-            setupCollectionView()
+            self.addSubview((establishmentCollectionVC?.collectionView)!)
+            establishmentCollectionVC?.collectionView?.anchorWithConstantsTo(top: self.topAnchor,
+                                                                             left: self.leftAnchor,
+                                                                             bottom: self.bottomAnchor,
+                                                                             right: self.rightAnchor,
+                                                                             topConstant: 0,
+                                                                             leftConstant: 0,
+                                                                             bottomConstant: 0)
         }
     }
+    
+    var friendsCollectionVC: FriendsViewController? {
+        willSet {
+            newValue?.setupViewController()
+        }
+        
+        didSet {
+            self.addSubview((friendsCollectionVC?.collectionView)!)
+            friendsCollectionVC?.collectionView?.anchorWithConstantsTo(top: self.topAnchor,
+                                                                             left: self.leftAnchor,
+                                                                             bottom: self.bottomAnchor,
+                                                                             right: self.rightAnchor,
+                                                                             topConstant: 0,
+                                                                             leftConstant: 0,
+                                                                             bottomConstant: 0)
+        }
+    }
+    
     
     let imageView: UIImageView = {
         let iv = UIImageView(frame: CGRect(x: (UIScreen.main.bounds.width / 4), y: (UIScreen.main.bounds.height / 3), width: 200, height: 200))

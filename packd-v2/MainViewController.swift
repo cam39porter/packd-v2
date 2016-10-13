@@ -45,7 +45,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
         
-        collectionView.register(MainCell.self, forCellWithReuseIdentifier: MainCellConstants.reuseIdentifier)
+        collectionView.register(MainCell.self, forCellWithReuseIdentifier: MainCellConstants.establishmentReuseIdentifier)
+        collectionView.register(MainCell.self, forCellWithReuseIdentifier: MainCellConstants.friendsReuseIdentifier)
 
         return collectionView
     }()
@@ -58,10 +59,28 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCellConstants.reuseIdentifier, for: indexPath) as! MainCell
-        cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
-        cell.collectionViewController = MainCellConstants.viewControllerDictionary[indexPath.item]
-        return cell
+        
+        switch indexPath.item {
+        case MainCellConstants.establishmentIndex:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCellConstants.establishmentReuseIdentifier, for: indexPath) as! MainCell
+            cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
+            
+            cell.setCollectionViewController(forIndexPath: indexPath, withCollectionVC: MainCellConstants.viewControllerDictionary[indexPath.item])
+            
+            return cell
+        case MainCellConstants.friendsIndex:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCellConstants.friendsReuseIdentifier, for: indexPath) as! MainCell
+            cell.imageView.image = MainCellConstants.backgroundImageDictionary[indexPath.item]
+            
+            cell.setCollectionViewController(forIndexPath: indexPath, withCollectionVC: MainCellConstants.viewControllerDictionary[indexPath.item])
+            
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+        
+        
+
     }
     
     // END: Collection View Datasource

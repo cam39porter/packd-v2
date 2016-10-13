@@ -23,11 +23,6 @@ class FoldableViewController: UICollectionViewController, UICollectionViewDelega
         return 1
     }
     
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return foldStatesOfCells.count
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = FoldableCellConstants.heightOfCell(forState: foldStatesOfCells[indexPath.item])
         let width = FoldableCellConstants.width
