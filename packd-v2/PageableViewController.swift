@@ -22,10 +22,6 @@ class PageableViewController: FoldableViewController {
         collectionView?.alwaysBounceVertical = false
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.backgroundColor = UIColor.clear
-        collectionView?.register(FoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
-        
-        fetchData()
-        
     }
     // END: Pageable
     

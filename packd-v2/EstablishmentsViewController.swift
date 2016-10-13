@@ -8,18 +8,30 @@
 
 import UIKit
 
+class EstablishmentCell: FoldableCell {
+    
+}
+
 class EstablishmentsViewController: PageableViewController {
     
     // START: Model
     var establishments = [Establishment]()
+    let cellReuseIdentifier = "establishmentCell"
     // END: Model
     
     // START: View
+    override func viewDidLoad() {
+        collectionView?.register(EstablishmentCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchData()
+    }
     // END: View
     
     // START: Collection View Datasource
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath) as! FoldableCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! EstablishmentCell
         
         cell.backgroundColor = UIColor.black
         

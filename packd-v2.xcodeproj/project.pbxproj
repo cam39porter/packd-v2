@@ -12,14 +12,11 @@
 		E3D518AF1DA6E74400363CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D518AE1DA6E74400363CB0 /* Assets.xcassets */; };
 		E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518BD1DA6EEB900363CB0 /* UIViewExtension.swift */; };
 		E3D518C11DA6EF7C00363CB0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */; };
-		E3D518C31DA6F3D500363CB0 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C21DA6F3D500363CB0 /* MainCell.swift */; };
 		E3D518C61DA72BE200363CB0 /* CenterCellFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C51DA72BE200363CB0 /* CenterCellFlowLayout.swift */; };
 		E3D518C81DA72C2D00363CB0 /* FoldableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C71DA72C2D00363CB0 /* FoldableViewController.swift */; };
 		E3D518CA1DA72C5500363CB0 /* FoldableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518C91DA72C5500363CB0 /* FoldableCell.swift */; };
 		E3D518CE1DA7397000363CB0 /* EstablishmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518CD1DA7397000363CB0 /* EstablishmentsViewController.swift */; };
 		E3D518D01DA73D8900363CB0 /* PageableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518CF1DA73D8900363CB0 /* PageableViewController.swift */; };
-		E3D518D51DA81B4700363CB0 /* PerksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518D41DA81B4700363CB0 /* PerksViewController.swift */; };
-		E3D518D71DA81B6200363CB0 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518D61DA81B6200363CB0 /* FriendsViewController.swift */; };
 		E3D518DC1DA82EBF00363CB0 /* DatabaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */; };
 		E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36451DAF12AD001B0F5C /* Size.swift */; };
 		E3DA36481DAFD883001B0F5C /* NavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */; };
@@ -37,14 +34,11 @@
 		E3D518B31DA6E74400363CB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3D518BD1DA6EEB900363CB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		E3D518C21DA6F3D500363CB0 /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		E3D518C51DA72BE200363CB0 /* CenterCellFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellFlowLayout.swift; sourceTree = "<group>"; };
 		E3D518C71DA72C2D00363CB0 /* FoldableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldableViewController.swift; sourceTree = "<group>"; };
 		E3D518C91DA72C5500363CB0 /* FoldableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldableCell.swift; sourceTree = "<group>"; };
 		E3D518CD1DA7397000363CB0 /* EstablishmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstablishmentsViewController.swift; sourceTree = "<group>"; };
 		E3D518CF1DA73D8900363CB0 /* PageableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageableViewController.swift; sourceTree = "<group>"; };
-		E3D518D41DA81B4700363CB0 /* PerksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerksViewController.swift; sourceTree = "<group>"; };
-		E3D518D61DA81B6200363CB0 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseObject.swift; sourceTree = "<group>"; };
 		E3DA36451DAF12AD001B0F5C /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationButtons.swift; sourceTree = "<group>"; };
@@ -164,8 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				E3D518CD1DA7397000363CB0 /* EstablishmentsViewController.swift */,
-				E3D518D61DA81B6200363CB0 /* FriendsViewController.swift */,
-				E3D518D41DA81B4700363CB0 /* PerksViewController.swift */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -191,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */,
-				E3D518C21DA6F3D500363CB0 /* MainCell.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -325,12 +316,9 @@
 				E3D518C11DA6EF7C00363CB0 /* MainViewController.swift in Sources */,
 				E3DA36481DAFD883001B0F5C /* NavigationButtons.swift in Sources */,
 				E3D518CE1DA7397000363CB0 /* EstablishmentsViewController.swift in Sources */,
-				E3D518D51DA81B4700363CB0 /* PerksViewController.swift in Sources */,
 				E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */,
-				E3D518D71DA81B6200363CB0 /* FriendsViewController.swift in Sources */,
 				E3D518C81DA72C2D00363CB0 /* FoldableViewController.swift in Sources */,
 				E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */,
-				E3D518C31DA6F3D500363CB0 /* MainCell.swift in Sources */,
 				E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */,
 				E3D518CA1DA72C5500363CB0 /* FoldableCell.swift in Sources */,
 				E3D518DC1DA82EBF00363CB0 /* DatabaseObject.swift in Sources */,
