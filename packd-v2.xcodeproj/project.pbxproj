@@ -23,6 +23,8 @@
 		E3D518DC1DA82EBF00363CB0 /* DatabaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */; };
 		E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36451DAF12AD001B0F5C /* Size.swift */; };
 		E3DA36481DAFD883001B0F5C /* NavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */; };
+		E3DA364B1DAFE989001B0F5C /* Establishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA364A1DAFE989001B0F5C /* Establishment.swift */; };
+		E3DA364D1DAFEA42001B0F5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3DA364C1DAFEA42001B0F5C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseObject.swift; sourceTree = "<group>"; };
 		E3DA36451DAF12AD001B0F5C /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationButtons.swift; sourceTree = "<group>"; };
+		E3DA364A1DAFE989001B0F5C /* Establishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Establishment.swift; sourceTree = "<group>"; };
+		E3DA364C1DAFEA42001B0F5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,13 +102,12 @@
 		E3D518A61DA6E74400363CB0 /* packd-v2 */ = {
 			isa = PBXGroup;
 			children = (
-				E3D518DA1DA82EAB00363CB0 /* Model */,
 				E3D518A71DA6E74400363CB0 /* AppDelegate.swift */,
-				E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */,
-				E3D518C21DA6F3D500363CB0 /* MainCell.swift */,
-				E3DA36491DAFDCEC001B0F5C /* Navigation */,
+				E3DA364E1DAFEBF9001B0F5C /* Main */,
 				E3D518D81DA81B7400363CB0 /* Collections */,
 				E3D518C41DA72BB200363CB0 /* Foldable Collection */,
+				E3D518DA1DA82EAB00363CB0 /* Model */,
+				E3DA36491DAFDCEC001B0F5C /* Navigation */,
 				E3D518BF1DA6EEC200363CB0 /* Extensions */,
 				E3D518BA1DA6EB4500363CB0 /* Supporting Files */,
 			);
@@ -115,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D518B31DA6E74400363CB0 /* Info.plist */,
+				E3DA364C1DAFEA42001B0F5C /* GoogleService-Info.plist */,
 			);
 			name = plists;
 			sourceTree = "<group>";
@@ -170,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */,
+				E3DA364A1DAFE989001B0F5C /* Establishment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -180,6 +185,15 @@
 				E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */,
 			);
 			name = Navigation;
+			sourceTree = "<group>";
+		};
+		E3DA364E1DAFEBF9001B0F5C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E3D518C01DA6EF7C00363CB0 /* MainViewController.swift */,
+				E3D518C21DA6F3D500363CB0 /* MainCell.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3D518AF1DA6E74400363CB0 /* Assets.xcassets in Resources */,
+				E3DA364D1DAFEA42001B0F5C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3DA364B1DAFE989001B0F5C /* Establishment.swift in Sources */,
 				E3D518D01DA73D8900363CB0 /* PageableViewController.swift in Sources */,
 				E3D518C61DA72BE200363CB0 /* CenterCellFlowLayout.swift in Sources */,
 				E3D518C11DA6EF7C00363CB0 /* MainViewController.swift in Sources */,

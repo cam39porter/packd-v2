@@ -11,26 +11,26 @@ import FirebaseDatabase
 
 class DatabaseObject: NSObject {
     
-    let ref: FIRDatabaseReference? = FIRDatabase.database().reference()
+    static let ref: FIRDatabaseReference? = FIRDatabase.database().reference()
     
-    let objectsReference: FIRDatabaseReference? = nil
+    static var objectsReference: FIRDatabaseReference? = nil
     
-    func executeOnMainQueue(completion: @escaping (FIRDataSnapshot?) -> Void, withSnapshot snapshot: FIRDataSnapshot?) {
+    static func executeOnMainQueue(completion: @escaping (FIRDataSnapshot?) -> Void, withSnapshot snapshot: FIRDataSnapshot?) {
         DispatchQueue.main.async {
             completion(snapshot)
         }
     }
     
-    func getObjectBy(uid: String, withCompletionHandler completion: @escaping (FIRDataSnapshot?) -> Void) {
-        objectsReference?.child(uid).observeSingleEvent(of: .value) { (snapshot) in
-            self.executeOnMainQueue(completion: completion, withSnapshot: snapshot)
+    static func getObjectBy(uid: String, withCompletionHandler completion: @escaping (FIRDataSnapshot?) -> Void) {
+        DatabaseObject.objectsReference?.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            DatabaseObject.executeOnMainQueue(completion: completion, withSnapshot: snapshot)
         }
     }
     
-    func getAllObjects(withCompletionHandler completion: @escaping (FIRDataSnapshot?) -> Void) {
-        objectsReference?.observeSingleEvent(of: .value) { (snapshot) in
-            self.executeOnMainQueue(completion: completion, withSnapshot: snapshot)
-        }
+     static func getAllObjects(withCompletionHandler completion: @escaping (FIRDataSnapshot?) -> Void) {
+        DatabaseObject.objectsReference?.observe(.childAdded, with: { (snapshot) in
+            DatabaseObject.executeOnMainQueue(completion: completion, withSnapshot: snapshot)
+        })
     }
         
     

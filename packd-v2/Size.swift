@@ -10,4 +10,5 @@ import UIKit
 
 class Size: NSObject {
     static let oneFinger: CGFloat = 44
+    static let minPadding: CGFloat = oneFinger / 4
 }

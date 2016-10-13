@@ -24,6 +24,8 @@ class PageableViewController: FoldableViewController {
         collectionView?.backgroundColor = UIColor.clear
         collectionView?.register(FoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
         
+        fetchData()
+        
     }
     // END: Pageable
     
@@ -40,6 +42,8 @@ class PageableViewController: FoldableViewController {
         
         return CGSize(width: width, height: height)
     }
+    
+    func fetchData(){}
     // END: Collection VIew Datasource
 
 }
