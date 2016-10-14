@@ -13,14 +13,43 @@ class EstablishmentsViewController: PageableViewController {
     // START: Model
     var establishments = [Establishment]()
     let cellReuseIdentifier = "establishmentCell"
+    
+    var cellIsLoading = false {
+        didSet {
+            
+            if cellIsLoading {
+                view.addSubview(loadingImageView)
+                view.sendSubview(toBack: loadingImageView)
+                
+                UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse, .curveEaseOut], animations: {
+                    self.loadingImageView.alpha = 0.5
+                    }, completion: nil)
+            } else {
+                loadingImageView.layer.removeAllAnimations()
+                loadingImageView.removeFromSuperview()
+            }
+        }
+    }
     // END: Model
     
     // START: View
+    let loadingImageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: (UIScreen.main.bounds.width / 4), y: (UIScreen.main.bounds.height / 3), width: 200, height: 200))
+        imageView.backgroundColor = .white
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 100
+        imageView.layer.masksToBounds = true
+        imageView.alpha = 0
+        return imageView
+    }()
+    
+    
     override func viewDidLoad() {
         collectionView?.register(EstablishmentCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         fetchData()
     }
     // END: View
@@ -29,6 +58,10 @@ class EstablishmentsViewController: PageableViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! EstablishmentCell
         
+        cellIsLoading = true
+        
+        cell.alpha = 0
+        cell.establishmentViewController = self
         cell.establishment = establishments[indexPath.item]
         
         return cell

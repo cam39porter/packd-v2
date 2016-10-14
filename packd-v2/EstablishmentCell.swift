@@ -15,6 +15,8 @@ class EstablishmentCell: FoldableCell {
             setupCell()
         }
     }
+    
+    var establishmentViewController: EstablishmentsViewController? = nil 
     // END: Model
     
     
@@ -23,8 +25,11 @@ class EstablishmentCell: FoldableCell {
         
         establishment?.getProfileImage(withCompletionHandler: { (image) in
             DispatchQueue.main.async {
-                print("setting the image")
                 self.profileImageView.image = image
+                self.establishmentViewController?.cellIsLoading = false
+                UIView.animate(withDuration: 1, animations: {
+                    self.alpha = 1
+                })
             }
         })
         nameLabel.text = establishment?.name
