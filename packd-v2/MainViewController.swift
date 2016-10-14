@@ -124,6 +124,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
                                                 leftConstant: 0,
                                                 bottomConstant: 0)
         view.bringSubview(toFront: mainScrollView)
+        navigationButtons.bringToFront(ofView: self.view)
         
     }
     
@@ -151,6 +152,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
+    let navigationButtonsContianerView = UIView()
     let navigationButtons = NavigationButtons()
     // END: View
     

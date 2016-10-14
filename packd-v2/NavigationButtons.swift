@@ -10,6 +10,14 @@ import UIKit
 
 class NavigationButtons: NSObject {
     
+    func bringToFront(ofView view: UIView) {
+        view.bringSubview(toFront: packdButton)
+        view.bringSubview(toFront: searchButton)
+        view.bringSubview(toFront: profileButton)
+        view.bringSubview(toFront: messageButton)
+    }
+    
+    
     func setupNavigationButtons(inView view: UIView) {
         
         view.addSubview(packdButton)
