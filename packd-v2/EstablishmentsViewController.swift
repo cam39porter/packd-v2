@@ -8,10 +8,6 @@
 
 import UIKit
 
-class EstablishmentCell: FoldableCell {
-    
-}
-
 class EstablishmentsViewController: PageableViewController {
     
     // START: Model
@@ -33,7 +29,7 @@ class EstablishmentsViewController: PageableViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! EstablishmentCell
         
-        cell.backgroundColor = UIColor.black
+        cell.establishment = establishments[indexPath.item]
         
         return cell
     }
@@ -43,7 +39,6 @@ class EstablishmentsViewController: PageableViewController {
     }
     
     private func fetchEstablishments() {
-        print("fetching establishments")
         Establishment.getAllEstablishments { (establishment) in
             self.establishments.append(establishment!)
             self.collectionView?.reloadData()

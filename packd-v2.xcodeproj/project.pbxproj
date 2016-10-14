@@ -22,6 +22,9 @@
 		E3DA36481DAFD883001B0F5C /* NavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */; };
 		E3DA364B1DAFE989001B0F5C /* Establishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA364A1DAFE989001B0F5C /* Establishment.swift */; };
 		E3DA364D1DAFEA42001B0F5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3DA364C1DAFEA42001B0F5C /* GoogleService-Info.plist */; };
+		E3DA36541DB1620B001B0F5C /* EstablishmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36531DB1620B001B0F5C /* EstablishmentCell.swift */; };
+		E3DA36561DB163C8001B0F5C /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36551DB163C8001B0F5C /* UIImageViewExtension.swift */; };
+		E3DA36581DB16D36001B0F5C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36571DB16D36001B0F5C /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		E3DA36471DAFD883001B0F5C /* NavigationButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationButtons.swift; sourceTree = "<group>"; };
 		E3DA364A1DAFE989001B0F5C /* Establishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Establishment.swift; sourceTree = "<group>"; };
 		E3DA364C1DAFEA42001B0F5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3DA36531DB1620B001B0F5C /* EstablishmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstablishmentCell.swift; sourceTree = "<group>"; };
+		E3DA36551DB163C8001B0F5C /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		E3DA36571DB16D36001B0F5C /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,8 @@
 		E3D518BF1DA6EEC200363CB0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E3DA36571DB16D36001B0F5C /* Fonts.swift */,
+				E3DA36551DB163C8001B0F5C /* UIImageViewExtension.swift */,
 				E3DA36451DAF12AD001B0F5C /* Size.swift */,
 				E3D518BD1DA6EEB900363CB0 /* UIViewExtension.swift */,
 			);
@@ -158,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D518CD1DA7397000363CB0 /* EstablishmentsViewController.swift */,
+				E3DA36531DB1620B001B0F5C /* EstablishmentCell.swift */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -311,12 +320,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3DA364B1DAFE989001B0F5C /* Establishment.swift in Sources */,
+				E3DA36581DB16D36001B0F5C /* Fonts.swift in Sources */,
 				E3D518D01DA73D8900363CB0 /* PageableViewController.swift in Sources */,
+				E3DA36541DB1620B001B0F5C /* EstablishmentCell.swift in Sources */,
 				E3D518C61DA72BE200363CB0 /* CenterCellFlowLayout.swift in Sources */,
 				E3D518C11DA6EF7C00363CB0 /* MainViewController.swift in Sources */,
 				E3DA36481DAFD883001B0F5C /* NavigationButtons.swift in Sources */,
 				E3D518CE1DA7397000363CB0 /* EstablishmentsViewController.swift in Sources */,
 				E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */,
+				E3DA36561DB163C8001B0F5C /* UIImageViewExtension.swift in Sources */,
 				E3D518C81DA72C2D00363CB0 /* FoldableViewController.swift in Sources */,
 				E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */,
 				E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */,

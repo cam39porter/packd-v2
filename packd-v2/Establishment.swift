@@ -12,11 +12,21 @@ import FirebaseDatabase
 class Establishment: DatabaseObject {
     
     // Start: Attributes
+    
+    // in database
     var uid: String?
     var name: String?
     var profileImageURL: String?
     var descriptionOfEstablishment: String?
     // END: Attributes
+    
+    func getProfileImage(withCompletionHandler completion: @escaping (UIImage?) -> Void) {
+        let imageView = UIImageView()
+        
+        if let url = profileImageURL {
+            imageView.getImageWithCacheFor(urlString: url, completion: completion)
+        }
+    }
     
     static let establishmentsReference = DatabaseObject.ref?.child("establishments")
 

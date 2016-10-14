@@ -43,7 +43,7 @@ class NavigationButtons: NSObject {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.clear
         button.setTitle("PACKD", for: .normal)
-        button.titleLabel?.font = UIFont(name: "AvenirNextCondensed-Bold", size: Size.oneFinger / 2)
+        button.titleLabel?.font =  Fonts.boldFont(ofSize: Size.oneFinger / 2)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.black, for: .normal)
         return button

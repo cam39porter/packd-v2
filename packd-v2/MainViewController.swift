@@ -74,7 +74,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             case MainViewConstants.friendsIndex:
                 subView.addSubview(friendsImageView)
             case MainViewConstants.perksIndex:
-                break
+                subView.addSubview(perksImageView)
             default:
                 break
             }
@@ -106,25 +106,15 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     }()
     
     let establishmentImageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: (UIScreen.main.bounds.width / 4), y: (UIScreen.main.bounds.height / 3), width: 200, height: 200))
-        imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .white
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 100
-        imageView.layer.masksToBounds = true
-        imageView.image = MainViewConstants.backgroundImageDictionary[0]
-        return imageView
+        return MainViewController.setupBackgroundImage(withImage: MainViewConstants.backgroundImageDictionary[0])
     }()
     
     let friendsImageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: (UIScreen.main.bounds.width / 4), y: (UIScreen.main.bounds.height / 3), width: 200, height: 200))
-        imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .white
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 100
-        imageView.layer.masksToBounds = true
-        imageView.image = MainViewConstants.backgroundImageDictionary[1]
-        return imageView
+        return MainViewController.setupBackgroundImage(withImage: MainViewConstants.backgroundImageDictionary[1])
+    }()
+    
+    let perksImageView: UIImageView = {
+        return MainViewController.setupBackgroundImage(withImage: MainViewConstants.backgroundImageDictionary[2])
     }()
     
     static func setupBackgroundImage(withImage image: UIImage?) -> UIImageView {
