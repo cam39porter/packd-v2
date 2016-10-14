@@ -22,6 +22,10 @@ struct MainViewConstants {
                                                            MainViewConstants.friendsCellIndex : MainViewConstants.friendsImage!,
                                                            MainViewConstants.perksCellIndex : MainViewConstants.perksImage!]
     
+    static let establishmentFrameY: CGFloat = 0.0
+    static let friendsFrameY: CGFloat = UIScreen.main.bounds.height
+    static let perksFrameY: CGFloat = UIScreen.main.bounds.height * 2
+    
     static let establishmentIndex = 0
     static let friendsIndex = 1
     static let perksIndex = 2
@@ -41,14 +45,17 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        setupViews()
+        setupSubViews()
+        
+        setupEstablishmentViewController()
         
         navigationButtons.setupNavigationButtons(inView: self.view)
         
     }
     
-    private func setupViews() {
+    private func setupSubViews() {
         
+        mainScrollView.delegate = self
         view.addSubview(mainScrollView)
         
         for index in 0..<MainViewConstants.backgroundImageDictionary.count {
@@ -62,26 +69,27 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             
             switch index {
             case MainViewConstants.establishmentIndex:
-                subView.addSubview(establishmentImageView)
-                subView.addSubview(establishmentCollectionViewController.view!)
-                establishmentCollectionViewController.view?.anchorWithConstantsTo(top: subView.topAnchor,
-                                                                                  left: subView.leftAnchor,
-                                                                                  bottom: subView.bottomAnchor,
-                                                                                  right: subView.rightAnchor,
-                                                                                  topConstant: 0,
-                                                                                  leftConstant: 0,
-                                                                                  bottomConstant: 0)
+                establishmentContainerView = UIView(frame: frame)
+                establishmentContainerView.backgroundColor = UIColor.white
+                establishmentContainerView.addSubview(establishmentImageView)
+                mainScrollView.addSubview(establishmentContainerView)
+                
+
             case MainViewConstants.friendsIndex:
                 subView.addSubview(friendsImageView)
+                mainScrollView.addSubview(subView)
+                subView.backgroundColor = UIColor.white
+
             case MainViewConstants.perksIndex:
                 subView.addSubview(perksImageView)
+                mainScrollView.addSubview(subView)
+                subView.backgroundColor = UIColor.white
+                
             default:
                 break
             }
             
             
-            subView.backgroundColor = UIColor.white
-            mainScrollView.addSubview(subView)
         }
         
         mainScrollView.contentSize = CGSize(width: mainScrollView.frame.size.width,
@@ -98,12 +106,26 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         return scrollView
     }()
     
+    var establishmentContainerView = UIView()
     
-    let establishmentCollectionViewController: EstablishmentsViewController = {
-        let collectionViewController = EstablishmentsViewController(collectionViewLayout: MainViewConstants.pageableLayout)
-        collectionViewController.setupViewController()
-        return collectionViewController
-    }()
+    lazy var establishmentCollectionViewController: EstablishmentsViewController? = nil
+    
+    private func setupEstablishmentViewController() {
+        establishmentCollectionViewController = EstablishmentsViewController(collectionViewLayout: MainViewConstants.pageableLayout)
+        establishmentCollectionViewController?.setupViewController()
+        
+        let establishmentView = (establishmentCollectionViewController?.view)!
+        establishmentContainerView.addSubview(establishmentView)
+        establishmentView.anchorWithConstantsTo(top: establishmentContainerView.topAnchor,
+                                                left: establishmentContainerView.leftAnchor,
+                                                bottom: establishmentContainerView.bottomAnchor,
+                                                right: establishmentContainerView.rightAnchor,
+                                                topConstant: 0,
+                                                leftConstant: 0,
+                                                bottomConstant: 0)
+        view.bringSubview(toFront: mainScrollView)
+        
+    }
     
     let establishmentImageView: UIImageView = {
         return MainViewController.setupBackgroundImage(withImage: MainViewConstants.backgroundImageDictionary[0])
@@ -131,6 +153,30 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     
     let navigationButtons = NavigationButtons()
     // END: View
+    
+    
+    // START: Collection View Switching
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
+        
+        switch scrollView.contentOffset.y {
+        case MainViewConstants.establishmentFrameY:
+            print("establishments")
+            setupEstablishmentViewController()
+            
+        case MainViewConstants.friendsFrameY:
+            print("friends")
+            establishmentCollectionViewController?.view.removeFromSuperview()
+            establishmentCollectionViewController = nil
+        case MainViewConstants.perksFrameY:
+            print("perks")
+        default:
+            print("no where")
+        }
+        
+        print(UIScreen.main.bounds.height)
+    }
+    // END: Collection View Switching
     
     
 }
