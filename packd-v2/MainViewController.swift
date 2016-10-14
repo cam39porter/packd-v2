@@ -76,9 +76,10 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
                 
 
             case MainViewConstants.friendsIndex:
-                subView.addSubview(friendsImageView)
-                mainScrollView.addSubview(subView)
-                subView.backgroundColor = UIColor.white
+                friendsContainerView = UIView(frame: frame)
+                friendsContainerView.backgroundColor = UIColor.white
+                friendsContainerView.addSubview(friendsImageView)
+                mainScrollView.addSubview(friendsContainerView)
 
             case MainViewConstants.perksIndex:
                 subView.addSubview(perksImageView)
@@ -128,6 +129,28 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    var friendsContainerView = UIView()
+    
+    lazy var friendsCollectionViewController: FriendsViewController? = nil
+    
+    private func setupFriendsViewController() {
+        friendsCollectionViewController = FriendsViewController(collectionViewLayout: MainViewConstants.pageableLayout)
+        friendsCollectionViewController?.setupViewController()
+        
+        let friendsView = (friendsCollectionViewController?.view)!
+        friendsContainerView.addSubview(friendsView)
+        friendsView.anchorWithConstantsTo(top: friendsContainerView.topAnchor,
+                                          left: friendsContainerView.leftAnchor,
+                                          bottom: friendsContainerView.bottomAnchor,
+                                          right: friendsContainerView.rightAnchor,
+                                          topConstant: 0,
+                                          leftConstant: 0,
+                                          bottomConstant: 0)
+        view.bringSubview(toFront: mainScrollView)
+        navigationButtons.bringToFront(ofView: self.view)
+        
+    }
+    
     let establishmentImageView: UIImageView = {
         return MainViewController.setupBackgroundImage(withImage: MainViewConstants.backgroundImageDictionary[0])
     }()
@@ -164,12 +187,20 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         switch scrollView.contentOffset.y {
         case MainViewConstants.establishmentFrameY:
             print("establishments")
+            
+            friendsCollectionViewController?.view.removeFromSuperview()
+            friendsCollectionViewController = nil
+            
             setupEstablishmentViewController()
             
         case MainViewConstants.friendsFrameY:
             print("friends")
+            
             establishmentCollectionViewController?.view.removeFromSuperview()
             establishmentCollectionViewController = nil
+            
+            setupFriendsViewController()
+            
         case MainViewConstants.perksFrameY:
             print("perks")
         default:
