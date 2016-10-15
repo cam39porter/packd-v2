@@ -27,6 +27,7 @@
 		E3DA36581DB16D36001B0F5C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36571DB16D36001B0F5C /* Fonts.swift */; };
 		E3DA365C1DB1873E001B0F5C /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA365B1DB1873E001B0F5C /* FriendsViewController.swift */; };
 		E3DA36601DB1B8D0001B0F5C /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA365F1DB1B8D0001B0F5C /* FriendCell.swift */; };
+		E3DA36621DB2D667001B0F5C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36611DB2D667001B0F5C /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		E3DA36571DB16D36001B0F5C /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E3DA365B1DB1873E001B0F5C /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		E3DA365F1DB1B8D0001B0F5C /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		E3DA36611DB2D667001B0F5C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			children = (
 				E3D518DB1DA82EBF00363CB0 /* DatabaseObject.swift */,
 				E3DA364A1DAFE989001B0F5C /* Establishment.swift */,
+				E3DA36611DB2D667001B0F5C /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				E3D518C81DA72C2D00363CB0 /* FoldableViewController.swift in Sources */,
 				E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */,
 				E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */,
+				E3DA36621DB2D667001B0F5C /* User.swift in Sources */,
 				E3D518CA1DA72C5500363CB0 /* FoldableCell.swift in Sources */,
 				E3D518DC1DA82EBF00363CB0 /* DatabaseObject.swift in Sources */,
 				E3DA36601DB1B8D0001B0F5C /* FriendCell.swift in Sources */,

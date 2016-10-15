@@ -12,8 +12,6 @@ import FirebaseDatabase
 class Establishment: DatabaseObject {
     
     // Start: Attributes
-    
-    // in database
     var uid: String?
     var name: String?
     var profileImageURL: String?
