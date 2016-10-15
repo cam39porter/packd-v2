@@ -191,7 +191,9 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             friendsCollectionViewController?.view.removeFromSuperview()
             friendsCollectionViewController = nil
             
-            setupEstablishmentViewController()
+            if establishmentCollectionViewController == nil {
+                setupEstablishmentViewController()
+            }
             
         case MainViewConstants.friendsFrameY:
             print("friends")
@@ -199,10 +201,17 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             establishmentCollectionViewController?.view.removeFromSuperview()
             establishmentCollectionViewController = nil
             
-            setupFriendsViewController()
+            if friendsCollectionViewController == nil {
+                setupFriendsViewController()
+            }
             
         case MainViewConstants.perksFrameY:
             print("perks")
+            
+            friendsCollectionViewController?.view.removeFromSuperview()
+            friendsCollectionViewController = nil
+            
+            
         default:
             print("no where")
         }
