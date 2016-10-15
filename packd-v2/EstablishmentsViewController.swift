@@ -14,6 +14,16 @@ class EstablishmentsViewController: PageableViewController {
     var establishments = [Establishment]()
     let cellReuseIdentifier = "establishmentCell"
     
+    var loadingStateOfCells = [Bool]()
+    var currentLoadState: Bool {
+        get {
+            return loadingStateOfCells.reduce(false) { (currentLoadState, loadStateOfCell) -> Bool in
+                return currentLoadState || loadStateOfCell
+            }
+        }
+    }
+    
+    
     var cellIsLoading = false {
         didSet {
             
@@ -58,8 +68,14 @@ class EstablishmentsViewController: PageableViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! EstablishmentCell
         
-        cellIsLoading = true
+        if indexPath.item == loadingStateOfCells.count {
+            loadingStateOfCells.append(true)
+        } else {
+            loadingStateOfCells[indexPath.item] = true
+        }
         
+        cellIsLoading = true
+        cell.indexPath = indexPath
         cell.alpha = 0
         cell.establishmentViewController = self
         cell.establishment = establishments[indexPath.item]
