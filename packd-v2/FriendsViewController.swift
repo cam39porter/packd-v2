@@ -12,6 +12,7 @@ class FriendsViewController: PageableViewController {
     // START: Model
     var friends = [User]()
     let cellReuseIdentifier = "friendCell"
+    
     // END: Model
     
     // START: View
