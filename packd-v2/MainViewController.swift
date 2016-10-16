@@ -181,9 +181,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     
     
     // START: Collection View Switching
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-        
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {        
         switch scrollView.contentOffset.y {
         case MainViewConstants.establishmentFrameY:
             
@@ -212,8 +210,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         default:
             break
         }
-        
-        print(UIScreen.main.bounds.height)
     }
     // END: Collection View Switching
     
