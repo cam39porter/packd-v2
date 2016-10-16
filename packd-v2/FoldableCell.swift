@@ -83,7 +83,7 @@ class FoldableCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = 2.0
         self.layer.shadowOffset = CGSize(width: 0, height: 3)
-        self.backgroundColor = UIColor.lightGray
+        self.backgroundColor = Colors.background
     }
     
     required init?(coder aDecoder: NSCoder) {

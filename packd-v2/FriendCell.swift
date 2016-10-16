@@ -67,7 +67,7 @@ class FriendCell: FoldableCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor.clear
-        label.textColor = UIColor.white
+        label.textColor = Colors.contrast
         label.textAlignment = .left
         label.font = Fonts.boldFont(ofSize: 18)
         return label
@@ -77,7 +77,7 @@ class FriendCell: FoldableCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor.clear
-        label.textColor = UIColor.white
+        label.textColor = Colors.contrast
         label.textAlignment = .left
         label.font = Fonts.font(ofSize: 14)
         return label
