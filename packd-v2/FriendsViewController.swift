@@ -70,7 +70,7 @@ class FriendsViewController: PageableViewController {
         } else {
             loadingStateOfCells[indexPath.item] = true
         }
-        
+
         cellIsLoading = true
         cell.indexPath = indexPath
         cell.alpha = 0

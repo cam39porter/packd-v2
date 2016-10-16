@@ -186,7 +186,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         
         switch scrollView.contentOffset.y {
         case MainViewConstants.establishmentFrameY:
-            print("establishments")
             
             friendsCollectionViewController?.view.removeFromSuperview()
             friendsCollectionViewController = nil
@@ -196,7 +195,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             }
             
         case MainViewConstants.friendsFrameY:
-            print("friends")
             
             establishmentCollectionViewController?.view.removeFromSuperview()
             establishmentCollectionViewController = nil
@@ -206,14 +204,13 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             }
             
         case MainViewConstants.perksFrameY:
-            print("perks")
             
             friendsCollectionViewController?.view.removeFromSuperview()
             friendsCollectionViewController = nil
             
             
         default:
-            print("no where")
+            break
         }
         
         print(UIScreen.main.bounds.height)

@@ -34,12 +34,13 @@ class FriendCell: FoldableCell {
                 })
             }
         })
-        
+
         nameLabel.text = friend?.name
         descriptionLabel.text = friend?.email
         
         self.addSubview(nameLabel)
         self.addSubview(descriptionLabel)
+        self.addSubview(profileImageView)
         
         profileImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
