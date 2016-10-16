@@ -45,7 +45,7 @@ class EstablishmentsViewController: PageableViewController {
     // START: View
     let loadingImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: (UIScreen.main.bounds.width / 4), y: (UIScreen.main.bounds.height / 3), width: 200, height: 200))
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = Colors.contrast
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 100
         imageView.layer.masksToBounds = true

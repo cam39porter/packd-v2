@@ -10,9 +10,9 @@ import UIKit
 
 struct Colors {
     
-    static let background: UIColor = UIColor(netHex: 0xC0C2CE)
+    static let background: UIColor = UIColor(netHex: 0xC7C6C4)
     static let highlight: UIColor = UIColor(netHex: 0xFE667B)
-    static let contrast: UIColor = UIColor(netHex: 0xF4F4F4)
+    static let contrast: UIColor = UIColor(netHex: 0xF9F7E8)
 
 }
 
