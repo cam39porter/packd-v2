@@ -21,8 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set root view controller
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let mainViewController = MainViewController()
-        window?.rootViewController = mainViewController
+        
+//        let mainViewController = MainViewController()
+//        window?.rootViewController = mainViewController
+        
+        // for setting up login view controller 
+        let loginViewController = LoginViewController()
+        window?.rootViewController = loginViewController
         
         FIRApp.configure()
         

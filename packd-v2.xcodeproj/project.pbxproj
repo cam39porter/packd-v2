@@ -29,6 +29,7 @@
 		E3DA36601DB1B8D0001B0F5C /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA365F1DB1B8D0001B0F5C /* FriendCell.swift */; };
 		E3DA36621DB2D667001B0F5C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36611DB2D667001B0F5C /* User.swift */; };
 		E3DA36641DB3E9D1001B0F5C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36631DB3E9D1001B0F5C /* Colors.swift */; };
+		E3F2DC221DB3F70F000DC6C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		E3DA365F1DB1B8D0001B0F5C /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		E3DA36611DB2D667001B0F5C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3DA36631DB3E9D1001B0F5C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D518A71DA6E74400363CB0 /* AppDelegate.swift */,
+				E3F2DC231DB3F714000DC6C6 /* Login */,
 				E3DA364E1DAFEBF9001B0F5C /* Main */,
 				E3D518D81DA81B7400363CB0 /* Collections */,
 				E3D518C41DA72BB200363CB0 /* Foldable Collection */,
@@ -222,6 +225,14 @@
 				E3DA365F1DB1B8D0001B0F5C /* FriendCell.swift */,
 			);
 			name = Friends;
+			sourceTree = "<group>";
+		};
+		E3F2DC231DB3F714000DC6C6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +366,7 @@
 				E3D518C61DA72BE200363CB0 /* CenterCellFlowLayout.swift in Sources */,
 				E3D518C11DA6EF7C00363CB0 /* MainViewController.swift in Sources */,
 				E3DA36481DAFD883001B0F5C /* NavigationButtons.swift in Sources */,
+				E3F2DC221DB3F70F000DC6C6 /* LoginViewController.swift in Sources */,
 				E3D518CE1DA7397000363CB0 /* EstablishmentsViewController.swift in Sources */,
 				E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */,
 				E3DA36561DB163C8001B0F5C /* UIImageViewExtension.swift in Sources */,
