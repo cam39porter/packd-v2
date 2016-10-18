@@ -41,6 +41,10 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     
     
     // START: View
+    override func viewDidAppear(_ animated: Bool) {
+        presentLoginIfUserIsNotLoggedIn()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors.contrast
@@ -50,6 +54,15 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         setupEstablishmentViewController()
         
         navigationButtons.setupNavigationButtons(inView: self.view)
+        
+    }
+    
+    private func presentLoginIfUserIsNotLoggedIn() {
+        if Authorization.isUserLoggedIn() {
+            return
+        } else {
+            present(LoginViewController(), animated: false, completion: nil)
+        }
         
     }
     

@@ -27,4 +27,12 @@ class Authorization: NSObject {
     static func logout() {
         try! FIRAuth.auth()!.signOut()
     }
+    
+    static func isUserLoggedIn() -> Bool {
+        if let _ = FIRAuth.auth()?.currentUser {
+            return true
+        } else {
+            return false 
+        }
+    }
 }

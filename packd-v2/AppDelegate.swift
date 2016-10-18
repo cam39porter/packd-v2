@@ -17,17 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
-        // Set root view controller
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-//        let mainViewController = MainViewController()
-//        window?.rootViewController = mainViewController
-        
-        // for setting up login view controller 
-        let loginViewController = LoginViewController()
-        window?.rootViewController = loginViewController
+        let mainViewController = MainViewController()
+        window?.rootViewController = mainViewController
         
         FIRApp.configure()
         

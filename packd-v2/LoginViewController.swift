@@ -179,7 +179,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc private func handleLogin() {
         Authorization.login(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, _) in
             DispatchQueue.main.async {
-                self.present(MainViewController(), animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
