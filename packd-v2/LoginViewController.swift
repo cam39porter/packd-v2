@@ -21,9 +21,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func setupSubViews() {
         view.addSubview(backgroundImageView)
         view.addSubview(coverView)
-        view.addSubview(packdLabel)
         view.addSubview(inputContainerView)
         
+        inputContainerView.addSubview(packdLabel)
         inputContainerView.addSubview(emailTextField)
         emailTextField.delegate = self
         inputContainerView.addSubview(passwordTextField)
@@ -55,17 +55,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         packdLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         packdLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         packdLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        packdLabel.bottomAnchor.constraint(equalTo: inputContainerView.topAnchor, constant: 0).isActive = true
+        packdLabel.bottomAnchor.constraint(equalTo: inputContainerView.centerYAnchor, constant: 0).isActive = true
         
         inputContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        inputContainerView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        inputContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         inputContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         inputContainerView.rightAnchor.constraint(equalTo:  view.rightAnchor, constant: 0).isActive = true
-        
+        inputContainerView.heightAnchor.constraint(equalToConstant: view.frame.size.height / 2).isActive = true
+        inputContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -Size.oneFinger).isActive = true
         
         emailTextField.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
-        emailTextField.topAnchor.constraint(equalTo: inputContainerView.topAnchor).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: inputContainerView.centerYAnchor).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
         emailTextField.widthAnchor.constraint(equalToConstant: view.frame.width - Size.oneFinger * 3).isActive = true
         
@@ -155,18 +154,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    var inputContainerAlreadyMovedUp = false
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.5) {
-            self.inputContainerView.center = CGPoint(x: self.inputContainerView.center.x, y: self.inputContainerView.center.y - Size.oneFinger)
-            self.packdLabel.center = CGPoint(x: self.packdLabel.center.x, y: self.packdLabel.center.y - Size.oneFinger)
-                        
-            self.inputContainerView.topAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -Size.oneFinger).isActive = true
-            self.inputContainerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -Size.oneFinger).isActive = true
-        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
