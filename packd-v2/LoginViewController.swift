@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     
     // START: View
@@ -22,8 +22,12 @@ class LoginViewController: UIViewController {
         view.addSubview(backgroundImageView)
         view.addSubview(coverView)
         view.addSubview(packdLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
+        view.addSubview(inputContainerView)
+        
+        inputContainerView.addSubview(emailTextField)
+        emailTextField.delegate = self
+        inputContainerView.addSubview(passwordTextField)
+        passwordTextField.delegate = self
         view.addSubview(loginButton)
         
         _ = backgroundImageView.anchorAll(top: view.topAnchor,
@@ -51,15 +55,22 @@ class LoginViewController: UIViewController {
         packdLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         packdLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         packdLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        packdLabel.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: 0).isActive = true
+        packdLabel.bottomAnchor.constraint(equalTo: inputContainerView.topAnchor, constant: 0).isActive = true
         
-        emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        inputContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        inputContainerView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        inputContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        inputContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        inputContainerView.rightAnchor.constraint(equalTo:  view.rightAnchor, constant: 0).isActive = true
+        
+        
+        emailTextField.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: inputContainerView.topAnchor).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
         emailTextField.widthAnchor.constraint(equalToConstant: view.frame.width - Size.oneFinger * 3).isActive = true
         
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Size.minPadding).isActive = true
-        passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        passwordTextField.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
         passwordTextField.widthAnchor.constraint(equalToConstant: view.frame.width - Size.oneFinger * 3).isActive = true
         
@@ -83,6 +94,13 @@ class LoginViewController: UIViewController {
         let view = UIVisualEffectView(effect: blurEffect)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.alpha = 0.8
+        return view
+    }()
+    
+    let inputContainerView: UIView = {
+       let view = UIView()
+        view.backgroundColor = UIColor.clear
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -132,6 +150,31 @@ class LoginViewController: UIViewController {
         return button
     }()
     // END: View
+    
+    // START: Text Field Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    var inputContainerAlreadyMovedUp = false
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5) {
+            self.inputContainerView.center = CGPoint(x: self.inputContainerView.center.x, y: self.inputContainerView.center.y - Size.oneFinger)
+            self.packdLabel.center = CGPoint(x: self.packdLabel.center.x, y: self.packdLabel.center.y - Size.oneFinger)
+                        
+            self.inputContainerView.topAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -Size.oneFinger).isActive = true
+            self.inputContainerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -Size.oneFinger).isActive = true
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+
+    }
+    // END: Text Field Delegate
 }
 
 class LeftPaddedTextField: UITextField {
