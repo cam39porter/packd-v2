@@ -43,7 +43,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     // START: View
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Colors.background
+        view.backgroundColor = Colors.contrast
         
         setupSubViews()
         
@@ -70,21 +70,21 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             switch index {
             case MainViewConstants.establishmentIndex:
                 establishmentContainerView = UIView(frame: frame)
-                establishmentContainerView.backgroundColor = Colors.background
+                establishmentContainerView.backgroundColor = Colors.contrast
                 establishmentContainerView.addSubview(establishmentImageView)
                 mainScrollView.addSubview(establishmentContainerView)
                 
 
             case MainViewConstants.friendsIndex:
                 friendsContainerView = UIView(frame: frame)
-                friendsContainerView.backgroundColor = Colors.background
+                friendsContainerView.backgroundColor = Colors.contrast
                 friendsContainerView.addSubview(friendsImageView)
                 mainScrollView.addSubview(friendsContainerView)
 
             case MainViewConstants.perksIndex:
                 subView.addSubview(perksImageView)
                 mainScrollView.addSubview(subView)
-                subView.backgroundColor = Colors.background
+                subView.backgroundColor = Colors.contrast
                 
             default:
                 break

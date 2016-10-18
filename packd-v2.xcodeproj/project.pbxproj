@@ -30,6 +30,7 @@
 		E3DA36621DB2D667001B0F5C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36611DB2D667001B0F5C /* User.swift */; };
 		E3DA36641DB3E9D1001B0F5C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36631DB3E9D1001B0F5C /* Colors.swift */; };
 		E3F2DC221DB3F70F000DC6C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */; };
+		E3F2DC271DB5B524000DC6C6 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2DC261DB5B524000DC6C6 /* Authorization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		E3DA36611DB2D667001B0F5C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3DA36631DB3E9D1001B0F5C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E3F2DC261DB5B524000DC6C6 /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */,
+				E3F2DC261DB5B524000DC6C6 /* Authorization.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				E3DA36561DB163C8001B0F5C /* UIImageViewExtension.swift in Sources */,
 				E3D518C81DA72C2D00363CB0 /* FoldableViewController.swift in Sources */,
 				E3DA36641DB3E9D1001B0F5C /* Colors.swift in Sources */,
+				E3F2DC271DB5B524000DC6C6 /* Authorization.swift in Sources */,
 				E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */,
 				E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */,
 				E3DA36621DB2D667001B0F5C /* User.swift in Sources */,

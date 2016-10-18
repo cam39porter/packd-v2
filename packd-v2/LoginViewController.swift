@@ -28,7 +28,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         inputContainerView.addSubview(passwordTextField)
         passwordTextField.delegate = self
+        
         view.addSubview(loginButton)
+        loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         
         _ = backgroundImageView.anchorAll(top: view.topAnchor,
                                       left: view.leftAnchor,
@@ -171,6 +173,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     }
     // END: Text Field Delegate
+    
+    
+    // START: Login
+    @objc private func handleLogin() {
+        Authorization.login(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, _) in
+            DispatchQueue.main.async {
+                self.present(MainViewController(), animated: true, completion: nil)
+            }
+        }
+    }
+    // END: Login
 }
 
 class LeftPaddedTextField: UITextField {
