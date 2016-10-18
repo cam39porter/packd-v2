@@ -61,7 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         inputContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         inputContainerView.rightAnchor.constraint(equalTo:  view.rightAnchor, constant: 0).isActive = true
         inputContainerView.heightAnchor.constraint(equalToConstant: view.frame.size.height / 2).isActive = true
-        inputContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -Size.oneFinger).isActive = true
+        inputContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
         
         emailTextField.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
         emailTextField.topAnchor.constraint(equalTo: inputContainerView.centerYAnchor).isActive = true
@@ -123,6 +123,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.layer.borderColor = Colors.highlight.cgColor
         textField.layer.borderWidth = 1
         textField.keyboardType = .emailAddress
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -152,7 +154,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // START: Text Field Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        
+        if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
         return true
     }
     
