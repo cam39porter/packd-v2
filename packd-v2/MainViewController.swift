@@ -267,7 +267,11 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func addTargetToStackButton() {
-        
+        stackButton.addTarget(self, action: #selector(presentStackView), for: .touchUpInside)
+    }
+    
+    @objc private func presentStackView() {
+        present(UIViewController(), animated: true, completion: nil)
     }
     // END: Stack
 }
