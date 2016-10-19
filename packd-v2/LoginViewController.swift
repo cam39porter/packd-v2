@@ -19,6 +19,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupSubViews() {
+        addSubviews()
+        
+        addLoginButtonTarget()
+        
+        anchorBackgroundImageView()
+        
+        anchorCoverView()
+        
+        anchorPackdLabel()
+        
+        anchorInputContainerView()
+        
+        anchorEmailTextField()
+        
+        anchorPasswordTextField()
+        
+        anchorLoginButton()
+    }
+    
+    private func addSubviews() {
         view.addSubview(backgroundImageView)
         view.addSubview(coverView)
         view.addSubview(inputContainerView)
@@ -30,55 +50,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         view.addSubview(loginButton)
-        loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
-        
-        _ = backgroundImageView.anchorAll(top: view.topAnchor,
-                                      left: view.leftAnchor,
-                                      bottom: view.bottomAnchor,
-                                      right: view.rightAnchor,
-                                      topConstant: 0,
-                                      leftConstant: 0,
-                                      bottomConstant: 0,
-                                      rightConstant: 0,
-                                      widthConstant: 0,
-                                      heightConstant: 0)
-        
-        _ = coverView.anchorAll(top: view.topAnchor,
-                                          left: view.leftAnchor,
-                                          bottom: view.bottomAnchor,
-                                          right: view.rightAnchor,
-                                          topConstant: 0,
-                                          leftConstant: 0,
-                                          bottomConstant: 0,
-                                          rightConstant: 0,
-                                          widthConstant: 0,
-                                          heightConstant: 0)
-        
-        packdLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        packdLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        packdLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        packdLabel.bottomAnchor.constraint(equalTo: inputContainerView.centerYAnchor, constant: 0).isActive = true
-        
-        inputContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        inputContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        inputContainerView.rightAnchor.constraint(equalTo:  view.rightAnchor, constant: 0).isActive = true
-        inputContainerView.heightAnchor.constraint(equalToConstant: view.frame.size.height / 2).isActive = true
-        inputContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        
-        emailTextField.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
-        emailTextField.topAnchor.constraint(equalTo: inputContainerView.centerYAnchor).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
-        emailTextField.widthAnchor.constraint(equalToConstant: view.frame.width - Size.oneFinger * 3).isActive = true
-        
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Size.minPadding).isActive = true
-        passwordTextField.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
-        passwordTextField.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
-        passwordTextField.widthAnchor.constraint(equalToConstant: view.frame.width - Size.oneFinger * 3).isActive = true
-        
-        loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Size.oneFinger).isActive = true
-        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
-        loginButton.widthAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
     }
     
     let backgroundImageView: UIImageView = {
@@ -90,6 +61,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return imageView
     }()
     
+    private func anchorBackgroundImageView() {
+        _ = backgroundImageView.anchorAll(top: view.topAnchor,
+                                          left: view.leftAnchor,
+                                          bottom: view.bottomAnchor,
+                                          right: view.rightAnchor,
+                                          topConstant: 0,
+                                          leftConstant: 0,
+                                          bottomConstant: 0,
+                                          rightConstant: 0,
+                                          widthConstant: 0,
+                                          heightConstant: 0)
+    }
+    
     let coverView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
         let view = UIVisualEffectView(effect: blurEffect)
@@ -98,12 +82,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return view
     }()
     
+    private func anchorCoverView() {
+        _ = coverView.anchorAll(top: view.topAnchor,
+                                left: view.leftAnchor,
+                                bottom: view.bottomAnchor,
+                                right: view.rightAnchor,
+                                topConstant: 0,
+                                leftConstant: 0,
+                                bottomConstant: 0,
+                                rightConstant: 0,
+                                widthConstant: 0,
+                                heightConstant: 0)
+    }
+    
     let inputContainerView: UIView = {
        let view = UIView()
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private func anchorInputContainerView() {
+        inputContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        inputContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        inputContainerView.rightAnchor.constraint(equalTo:  view.rightAnchor, constant: 0).isActive = true
+        inputContainerView.heightAnchor.constraint(equalToConstant: view.frame.size.height / 2).isActive = true
+        inputContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+    }
     
     let packdLabel: UILabel = {
         let label = UILabel()
@@ -115,6 +120,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         label.text = "PACKD"
         return label
     }()
+    
+    private func anchorPackdLabel() {
+        packdLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        packdLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        packdLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        packdLabel.bottomAnchor.constraint(equalTo: inputContainerView.centerYAnchor, constant: 0).isActive = true
+    }
     
     let emailTextField: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
@@ -130,6 +142,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
+    private func anchorEmailTextField() {
+        emailTextField.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: inputContainerView.centerYAnchor).isActive = true
+        emailTextField.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        emailTextField.widthAnchor.constraint(equalToConstant: view.frame.width - Size.oneFinger * 3).isActive = true
+    }
+    
     let passwordTextField: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
         textField.placeholder = "Enter password"
@@ -142,6 +161,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
+    private func anchorPasswordTextField() {
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Size.minPadding).isActive = true
+        passwordTextField.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
+        passwordTextField.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        passwordTextField.widthAnchor.constraint(equalToConstant: view.frame.width - Size.oneFinger * 3).isActive = true
+    }
+    
     let loginButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -152,6 +178,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.layer.cornerRadius = Size.oneFinger
         return button
     }()
+    
+    private func anchorLoginButton() {
+        loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Size.oneFinger).isActive = true
+        loginButton.centerXAnchor.constraint(equalTo: inputContainerView.centerXAnchor).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+    }
+    
+    private func addLoginButtonTarget() {
+        loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+    }
     // END: View
     
     // START: Text Field Delegate
