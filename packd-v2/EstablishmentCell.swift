@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class EstablishmentCell: FoldableCell {
     // START: Model
@@ -112,6 +113,66 @@ class EstablishmentCell: FoldableCell {
         descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Size.minPadding).isActive = true
         descriptionLabel.widthAnchor.constraint(equalToConstant: self.bounds.width * 2/3).isActive = true
     }
-    
     // END: View
+    
+    // START: Touches
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            if is3DTouchAvailble() && establishmentViewController?.isAddingCellToStack == false {
+                if touch.force == touch.maximumPossibleForce {
+                    establishmentViewController?.isAddingCellToStack = true
+                    AudioServicesPlaySystemSound(1520)
+                    addCellToStack()
+                }
+            }
+        }
+    }
+    
+    private func is3DTouchAvailble() -> Bool {
+        if #available(iOS 9.0, *) {
+            if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+                return true
+            }
+        }
+        return false
+    }
+    // END: Touches
+    
+    // START: Stack
+    private func addCellToStack() {
+        insertCellOnStack()
+        removeCellFromCollectionView()
+    }
+    
+    private func removeCellFromCollectionView() {
+        establishmentViewController?.establishments.remove(at: (indexPath?.item)!)
+        establishmentViewController?.loadingStateOfCells.remove(at: (indexPath?.item)!)
+        
+        establishmentViewController?.collectionView?.deleteItems(at: [indexPath!])        
+    }
+    
+    private func insertCellOnStack() {
+        establishmentViewController?.mainViewController?.stackOfFoldableCells.push(self)
+        UIView.animate(withDuration: 0.5) {
+            self.layer.shadowColor = UIColor.clear.cgColor
+        }
+    }
+    // END: Stack
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

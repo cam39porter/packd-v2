@@ -39,6 +39,9 @@ struct MainViewConstants {
 
 class MainViewController: UIViewController, UIScrollViewDelegate {
     
+    // START: Model
+    var stackOfFoldableCells = Stack<FoldableCell>()
+    // END: Model
     
     // START: View
     override func viewDidAppear(_ animated: Bool) {
@@ -47,13 +50,16 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Colors.contrast
+        
+        view.backgroundColor = UIColor.white
         
         setupSubViews()
         
         setupEstablishmentViewController()
         
         navigationButtons.setupNavigationButtons(inView: self.view)
+        
+        setupStackButton()
         
     }
     
@@ -83,21 +89,21 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             switch index {
             case MainViewConstants.establishmentIndex:
                 establishmentContainerView = UIView(frame: frame)
-                establishmentContainerView.backgroundColor = Colors.contrast
+                establishmentContainerView.backgroundColor = UIColor.white
                 establishmentContainerView.addSubview(establishmentImageView)
                 mainScrollView.addSubview(establishmentContainerView)
                 
 
             case MainViewConstants.friendsIndex:
                 friendsContainerView = UIView(frame: frame)
-                friendsContainerView.backgroundColor = Colors.contrast
+                friendsContainerView.backgroundColor = UIColor.white
                 friendsContainerView.addSubview(friendsImageView)
                 mainScrollView.addSubview(friendsContainerView)
 
             case MainViewConstants.perksIndex:
                 subView.addSubview(perksImageView)
                 mainScrollView.addSubview(subView)
-                subView.backgroundColor = Colors.contrast
+                subView.backgroundColor = UIColor.white
                 
             default:
                 break
@@ -128,6 +134,8 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         establishmentCollectionViewController = EstablishmentsViewController(collectionViewLayout: MainViewConstants.pageableLayout)
         establishmentCollectionViewController?.setupViewController()
         
+        establishmentCollectionViewController?.mainViewController = self
+        
         let establishmentView = (establishmentCollectionViewController?.view)!
         establishmentContainerView.addSubview(establishmentView)
         establishmentView.anchorWithConstantsTo(top: establishmentContainerView.topAnchor,
@@ -139,6 +147,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
                                                 bottomConstant: 0)
         view.bringSubview(toFront: mainScrollView)
         navigationButtons.bringToFront(ofView: self.view)
+        view.bringSubview(toFront: stackButton)
         
     }
     
@@ -161,6 +170,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
                                           bottomConstant: 0)
         view.bringSubview(toFront: mainScrollView)
         navigationButtons.bringToFront(ofView: self.view)
+        view.bringSubview(toFront: stackButton)
         
     }
     
@@ -206,7 +216,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             }
             
         case MainViewConstants.friendsFrameY:
-            
+                        
             establishmentCollectionViewController?.view.removeFromSuperview()
             establishmentCollectionViewController = nil
             
@@ -226,7 +236,40 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     }
     // END: Collection View Switching
     
+    // START: Stack
+    let stackButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = Colors.highlight
+        button.setTitle("Stack", for: .normal)
+        button.setTitleColor(Colors.contrast, for: .normal)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = Size.oneFinger
+        return button
+    }()
     
+    private func setupStackButton() {
+        addStackButtonToFront(ofView: view)
+        anchorStackButton()
+        addTargetToStackButton()
+    }
+    
+    private func addStackButtonToFront(ofView view: UIView) {
+        view.addSubview(stackButton)
+        view.bringSubview(toFront: stackButton)
+    }
+    
+    private func anchorStackButton() {
+        stackButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Size.oneFinger).isActive = true
+        stackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        stackButton.heightAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+        stackButton.widthAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+    }
+    
+    private func addTargetToStackButton() {
+        
+    }
+    // END: Stack
 }
 
 

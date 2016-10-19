@@ -40,6 +40,9 @@ class EstablishmentsViewController: PageableViewController {
             }
         }
     }
+    
+    var isAddingCellToStack = false
+    var mainViewController: MainViewController? = nil
     // END: Model
     
     // START: View
