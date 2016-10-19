@@ -37,6 +37,8 @@ class FriendCell: FoldableCell {
         nameLabel.text = friend?.name
         descriptionLabel.text = friend?.email
         
+        addSubviews()
+        
         anchorProfileImageView()
         anchorNameLabel()
         anchorDescriptionLabel()
