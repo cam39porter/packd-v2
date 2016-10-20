@@ -271,7 +271,9 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc private func presentStackView() {
-        present(UIViewController(), animated: true, completion: nil)
+        let stackCollectionViewController = StackCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        stackCollectionViewController.stackOfFoldableCells = stackOfFoldableCells
+        present(stackCollectionViewController, animated: true, completion: nil)
     }
     // END: Stack
 }
