@@ -59,6 +59,14 @@ class Establishment: DatabaseObject {
     static let establishmentHeartsReference = DatabaseObject.ref?.child("establishment-hearts")
     
     static func getAllHearts(forEstablishmentWithUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+        DatabaseObject.objectsReference = establishmentHeartsReference
+        DatabaseObject.getObjectBy(uid: establishmentUID!) { (snapshot) in
+            if let heartsUIDDictionary = snapshot?.value as? [String:String] {
+                for (_, heartUID) in heartsUIDDictionary {
+                    Heart.getHeart(withUID: heartUID, andCompletionHandler: completion)
+                }
+            }
+        }
     }
     
     static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?, forHeartUID heartUID: String?) {
