@@ -61,7 +61,8 @@ class Establishment: DatabaseObject {
     static func getAllHearts(forEstablishmentWithUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
     }
     
-    static func heart(establishmentWithUID establishmentUID: String?) {
+    static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?, forHeartUID heartUID: String?) {
+        establishmentHeartsReference?.child(establishmentUID!).child(userUID!).setValue(heartUID!)
     }
     // END: database -> establishment-hearts
 }

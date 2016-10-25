@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B30B624939FB18B7C83D5437 /* Pods_packd_v2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA361FAB6D4E546B4E237334 /* Pods_packd_v2.framework */; };
 		E31E16121DBFE188006CB8D9 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E16111DBFE188006CB8D9 /* Heart.swift */; };
+		E342EBA31DC017F300A9C79F /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342EBA21DC017F300A9C79F /* Timestamp.swift */; };
 		E3B781521DB7E18800D088BC /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B781511DB7E18800D088BC /* Stack.swift */; };
 		E3B781551DB7EA9300D088BC /* StackCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */; };
 		E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518A71DA6E74400363CB0 /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		504E94DA1CBAD62808049288 /* Pods-packd-v2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-packd-v2.release.xcconfig"; path = "Pods/Target Support Files/Pods-packd-v2/Pods-packd-v2.release.xcconfig"; sourceTree = "<group>"; };
 		BA361FAB6D4E546B4E237334 /* Pods_packd_v2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_packd_v2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31E16111DBFE188006CB8D9 /* Heart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
+		E342EBA21DC017F300A9C79F /* Timestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
 		E3B781511DB7E18800D088BC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCollectionViewController.swift; sourceTree = "<group>"; };
 		E3D518A41DA6E74400363CB0 /* packd-v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "packd-v2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 		E3D518BF1DA6EEC200363CB0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E342EBA21DC017F300A9C79F /* Timestamp.swift */,
 				E3B781511DB7E18800D088BC /* Stack.swift */,
 				E3DA36631DB3E9D1001B0F5C /* Colors.swift */,
 				E3DA36571DB16D36001B0F5C /* Fonts.swift */,
@@ -399,6 +402,7 @@
 				E31E16121DBFE188006CB8D9 /* Heart.swift in Sources */,
 				E3B781551DB7EA9300D088BC /* StackCollectionViewController.swift in Sources */,
 				E3DA36621DB2D667001B0F5C /* User.swift in Sources */,
+				E342EBA31DC017F300A9C79F /* Timestamp.swift in Sources */,
 				E3D518CA1DA72C5500363CB0 /* FoldableCell.swift in Sources */,
 				E3D518DC1DA82EBF00363CB0 /* DatabaseObject.swift in Sources */,
 				E3DA36601DB1B8D0001B0F5C /* FriendCell.swift in Sources */,

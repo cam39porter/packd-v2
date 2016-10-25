@@ -56,7 +56,7 @@ class User: DatabaseObject {
     }
     // END: database -> users
     
-    //START: database -> user-hearts // database -> establishment-hearts
+    //START: database -> user-hearts
     static let userHeartsReference = DatabaseObject.ref?.child("user-hearts")
     
     static func getAllHearts(byUserWithUID userUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
@@ -71,27 +71,32 @@ class User: DatabaseObject {
     }
     
     static func isEstablishmentHearted(byUserWithUID userUID: String?, forEstablishmentUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
-        
         DatabaseObject.objectsReference = userHeartsReference
         DatabaseObject.getObjectBy(uid: userUID!) { (snapshot) in
-            if let heartsUIDDictionary = snapshot?.value as? [String:AnyObject] {
+            if let heartsUIDDictionary = snapshot?.value as? [String:String] {
                 
-                var isHearted = false
-                var byHeart: Heart? = nil
+                var isHeartedUID: String? = nil
                 
-                for (heartUID, _) in heartsUIDDictionary {
-                    Heart.getHeart(withUID: heartUID, andCompletionHandler: { (heart) in
-                        if heart?.establishmentUID == establishmentUID {
-                            isHearted = true
-                        }
-                    })
+                // determine if user hearted the establishment
+                for (estUID, heartUID) in heartsUIDDictionary {
+                    if estUID == establishmentUID {
+                        isHeartedUID = heartUID
+                    }
+                }
+                
+                // fetch the heart or complete with nil
+                if let heartUID = isHeartedUID {
+                    Heart.getHeart(withUID: heartUID, andCompletionHandler: completion)
+                } else {
+                    completion(nil)
                 }
             }
         }
     }
     
-    static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+    static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?, forHeartUID heartUID: String?) {
+        userHeartsReference?.child(userUID!).child(establishmentUID!).setValue(heartUID!)
     }
-    //END: database -> user-hearts // database -> establishment-hearts
+    //END: database -> user-hearts
 
 }

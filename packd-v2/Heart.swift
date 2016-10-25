@@ -48,4 +48,16 @@ class Heart: DatabaseObject {
         let heartCompletion = heartToSnapshotCompletion(completion)
         DatabaseObject.getObjectBy(uid: uid, withCompletionHandler: heartCompletion)
     }
+    
+    static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?) {
+        let newHeartReference = heartsReference?.childByAutoId()
+        let heartUID = newHeartReference?.key
+        
+        newHeartReference?.child("userUID").setValue(userUID)
+        newHeartReference?.child("establishmentUID").setValue(establishmentUID)
+        newHeartReference?.child("timestamp").setValue(Timestamp.getCurrentTimestamp())
+        
+        User.heart(establishmentWithUID: establishmentUID, byUserWithUID: userUID, forHeartUID: heartUID)
+        Establishment.heart(establishmentWithUID: establishmentUID, byUserWithUID: userUID, forHeartUID: heartUID)
+    }
 }
