@@ -60,6 +60,9 @@ class Establishment: DatabaseObject {
     
     static func getAllHearts(forEstablishmentWithUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
     }
+    
+    static func heart(establishmentWithUID establishmentUID: String?) {
+    }
     // END: database -> establishment-hearts
 }
 

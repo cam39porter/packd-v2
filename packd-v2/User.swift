@@ -60,9 +60,34 @@ class User: DatabaseObject {
     static let userHeartsReference = DatabaseObject.ref?.child("user-hearts")
     
     static func getAllHearts(byUserWithUID userUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+        DatabaseObject.objectsReference = userHeartsReference
+        DatabaseObject.getObjectBy(uid: userUID!) { (snapshot) in
+            if let heartsUIDDictionary = snapshot?.value as? [String:String] {
+                for (_, heartUID) in heartsUIDDictionary {
+                    Heart.getHeart(withUID: heartUID, andCompletionHandler: completion)
+                }
+            }
+        }
     }
     
     static func isEstablishmentHearted(byUserWithUID userUID: String?, forEstablishmentUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+        
+        DatabaseObject.objectsReference = userHeartsReference
+        DatabaseObject.getObjectBy(uid: userUID!) { (snapshot) in
+            if let heartsUIDDictionary = snapshot?.value as? [String:AnyObject] {
+                
+                var isHearted = false
+                var byHeart: Heart? = nil
+                
+                for (heartUID, _) in heartsUIDDictionary {
+                    Heart.getHeart(withUID: heartUID, andCompletionHandler: { (heart) in
+                        if heart?.establishmentUID == establishmentUID {
+                            isHearted = true
+                        }
+                    })
+                }
+            }
+        }
     }
     
     static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
