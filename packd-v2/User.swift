@@ -18,6 +18,8 @@ class User: DatabaseObject {
     var profileImageURL: String?
     // END: Attributes
     
+    
+    // START: Profile Image
     func getProfileImage(withCompletionHandler completion: @escaping (UIImage?) -> Void) {
         let imageView = UIImageView()
         
@@ -25,7 +27,9 @@ class User: DatabaseObject {
             imageView.getImageWithCacheFor(urlString: url, completion: completion)
         }
     }
+    // END: Profile Image
     
+    // START: database -> users
     static let usersReference = DatabaseObject.ref?.child("users")
     
     static let userToSnapshotCompletion: (@escaping (User?) -> Void) -> ((FIRDataSnapshot?) -> Void) = { (userCompletion) in
@@ -50,5 +54,19 @@ class User: DatabaseObject {
         let userCompletion = userToSnapshotCompletion(completion)
         DatabaseObject.getAllObjects(withCompletionHandler: userCompletion)
     }
+    // END: database -> users
+    
+    //START: database -> user-hearts // database -> establishment-hearts
+    static let userHeartsReference = DatabaseObject.ref?.child("user-hearts")
+    
+    static func getAllHearts(byUserWithUID userUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+    }
+    
+    static func isEstablishmentHearted(byUserWithUID userUID: String?, forEstablishmentUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+    }
+    
+    static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+    }
+    //END: database -> user-hearts // database -> establishment-hearts
 
 }

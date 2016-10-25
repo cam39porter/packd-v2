@@ -18,6 +18,8 @@ class Establishment: DatabaseObject {
     var descriptionOfEstablishment: String?
     // END: Attributes
     
+    
+    // START: Profile Image
     func getProfileImage(withCompletionHandler completion: @escaping (UIImage?) -> Void) {
         let imageView = UIImageView()
         
@@ -25,7 +27,9 @@ class Establishment: DatabaseObject {
             imageView.getImageWithCacheFor(urlString: url, completion: completion)
         }
     }
+    // END: Profile Image
     
+    // START: database -> establishments
     static let establishmentsReference = DatabaseObject.ref?.child("establishments")
 
     static let establishmentToSnapshotCompletion:(@escaping (Establishment?) -> Void) -> ((FIRDataSnapshot?) -> Void) = { (establishmentCompletion) in
@@ -48,4 +52,16 @@ class Establishment: DatabaseObject {
         let establishmentCompletion  = establishmentToSnapshotCompletion(completion)
         DatabaseObject.getAllObjects(withCompletionHandler: establishmentCompletion)
     }
+    
+    // END: database -> establishments
+    
+    // START: database -> establishment-hearts
+    static let establishmentHeartsReference = DatabaseObject.ref?.child("establishment-hearts")
+    
+    static func getAllHearts(forEstablishmentWithUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+    }
+    // END: database -> establishment-hearts
 }
+
+
+
