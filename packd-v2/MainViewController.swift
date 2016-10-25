@@ -243,8 +243,12 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         button.backgroundColor = Colors.highlight
         button.setTitle("Stack", for: .normal)
         button.setTitleColor(Colors.contrast, for: .normal)
-        button.layer.masksToBounds = true
+        button.layer.masksToBounds = false
         button.layer.cornerRadius = Size.oneFinger
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 2
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
         return button
     }()
     
