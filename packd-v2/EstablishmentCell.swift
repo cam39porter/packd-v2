@@ -17,6 +17,8 @@ class EstablishmentCell: FoldableCell {
         }
     }
     
+    var heart: Heart? = nil
+    
     var establishmentViewController: EstablishmentsViewController? = nil 
     // END: Model
     
@@ -44,6 +46,9 @@ class EstablishmentCell: FoldableCell {
         anchorNameLabel()
         anchorDescriptionLabel()
         anchorDetailsContainerView()
+        anchorHeartButton()
+        
+        addTargetToHeartButton()
     }
     
     private func addSubviews() {
@@ -51,6 +56,7 @@ class EstablishmentCell: FoldableCell {
         self.addSubview(descriptionLabel)
         self.addSubview(profileImageView)
         self.addSubview(detailsContianerView)
+        self.addSubview(heartButton)
     }
     
     let detailsContianerView: UIView = {
@@ -80,6 +86,36 @@ class EstablishmentCell: FoldableCell {
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         profileImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: self.frame.height / 2).isActive = true
+    }
+    
+    let heartButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let icon = #imageLiteral(resourceName: "heart_icon")
+        let tintIcon = icon.withRenderingMode(.alwaysTemplate)
+        button.setBackgroundImage(tintIcon, for: .normal)
+        button.tintColor = Colors.contrast
+        button.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    private func anchorHeartButton() {
+        heartButton.topAnchor.constraint(equalTo: profileImageView.topAnchor, constant: Size.minPadding).isActive = true
+        heartButton.rightAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: -Size.minPadding).isActive = true
+        heartButton.heightAnchor.constraint(equalToConstant: Size.oneFinger / 1.5).isActive = true
+        heartButton.widthAnchor.constraint(equalToConstant: Size.oneFinger / 1.5).isActive = true
+    }
+    
+    private func addTargetToHeartButton() {
+        heartButton.addTarget(self, action: #selector(heartEstablishment), for: .touchUpInside)
+    }
+    
+    @objc private func heartEstablishment() {
+        if heartButton.tintColor == Colors.contrast {
+            heartButton.tintColor = Colors.highlight
+        } else {
+            heartButton.tintColor = Colors.contrast
+        }
     }
     
     let nameLabel: UILabel = {

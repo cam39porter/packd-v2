@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class User: DatabaseObject {
     
@@ -17,6 +18,12 @@ class User: DatabaseObject {
     var email: String?
     var profileImageURL: String?
     // END: Attributes
+    
+    // START: Current User 
+    static func getCurrentUserUID() -> String? {
+        return FIRAuth.auth()?.currentUser?.uid
+    }
+    // END: Current User
     
     
     // START: Profile Image
@@ -70,7 +77,7 @@ class User: DatabaseObject {
         }
     }
     
-    static func isEstablishmentHearted(byUserWithUID userUID: String?, forEstablishmentUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
+    static func isHearted(byUserWithUID userUID: String?, forEstablishmentUID establishmentUID: String?, withCompletionHandler completion: @escaping (Heart?) -> Void) {
         DatabaseObject.objectsReference = userHeartsReference
         DatabaseObject.getObjectBy(uid: userUID!) { (snapshot) in
             if let heartsUIDDictionary = snapshot?.value as? [String:String] {
@@ -90,12 +97,18 @@ class User: DatabaseObject {
                 } else {
                     completion(nil)
                 }
+            } else {
+                completion(nil)
             }
         }
     }
     
     static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?, forHeartUID heartUID: String?) {
         userHeartsReference?.child(userUID!).child(establishmentUID!).setValue(heartUID!)
+    }
+    
+    static func removeHeart(forEstablishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?) {
+        userHeartsReference?.child(userUID!).child(establishmentUID!).removeValue()
     }
     //END: database -> user-hearts
 

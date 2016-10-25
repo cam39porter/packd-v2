@@ -12,6 +12,7 @@ class EstablishmentsViewController: PageableViewController {
     
     // START: Model
     var establishments = [Establishment]()
+    var hearts = [Heart?]()
     let cellReuseIdentifier = "establishmentCell"
     
     var loadingStateOfCells = [Bool]()
@@ -82,6 +83,7 @@ class EstablishmentsViewController: PageableViewController {
         cell.alpha = 0
         cell.establishmentViewController = self
         cell.establishment = establishments[indexPath.item]
+        cell.heart = hearts[indexPath.item]
         
         return cell
     }
@@ -92,8 +94,13 @@ class EstablishmentsViewController: PageableViewController {
     
     private func fetchEstablishments() {
         Establishment.getAllEstablishments { (establishment) in
+            
             self.establishments.append(establishment!)
-            self.collectionView?.reloadData()
+            
+            User.isHearted(byUserWithUID: User.getCurrentUserUID()!, forEstablishmentUID: establishment?.uid!, withCompletionHandler: { (heart) in
+                self.hearts.append(heart)
+                self.collectionView?.reloadData()
+            })
         }
     }
     

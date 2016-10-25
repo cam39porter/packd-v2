@@ -72,6 +72,10 @@ class Establishment: DatabaseObject {
     static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?, forHeartUID heartUID: String?) {
         establishmentHeartsReference?.child(establishmentUID!).child(userUID!).setValue(heartUID!)
     }
+    
+    static func removeHeart(forEstablishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?) {
+        establishmentHeartsReference?.child(establishmentUID!).child(userUID!).removeValue()
+    }
     // END: database -> establishment-hearts
 }
 

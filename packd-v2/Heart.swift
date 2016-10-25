@@ -60,4 +60,10 @@ class Heart: DatabaseObject {
         User.heart(establishmentWithUID: establishmentUID, byUserWithUID: userUID, forHeartUID: heartUID)
         Establishment.heart(establishmentWithUID: establishmentUID, byUserWithUID: userUID, forHeartUID: heartUID)
     }
+    
+    static func remove(heart: Heart) {
+        heartsReference?.child(heart.uid!).removeValue()
+        User.removeHeart(forEstablishmentWithUID: heart.establishmentUID, byUserWithUID: heart.userUID)
+        Establishment.removeHeart(forEstablishmentWithUID: heart.establishmentUID, byUserWithUID: heart.userUID)
+    }
 }
