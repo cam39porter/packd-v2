@@ -202,7 +202,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     let navigationButtons = NavigationButtons()
     
     
-    private func clearCurrentCollectionView(_ scrollView: UIScrollView) {
+    func clearCurrentCollectionView(_ scrollView: UIScrollView) {
         switch scrollView.contentOffset.y {
         case MainViewConstants.establishmentFrameY:
             
@@ -320,7 +320,6 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
         stackCollectionViewController.mainViewController = self
         stackCollectionViewController.modalPresentationStyle = .custom
         stackCollectionViewController.transitioningDelegate = self
-        clearCurrentCollectionView(mainScrollView)
         present(stackCollectionViewController, animated: true, completion: nil)
     }
     // END: Stack

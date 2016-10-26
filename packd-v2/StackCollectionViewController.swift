@@ -74,6 +74,7 @@ class StackCollectionViewController: FoldableViewController {
     }
     
     @objc private func dismissStackView() {
+        mainViewController?.clearCurrentCollectionView((mainViewController?.mainScrollView)!)
         self.dismiss(animated: true, completion: nil)
         mainViewController?.setupCurrentCollectionView((mainViewController?.mainScrollView)!)
     }
