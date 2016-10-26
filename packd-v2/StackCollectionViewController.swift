@@ -16,7 +16,7 @@ class StackCollectionViewController: FoldableViewController {
     // START: View
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         collectionView?.backgroundColor = Colors.highlight
         
         setupFoldStatesOfCells()
@@ -24,6 +24,10 @@ class StackCollectionViewController: FoldableViewController {
         collectionView?.register(FoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
         
         setupSubViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        mainViewController?.clearCurrentCollectionView((mainViewController?.mainScrollView)!)
     }
     
     private func setupFoldStatesOfCells() {
@@ -74,7 +78,6 @@ class StackCollectionViewController: FoldableViewController {
     }
     
     @objc private func dismissStackView() {
-        mainViewController?.clearCurrentCollectionView((mainViewController?.mainScrollView)!)
         self.dismiss(animated: true, completion: nil)
         mainViewController?.setupCurrentCollectionView((mainViewController?.mainScrollView)!)
     }
@@ -89,6 +92,10 @@ class StackCollectionViewController: FoldableViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath)
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(Size.oneFinger, 0, 0, 0)
     }
     // END: Collection View DataSource Delegate
 
