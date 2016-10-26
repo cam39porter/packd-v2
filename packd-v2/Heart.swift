@@ -49,16 +49,25 @@ class Heart: DatabaseObject {
         DatabaseObject.getObjectBy(uid: uid, withCompletionHandler: heartCompletion)
     }
     
-    static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?) {
+    static func heart(establishmentWithUID establishmentUID: String?, byUserWithUID userUID: String?) -> Heart {
         let newHeartReference = heartsReference?.childByAutoId()
         let heartUID = newHeartReference?.key
         
-        newHeartReference?.child("userUID").setValue(userUID)
-        newHeartReference?.child("establishmentUID").setValue(establishmentUID)
-        newHeartReference?.child("timestamp").setValue(Timestamp.getCurrentTimestamp())
+        let heart = Heart()
+        heart.uid = heartUID
+        heart.userUID = userUID
+        heart.establishmentUID = establishmentUID
+        heart.timestamp = Timestamp.getCurrentTimestamp()
+        
+        newHeartReference?.child("userUID").setValue(heart.userUID)
+        newHeartReference?.child("establishmentUID").setValue(heart.establishmentUID)
+        newHeartReference?.child("timestamp").setValue(heart.timestamp)
         
         User.heart(establishmentWithUID: establishmentUID, byUserWithUID: userUID, forHeartUID: heartUID)
         Establishment.heart(establishmentWithUID: establishmentUID, byUserWithUID: userUID, forHeartUID: heartUID)
+        
+        return heart
+        
     }
     
     static func remove(heart: Heart) {

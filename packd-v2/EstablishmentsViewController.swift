@@ -85,6 +85,9 @@ class EstablishmentsViewController: PageableViewController {
         cell.establishment = establishments[indexPath.item]
         cell.heart = hearts[indexPath.item]
         
+        print(cell.establishment?.uid)
+        print(cell.heart?.establishmentUID)
+        
         return cell
     }
     
@@ -95,9 +98,9 @@ class EstablishmentsViewController: PageableViewController {
     private func fetchEstablishments() {
         Establishment.getAllEstablishments { (establishment) in
             
-            self.establishments.append(establishment!)
             
             User.isHearted(byUserWithUID: User.getCurrentUserUID()!, forEstablishmentUID: establishment?.uid!, withCompletionHandler: { (heart) in
+                self.establishments.append(establishment!)
                 self.hearts.append(heart)
                 self.collectionView?.reloadData()
             })

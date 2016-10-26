@@ -17,7 +17,17 @@ class EstablishmentCell: FoldableCell {
         }
     }
     
-    var heart: Heart? = nil
+    var heart: Heart? = nil {
+        didSet {
+            establishmentViewController?.hearts[(self.indexPath?.item)!] = heart
+
+            if heart != nil {
+               highlightHeartButton()
+            } else {
+                unHighlightHeartButton()
+            }
+        }
+    }
     
     var establishmentViewController: EstablishmentsViewController? = nil 
     // END: Model
@@ -110,11 +120,21 @@ class EstablishmentCell: FoldableCell {
         heartButton.addTarget(self, action: #selector(heartEstablishment), for: .touchUpInside)
     }
     
+    private func highlightHeartButton() {
+        heartButton.tintColor = Colors.highlight
+    }
+    
+    private func unHighlightHeartButton() {
+        heartButton.tintColor = Colors.contrast
+    }
+    
     @objc private func heartEstablishment() {
         if heartButton.tintColor == Colors.contrast {
-            heartButton.tintColor = Colors.highlight
+            let newHeart = Heart.heart(establishmentWithUID: establishment?.uid!, byUserWithUID: User.getCurrentUserUID())
+            self.heart = newHeart
         } else {
-            heartButton.tintColor = Colors.contrast
+            Heart.remove(heart: heart!)
+            heart = nil
         }
     }
     
