@@ -16,7 +16,12 @@ class FoldableViewController: UICollectionViewController, UICollectionViewDelega
     var unfoldedCell: IndexPath? = nil
     // END: Model
     
+    // START: View 
+    override func viewDidLoad() {
+        collectionView?.alwaysBounceVertical = true
+    }
     func setupViewController() {}
+    // END: View
     
     // START: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

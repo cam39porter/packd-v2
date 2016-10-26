@@ -11,6 +11,12 @@ import UIKit
 struct Stack<Element> {
     var items = [Element]()
     
+    var count: Int {
+        get {
+            return items.count
+        }
+    }
+    
     mutating func push(_ item: Element) {
         items.append(item)
     }

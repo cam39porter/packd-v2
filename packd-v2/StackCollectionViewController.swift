@@ -15,12 +15,21 @@ class StackCollectionViewController: FoldableViewController {
     
     // START: View
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         collectionView?.backgroundColor = UIColor.white
         
+        setupFoldStatesOfCells()
+        
         collectionView?.register(FoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
         
-        setupSubViews()        
+        setupSubViews()
+    }
+    
+    private func setupFoldStatesOfCells() {
+        let cellCount = (mainViewController?.stackOfFoldableCells.count)!
+        if cellCount == 0 { return }
+        for _ in 1...cellCount { foldStatesOfCells.append(FoldableCellConstants.FoldState.folded) }
     }
     
     private func setupSubViews() {
@@ -72,7 +81,7 @@ class StackCollectionViewController: FoldableViewController {
     
     // START: Collection View DataSource Delegate
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return foldStatesOfCells.count
+        return (mainViewController?.stackOfFoldableCells.count)!
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
