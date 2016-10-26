@@ -17,7 +17,7 @@ class StackCollectionViewController: FoldableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = UIColor.white
+        collectionView?.backgroundColor = Colors.highlight
         
         setupFoldStatesOfCells()
         
@@ -39,9 +39,9 @@ class StackCollectionViewController: FoldableViewController {
     let stackButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = Colors.highlight
+        button.backgroundColor = Colors.contrast
         button.setTitle("x", for: .normal)
-        button.setTitleColor(Colors.contrast, for: .normal)
+        button.setTitleColor(Colors.highlight, for: .normal)
         button.layer.masksToBounds = false
         button.layer.cornerRadius = Size.oneFinger
         button.layer.shadowColor = UIColor.black.cgColor

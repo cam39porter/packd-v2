@@ -37,7 +37,7 @@ struct MainViewConstants {
     }()
 }
 
-class MainViewController: UIViewController, UIScrollViewDelegate {
+class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControllerTransitioningDelegate {
     
     // START: Model
     var stackOfFoldableCells = Stack<FoldableCell>()
@@ -318,10 +318,30 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     @objc private func presentStackView() {
         let stackCollectionViewController = StackCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         stackCollectionViewController.mainViewController = self
+        stackCollectionViewController.modalPresentationStyle = .custom
+        stackCollectionViewController.transitioningDelegate = self
         clearCurrentCollectionView(mainScrollView)
         present(stackCollectionViewController, animated: true, completion: nil)
     }
     // END: Stack
+    
+    // Start: Circular Transition
+    let transition = CircularTransition()
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = stackButton.center
+        transition.circleColor = stackButton.backgroundColor!
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = stackButton.center
+        transition.circleColor = stackButton.backgroundColor!
+        return transition
+    }
+    // END: Circular Transition
 }
 
 
