@@ -200,11 +200,52 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     
     let navigationButtonsContianerView = UIView()
     let navigationButtons = NavigationButtons()
+    
+    
+    private func clearCurrentCollectionView(_ scrollView: UIScrollView) {
+        switch scrollView.contentOffset.y {
+        case MainViewConstants.establishmentFrameY:
+            
+            establishmentCollectionViewController?.view.removeFromSuperview()
+            establishmentCollectionViewController = nil
+            
+        case MainViewConstants.friendsFrameY:
+            
+            friendsCollectionViewController?.view.removeFromSuperview()
+            friendsCollectionViewController = nil
+            
+        case MainViewConstants.perksFrameY:
+            
+            break
+            
+        default:
+            break
+        }
+    }
+    
+    func setupCurrentCollectionView(_ scrollView: UIScrollView) {
+        switch scrollView.contentOffset.y {
+        case MainViewConstants.establishmentFrameY:
+            
+            setupEstablishmentViewController()
+            
+        case MainViewConstants.friendsFrameY:
+            
+            setupFriendsViewController()
+            
+        case MainViewConstants.perksFrameY:
+            
+            break
+            
+        default:
+            break
+        }
+    }
     // END: View
     
     
     // START: Collection View Switching
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {        
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         switch scrollView.contentOffset.y {
         case MainViewConstants.establishmentFrameY:
             
@@ -216,7 +257,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             }
             
         case MainViewConstants.friendsFrameY:
-                        
+            
             establishmentCollectionViewController?.view.removeFromSuperview()
             establishmentCollectionViewController = nil
             
@@ -276,7 +317,8 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     
     @objc private func presentStackView() {
         let stackCollectionViewController = StackCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        stackCollectionViewController.stackOfFoldableCells = stackOfFoldableCells
+        stackCollectionViewController.mainViewController = self
+        clearCurrentCollectionView(mainScrollView)
         present(stackCollectionViewController, animated: true, completion: nil)
     }
     // END: Stack

@@ -85,9 +85,6 @@ class EstablishmentsViewController: PageableViewController {
         cell.establishment = establishments[indexPath.item]
         cell.heart = hearts[indexPath.item]
         
-        print(cell.establishment?.uid)
-        print(cell.heart?.establishmentUID)
-        
         return cell
     }
     

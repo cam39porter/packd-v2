@@ -10,15 +10,63 @@ import UIKit
 
 class StackCollectionViewController: FoldableViewController {
     // START: Model
-    var stackOfFoldableCells: Stack<FoldableCell>? = nil
+    var mainViewController: MainViewController? = nil
     // END: Model
     
     // START: View
     override func viewDidLoad() {
         
-        view.backgroundColor = UIColor.white
+        collectionView?.backgroundColor = UIColor.white
         
         collectionView?.register(FoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
+        
+        setupSubViews()        
+    }
+    
+    private func setupSubViews() {
+        setupStackButton()
+    }
+    
+    let stackButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = Colors.highlight
+        button.setTitle("Stack", for: .normal)
+        button.setTitleColor(Colors.contrast, for: .normal)
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = Size.oneFinger
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 2
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        return button
+    }()
+    
+    private func setupStackButton() {
+        addStackButtonToFront(ofView: view)
+        anchorStackButton()
+        addTargetToStackButton()
+    }
+    
+    private func addStackButtonToFront(ofView view: UIView) {
+        view.addSubview(stackButton)
+        view.bringSubview(toFront: stackButton)
+    }
+    
+    private func anchorStackButton() {
+        stackButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Size.oneFinger).isActive = true
+        stackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        stackButton.heightAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+        stackButton.widthAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+    }
+    
+    private func addTargetToStackButton() {
+        stackButton.addTarget(self, action: #selector(dismissStackView), for: .touchUpInside)
+    }
+    
+    @objc private func dismissStackView() {
+        self.dismiss(animated: true, completion: nil)
+        mainViewController?.setupCurrentCollectionView((mainViewController?.mainScrollView)!)
     }
     // END: View
     
