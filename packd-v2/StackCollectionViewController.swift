@@ -21,7 +21,7 @@ class StackCollectionViewController: FoldableViewController {
         
         setupFoldStatesOfCells()
         
-        collectionView?.register(FoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
+        collectionView?.register(EstablishmentFoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
         
         setupSubViews()
     }
@@ -89,7 +89,14 @@ class StackCollectionViewController: FoldableViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath) as! EstablishmentFoldableCell
+        
+        if let estalishmentCell = mainViewController?.stackOfFoldableCells.items[indexPath.item] as? EstablishmentCell {
+            cell.establishment = estalishmentCell.establishment
+        }
+        
+        cell.setupFolded()
+        
         return cell
         
     }

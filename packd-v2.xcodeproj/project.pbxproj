@@ -11,6 +11,7 @@
 		E31E16121DBFE188006CB8D9 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E16111DBFE188006CB8D9 /* Heart.swift */; };
 		E342EBA31DC017F300A9C79F /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342EBA21DC017F300A9C79F /* Timestamp.swift */; };
 		E342EBA51DC13FC200A9C79F /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342EBA41DC13FC200A9C79F /* CircularTransition.swift */; };
+		E342EBA71DC168FF00A9C79F /* EstablishmentFoldableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342EBA61DC168FF00A9C79F /* EstablishmentFoldableCell.swift */; };
 		E3B781521DB7E18800D088BC /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B781511DB7E18800D088BC /* Stack.swift */; };
 		E3B781551DB7EA9300D088BC /* StackCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */; };
 		E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518A71DA6E74400363CB0 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 		E31E16111DBFE188006CB8D9 /* Heart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
 		E342EBA21DC017F300A9C79F /* Timestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
 		E342EBA41DC13FC200A9C79F /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		E342EBA61DC168FF00A9C79F /* EstablishmentFoldableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstablishmentFoldableCell.swift; sourceTree = "<group>"; };
 		E3B781511DB7E18800D088BC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCollectionViewController.swift; sourceTree = "<group>"; };
 		E3D518A41DA6E74400363CB0 /* packd-v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "packd-v2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */,
+				E342EBA61DC168FF00A9C79F /* EstablishmentFoldableCell.swift */,
 			);
 			name = Stack;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				E3DA36461DAF12AD001B0F5C /* Size.swift in Sources */,
 				E3B781521DB7E18800D088BC /* Stack.swift in Sources */,
 				E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */,
+				E342EBA71DC168FF00A9C79F /* EstablishmentFoldableCell.swift in Sources */,
 				E31E16121DBFE188006CB8D9 /* Heart.swift in Sources */,
 				E3B781551DB7EA9300D088BC /* StackCollectionViewController.swift in Sources */,
 				E3DA36621DB2D667001B0F5C /* User.swift in Sources */,
