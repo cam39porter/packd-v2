@@ -40,7 +40,7 @@ class StackCollectionViewController: FoldableViewController {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.highlight
-        button.setTitle("Stack", for: .normal)
+        button.setTitle("x", for: .normal)
         button.setTitleColor(Colors.contrast, for: .normal)
         button.layer.masksToBounds = false
         button.layer.cornerRadius = Size.oneFinger
@@ -86,7 +86,6 @@ class StackCollectionViewController: FoldableViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath)
-        
         return cell
         
     }

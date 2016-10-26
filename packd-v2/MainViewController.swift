@@ -282,7 +282,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.highlight
-        button.setTitle("Stack", for: .normal)
+        button.setTitle("+", for: .normal)
         button.setTitleColor(Colors.contrast, for: .normal)
         button.layer.masksToBounds = false
         button.layer.cornerRadius = Size.oneFinger
