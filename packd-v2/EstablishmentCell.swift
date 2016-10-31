@@ -70,7 +70,7 @@ class EstablishmentCell: FoldableCell {
     }
     
     let detailsContianerView: UIView = {
-        let view = UIView()
+        let view = SpringView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Colors.contrast.withAlphaComponent(0.5)
         return view
@@ -98,8 +98,8 @@ class EstablishmentCell: FoldableCell {
         profileImageView.heightAnchor.constraint(equalToConstant: self.frame.height / 2).isActive = true
     }
     
-    let heartButton: UIButton = {
-        let button = UIButton()
+    let heartButton: SpringButton = {
+        let button = SpringButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         let icon = #imageLiteral(resourceName: "heart_icon")
         let tintIcon = icon.withRenderingMode(.alwaysTemplate)
@@ -128,8 +128,15 @@ class EstablishmentCell: FoldableCell {
         heartButton.tintColor = Colors.contrast
     }
     
+    private func animateHeartButton() {
+        heartButton.animation = Spring.AnimationPreset.Pop.rawValue
+        heartButton.curve = Spring.AnimationCurve.EaseInOutCubic.rawValue
+        heartButton.animate()
+    }
+    
     @objc private func heartEstablishment() {
         if heartButton.tintColor == Colors.contrast {
+            animateHeartButton()
             let newHeart = Heart.heart(establishmentWithUID: establishment?.uid!, byUserWithUID: User.getCurrentUserUID())
             self.heart = newHeart
         } else {
