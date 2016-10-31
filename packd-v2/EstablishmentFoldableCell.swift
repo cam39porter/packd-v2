@@ -15,6 +15,9 @@ class EstablishmentFoldableCell: FoldableCell {
         didSet {
             nameLabel.text = establishment?.name
             descriptionLabel.text = establishment?.descriptionOfEstablishment
+            establishment?.getProfileImage(withCompletionHandler: { (image) in
+                self.profileImageView.image = image
+            })
         }
     }
     
@@ -32,18 +35,30 @@ class EstablishmentFoldableCell: FoldableCell {
     // START: Fold Setup
     override func setupFolded() {
         super.setupFolded()
+        
+        self.layer.shadowColor = UIColor.clear.cgColor
+        
+        alphaProfileImageViewFolded()
+        
         addFoldedSubViews()
         anchorFoldedSubViews()
+        
+        addTargetToHeartButton()
+
     }
     
     private func addFoldedSubViews() {
+        addSubview(profileImageView)
         addSubview(nameLabel)
         addSubview(descriptionLabel)
+        addSubview(heartButton)
     }
     
     private func anchorFoldedSubViews() {
+        anchorProfileImageViewFolded()
         anchorNameLabelFolded()
         anchorDescriptionLabelFolded()
+        anchorHeartButtonFolded()
     }
     
     override func setupHalfUnfolded() {
@@ -85,6 +100,17 @@ class EstablishmentFoldableCell: FoldableCell {
         return imageView
     }()
     
+    private func alphaProfileImageViewFolded() {
+        profileImageView.alpha = 0.10
+    }
+    
+    private func anchorProfileImageViewFolded() {
+        profileImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        profileImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: self.frame.height).isActive = true
+    }
+    
     private func anchorProfileImageViewFullyUnfolded() {
         profileImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
@@ -92,8 +118,8 @@ class EstablishmentFoldableCell: FoldableCell {
         profileImageView.heightAnchor.constraint(equalToConstant: self.frame.height / 2).isActive = true
     }
     
-    let heartButton: UIButton = {
-        let button = UIButton()
+    let heartButton: SpringButton = {
+        let button = SpringButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         let icon = #imageLiteral(resourceName: "heart_icon")
         let tintIcon = icon.withRenderingMode(.alwaysTemplate)
@@ -103,9 +129,16 @@ class EstablishmentFoldableCell: FoldableCell {
         return button
     }()
     
+    private func anchorHeartButtonFolded() {
+        heartButton.topAnchor.constraint(equalTo: self.topAnchor, constant: Size.minPadding).isActive = true
+        heartButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Size.minPadding).isActive = true
+        heartButton.heightAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
+        heartButton.widthAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
+    }
+    
     private func anchorHeartButtonFullyUnfolded() {
-        heartButton.topAnchor.constraint(equalTo: profileImageView.topAnchor, constant: Size.minPadding).isActive = true
-        heartButton.rightAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: -Size.minPadding).isActive = true
+        heartButton.topAnchor.constraint(equalTo: self.topAnchor, constant: Size.minPadding).isActive = true
+        heartButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Size.minPadding).isActive = true
         heartButton.heightAnchor.constraint(equalToConstant: Size.oneFinger / 1.5).isActive = true
         heartButton.widthAnchor.constraint(equalToConstant: Size.oneFinger / 1.5).isActive = true
     }
@@ -122,8 +155,15 @@ class EstablishmentFoldableCell: FoldableCell {
         heartButton.tintColor = Colors.contrast
     }
     
+    private func animateHeartButton() {
+        heartButton.animation = Spring.AnimationPreset.Pop.rawValue
+        heartButton.curve = Spring.AnimationCurve.EaseInOutCubic.rawValue
+        heartButton.animate()
+    }
+    
     @objc private func heartEstablishment() {
         if heartButton.tintColor == Colors.contrast {
+            animateHeartButton()
             let newHeart = Heart.heart(establishmentWithUID: establishment?.uid!, byUserWithUID: User.getCurrentUserUID())
             self.heart = newHeart
         } else {

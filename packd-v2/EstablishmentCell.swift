@@ -39,6 +39,8 @@ class EstablishmentCell: FoldableCell {
         establishment?.getProfileImage(withCompletionHandler: { (image) in
             DispatchQueue.main.async {
                 self.profileImageView.image = image
+                print("count \(self.establishmentViewController?.loadingStateOfCells.count)")
+                print("index \((self.indexPath?.item)!)")
                 self.establishmentViewController?.loadingStateOfCells[(self.indexPath?.item)!] = false
                 self.establishmentViewController?.cellIsLoading = (self.establishmentViewController?.currentLoadState)!
                 UIView.animate(withDuration: 1, animations: {
