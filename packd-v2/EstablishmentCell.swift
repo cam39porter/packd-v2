@@ -215,7 +215,10 @@ class EstablishmentCell: FoldableCell {
     }
     
     private func insertCellOnStack() {
-        establishmentViewController?.mainViewController?.stackOfEstablishments.push(self.establishment!)
+        if establishmentViewController?.mainViewController?.setOfEstablishmentUIDsOnStack.contains((self.establishment?.uid)!) == false {
+            establishmentViewController?.mainViewController?.setOfEstablishmentUIDsOnStack.insert((self.establishment?.uid)!)
+            establishmentViewController?.mainViewController?.stackOfEstablishments.push(self.establishment!)
+        }
         UIView.animate(withDuration: 0.5) {
             self.layer.shadowColor = UIColor.clear.cgColor
         }

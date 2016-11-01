@@ -41,6 +41,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     
     // START: Model
     var stackOfEstablishments = Stack<Establishment>()
+    var setOfEstablishmentUIDsOnStack = Set<String>()
     // END: Model
     
     // START: View
