@@ -39,7 +39,7 @@ class EstablishmentCell: FoldableCell {
         establishment?.getProfileImage(withCompletionHandler: { (image) in
             DispatchQueue.main.async {
                 self.profileImageView.image = image
-                self.establishmentViewController?.loadingStateOfCells[(self.indexPath?.item)!] = false
+                self.establishmentViewController?.loadingStateOfCellsByUID[(self.establishment?.uid)!] = false
                 self.establishmentViewController?.cellIsLoading = (self.establishmentViewController?.currentLoadState)!
                 UIView.animate(withDuration: 1, animations: {
                     self.alpha = 1
@@ -209,7 +209,7 @@ class EstablishmentCell: FoldableCell {
     
     private func removeCellFromCollectionView() {
         establishmentViewController?.establishments.remove(at: (indexPath?.item)!)
-        establishmentViewController?.loadingStateOfCells.remove(at: (indexPath?.item)!)
+        establishmentViewController?.loadingStateOfCellsByUID[(establishment?.uid)!] = nil
         
         establishmentViewController?.collectionView?.deleteItems(at: [indexPath!])        
     }

@@ -15,11 +15,12 @@ class EstablishmentsViewController: PageableViewController {
     var hearts = [Heart?]()
     let cellReuseIdentifier = "establishmentCell"
     
-    var loadingStateOfCells = [Bool]()
+    var loadingStateOfCellsByUID = [String:Bool]()
     var currentLoadState: Bool {
         get {
-            return loadingStateOfCells.reduce(false) { (currentLoadState, loadStateOfCell) -> Bool in
-                return currentLoadState || loadStateOfCell
+            
+            return loadingStateOfCellsByUID.reduce(false) { (currentLoadState, loadStateOfCell) -> Bool in
+                return currentLoadState || loadStateOfCell.value
             }
         }
     }
@@ -72,17 +73,19 @@ class EstablishmentsViewController: PageableViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! EstablishmentCell
         
-        if indexPath.item == loadingStateOfCells.count {
-            loadingStateOfCells.append(true)
+        let establishment = establishments[indexPath.item]
+        
+        if indexPath.item == loadingStateOfCellsByUID.count {
+            loadingStateOfCellsByUID[establishment.uid!] = true
         } else {
-            loadingStateOfCells[indexPath.item] = true
+            loadingStateOfCellsByUID[establishment.uid!] = true
         }
         
         cellIsLoading = true
         cell.indexPath = indexPath
         cell.alpha = 0
         cell.establishmentViewController = self
-        cell.establishment = establishments[indexPath.item]
+        cell.establishment = establishment
         cell.heart = hearts[indexPath.item]
         
         return cell
