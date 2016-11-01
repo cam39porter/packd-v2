@@ -279,8 +279,8 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     // END: Collection View Switching
     
     // START: Stack
-    let stackButton: UIButton = {
-        let button = UIButton(type: .custom)
+    let stackButton: SpringButton = {
+        let button = SpringButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.highlight
         button.setTitle("+", for: .normal)

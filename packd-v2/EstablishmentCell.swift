@@ -19,8 +19,6 @@ class EstablishmentCell: FoldableCell {
     
     var heart: Heart? = nil {
         didSet {
-            establishmentViewController?.hearts[(self.indexPath?.item)!] = heart
-
             if heart != nil {
                highlightHeartButton()
             } else {
@@ -47,6 +45,7 @@ class EstablishmentCell: FoldableCell {
             }
         })
         
+        setupHeartButton()
         nameLabel.text = establishment?.name
         descriptionLabel.text = establishment?.descriptionOfEstablishment
         
@@ -108,6 +107,12 @@ class EstablishmentCell: FoldableCell {
         button.contentMode = .scaleAspectFit
         return button
     }()
+    
+    private func setupHeartButton() {
+        User.isHearted(byUserWithUID: User.getCurrentUserUID()!, forEstablishmentUID: establishment?.uid!, withCompletionHandler: { (heart) in
+            self.heart = heart
+        })
+    }
     
     private func anchorHeartButton() {
         heartButton.topAnchor.constraint(equalTo: profileImageView.topAnchor, constant: Size.minPadding).isActive = true
@@ -186,6 +191,8 @@ class EstablishmentCell: FoldableCell {
                     establishmentViewController?.isAddingCellToStack = true
                     AudioServicesPlaySystemSound(1520)
                     addCellToStack()
+                    establishmentViewController?.mainViewController?.stackButton.animation = Spring.AnimationPreset.Wobble.rawValue
+                    establishmentViewController?.mainViewController?.stackButton.animate()
                 }
             }
         }

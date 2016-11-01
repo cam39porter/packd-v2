@@ -98,6 +98,16 @@ class StackCollectionViewController: FoldableViewController {
         // establishment cell setup
         cell.establishment = mainViewController?.stackOfEstablishments.items[indexPath.item]
         
+        
+        switch foldStatesOfCells[indexPath.item] {
+        case FoldableCellConstants.FoldState.folded:
+            cell.setupFolded()
+        case FoldableCellConstants.FoldState.halfUnfolded:
+            cell.setupHalfUnfolded()
+        case FoldableCellConstants.FoldState.fullyUnfolded:
+            cell.setupFullyUnfolded()
+        }
+        
         cell.setupFolded()
         
         return cell

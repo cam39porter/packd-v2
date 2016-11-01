@@ -74,10 +74,6 @@ class EstablishmentFoldableCell: FoldableCell {
         super.setupHalfUnfolded()
     }
     
-    private func addHalfUnfoldedSubViews() {
-        
-    }
-    
     override func setupFullyUnfolded() {
         super.setupFullyUnfolded()
     }
