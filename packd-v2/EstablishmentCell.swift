@@ -191,6 +191,10 @@ class EstablishmentCell: FoldableCell {
         }
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        establishmentViewController?.isAddingCellToStack = false
+    }
+    
     private func is3DTouchAvailble() -> Bool {
         if #available(iOS 9.0, *) {
             if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
@@ -210,8 +214,7 @@ class EstablishmentCell: FoldableCell {
     private func removeCellFromCollectionView() {
         establishmentViewController?.establishments.remove(at: (indexPath?.item)!)
         establishmentViewController?.loadingStateOfCellsByUID[(establishment?.uid)!] = nil
-        
-        establishmentViewController?.collectionView?.deleteItems(at: [indexPath!])        
+        establishmentViewController?.collectionView?.reloadData()
     }
     
     private func insertCellOnStack() {
@@ -219,9 +222,11 @@ class EstablishmentCell: FoldableCell {
             establishmentViewController?.mainViewController?.setOfEstablishmentUIDsOnStack.insert((self.establishment?.uid)!)
             establishmentViewController?.mainViewController?.stackOfEstablishments.push(self.establishment!)
         }
-        UIView.animate(withDuration: 0.5) {
-            self.layer.shadowColor = UIColor.clear.cgColor
-        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = nil
     }
     // END: Stack
 }
