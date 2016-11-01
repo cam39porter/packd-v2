@@ -212,9 +212,10 @@ class EstablishmentCell: FoldableCell {
     }
     
     private func removeCellFromCollectionView() {
-        establishmentViewController?.establishments.remove(at: (indexPath?.item)!)
+        establishmentViewController?.establishments.remove(at: (establishmentViewController?.collectionView?.indexPath(for: self)?.item)!)
         establishmentViewController?.loadingStateOfCellsByUID[(establishment?.uid)!] = nil
-        establishmentViewController?.collectionView?.reloadData()
+        establishmentViewController?.collectionView?.deleteItems(at: [(establishmentViewController?.collectionView?.indexPath(for: self))!])
+
     }
     
     private func insertCellOnStack() {
