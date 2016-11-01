@@ -109,6 +109,7 @@ class FoldableCell: UICollectionViewCell {
     // START: Folding
     func unfold() {
         if isFolded {
+            // fold the currently unfolded cell
             if let oldUnfoldedCell = collectionViewController?.unfoldedCell {
                 collectionViewController?.foldStatesOfCells[oldUnfoldedCell.item] = FoldableCellConstants.FoldState.folded
             }

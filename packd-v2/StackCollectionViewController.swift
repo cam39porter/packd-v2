@@ -91,6 +91,11 @@ class StackCollectionViewController: FoldableViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath) as! EstablishmentFoldableCell
         
+        // foldable cell setup
+        cell.indexPath = indexPath
+        cell.collectionViewController = self
+        
+        // establishment cell setup
         cell.establishment = mainViewController?.stackOfEstablishments.items[indexPath.item]
         
         cell.setupFolded()

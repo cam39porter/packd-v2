@@ -31,7 +31,6 @@ class FoldableViewController: UICollectionViewController, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = FoldableCellConstants.heightOfCell(forState: foldStatesOfCells[indexPath.item])
         let width = FoldableCellConstants.width
-        
         return CGSize(width: width, height: height)
     }
     // END: UICollectionViewDataSource

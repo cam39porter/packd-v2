@@ -36,14 +36,16 @@ class EstablishmentFoldableCell: FoldableCell {
     override func setupFolded() {
         super.setupFolded()
         
-        self.layer.shadowColor = UIColor.clear.cgColor
+        self.layer.shadowRadius = 1
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        
+        setupHeartButton()
         
         alphaProfileImageViewFolded()
         
         addFoldedSubViews()
         anchorFoldedSubViews()
-        
-        addTargetToHeartButton()
+        addTargets()
 
     }
     
@@ -52,6 +54,7 @@ class EstablishmentFoldableCell: FoldableCell {
         addSubview(nameLabel)
         addSubview(descriptionLabel)
         addSubview(heartButton)
+        addSubview(moreButton)
     }
     
     private func anchorFoldedSubViews() {
@@ -59,6 +62,12 @@ class EstablishmentFoldableCell: FoldableCell {
         anchorNameLabelFolded()
         anchorDescriptionLabelFolded()
         anchorHeartButtonFolded()
+        anchorMoreButtonFolded()
+    }
+    
+    private func addTargets() {
+        addTargetToHeartButton()
+        addTargetMoreButton()
     }
     
     override func setupHalfUnfolded() {
@@ -128,6 +137,12 @@ class EstablishmentFoldableCell: FoldableCell {
         button.contentMode = .scaleAspectFit
         return button
     }()
+    
+    private func setupHeartButton() {
+        User.isHearted(byUserWithUID: User.getCurrentUserUID()!, forEstablishmentUID: establishment?.uid!, withCompletionHandler: { (heart) in
+            self.heart = heart
+        })
+    }
     
     private func anchorHeartButtonFolded() {
         heartButton.topAnchor.constraint(equalTo: self.topAnchor, constant: Size.minPadding).isActive = true
@@ -212,6 +227,27 @@ class EstablishmentFoldableCell: FoldableCell {
         descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Size.minPadding).isActive = true
         descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Size.minPadding).isActive = true
         descriptionLabel.widthAnchor.constraint(equalToConstant: self.bounds.width * 2/3).isActive = true
+    }
+    
+    let moreButton: SpringButton = {
+        let button = SpringButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let icon = #imageLiteral(resourceName: "more_icon")
+        let tintIcon = icon.withRenderingMode(.alwaysTemplate)
+        button.setBackgroundImage(tintIcon, for: .normal)
+        button.tintColor = Colors.contrast
+        return button
+    }()
+    
+    private func anchorMoreButtonFolded() {
+        moreButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Size.minPadding).isActive = true
+        moreButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        moreButton.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        moreButton.widthAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+    }
+    
+    private func addTargetMoreButton() {
+        moreButton.addTarget(self, action: #selector(unfold), for: .touchUpInside)
     }
     // END: View Components
 
