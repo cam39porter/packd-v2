@@ -82,7 +82,6 @@ class EstablishmentsViewController: PageableViewController {
         }
         
         cellIsLoading = true
-        cell.indexPath = indexPath
         cell.alpha = 0
         cell.establishmentViewController = self
         cell.establishment = establishment

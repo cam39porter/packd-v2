@@ -75,7 +75,6 @@ class FriendsViewController: PageableViewController {
         }
 
         cellIsLoading = true
-        cell.indexPath = indexPath
         cell.alpha = 0
         cell.friendsViewController = self
         cell.friend = friend
