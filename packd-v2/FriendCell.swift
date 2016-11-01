@@ -26,7 +26,7 @@ class FriendCell: FoldableCell {
         friend?.getProfileImage(withCompletionHandler: { (image) in
             DispatchQueue.main.async {
                 self.profileImageView.image = image
-                self.friendsViewController?.loadingStateOfCells[(self.indexPath?.item)!] = false
+                self.friendsViewController?.loadingStateOfCellsByUID[(self.friend?.uid)!] = false
                 self.friendsViewController?.cellIsLoading = (self.friendsViewController?.currentLoadState)!
                 UIView.animate(withDuration: 1, animations: {
                     self.alpha = 1

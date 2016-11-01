@@ -13,11 +13,12 @@ class FriendsViewController: PageableViewController {
     var friends = [User]()
     let cellReuseIdentifier = "friendCell"
     
-    var loadingStateOfCells = [Bool]()
+    var loadingStateOfCellsByUID = [String:Bool]()
     var currentLoadState: Bool {
         get {
-            return loadingStateOfCells.reduce(false) { (currentLoadState, loadStateOfCell) -> Bool in
-                return currentLoadState || loadStateOfCell
+            
+            return loadingStateOfCellsByUID.reduce(false) { (currentLoadState, loadStateOfCell) -> Bool in
+                return currentLoadState || loadStateOfCell.value
             }
         }
     }
@@ -65,17 +66,19 @@ class FriendsViewController: PageableViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! FriendCell
         
-        if indexPath.item == loadingStateOfCells.count {
-            loadingStateOfCells.append(true)
+        let friend = friends[indexPath.item]
+        
+        if indexPath.item == loadingStateOfCellsByUID.count {
+            loadingStateOfCellsByUID[friend.uid!] = true
         } else {
-            loadingStateOfCells[indexPath.item] = true
+            loadingStateOfCellsByUID[friend.uid!] = true
         }
 
         cellIsLoading = true
         cell.indexPath = indexPath
         cell.alpha = 0
         cell.friendsViewController = self
-        cell.friend = friends[indexPath.item]
+        cell.friend = friend
         
         return cell
     }
