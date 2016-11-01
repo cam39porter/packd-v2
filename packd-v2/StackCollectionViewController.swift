@@ -31,7 +31,7 @@ class StackCollectionViewController: FoldableViewController {
     }
     
     private func setupFoldStatesOfCells() {
-        let cellCount = (mainViewController?.stackOfFoldableCells.count)!
+        let cellCount = (mainViewController?.stackOfEstablishments.count)!
         if cellCount == 0 { return }
         for _ in 1...cellCount { foldStatesOfCells.append(FoldableCellConstants.FoldState.folded) }
     }
@@ -85,15 +85,13 @@ class StackCollectionViewController: FoldableViewController {
     
     // START: Collection View DataSource Delegate
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (mainViewController?.stackOfFoldableCells.count)!
+        return (mainViewController?.stackOfEstablishments.count)!
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoldableCellConstants.reuseIdentifier, for: indexPath) as! EstablishmentFoldableCell
         
-        if let estalishmentCell = mainViewController?.stackOfFoldableCells.items[indexPath.item] as? EstablishmentCell {
-            cell.establishment = estalishmentCell.establishment
-        }
+        cell.establishment = mainViewController?.stackOfEstablishments.items[indexPath.item]
         
         cell.setupFolded()
         

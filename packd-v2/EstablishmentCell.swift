@@ -215,7 +215,7 @@ class EstablishmentCell: FoldableCell {
     }
     
     private func insertCellOnStack() {
-        establishmentViewController?.mainViewController?.stackOfFoldableCells.push(self)
+        establishmentViewController?.mainViewController?.stackOfEstablishments.push(self.establishment!)
         UIView.animate(withDuration: 0.5) {
             self.layer.shadowColor = UIColor.clear.cgColor
         }

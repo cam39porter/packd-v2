@@ -40,7 +40,7 @@ struct MainViewConstants {
 class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControllerTransitioningDelegate {
     
     // START: Model
-    var stackOfFoldableCells = Stack<FoldableCell>()
+    var stackOfEstablishments = Stack<Establishment>()
     // END: Model
     
     // START: View
