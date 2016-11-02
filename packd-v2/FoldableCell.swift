@@ -69,7 +69,11 @@ class FoldableCell: UICollectionViewCell {
     // START: View Controller
     var collectionViewController: FoldableViewController?
     
-    var indexPath: IndexPath? = nil
+    var indexPath: IndexPath? {
+        get {
+            return collectionViewController?.collectionView?.indexPath(for: self)
+        }
+    }
     // END: View Controller
     
     

@@ -18,7 +18,9 @@ class FriendFoldableCell: FoldableCell {
             nameLabel.text = friend?.name
             descriptionLabel.text = friend?.email
             friend?.getProfileImage(withCompletionHandler: { (image) in
-                self.profileImageView.image = image
+                self.profileImageView.image = #imageLiteral(resourceName: "friends_bg")
+                self.profileImageView.alpha = 0.5
+                self.smallProfileImageView.image = image
             })
         }
     }
@@ -80,10 +82,16 @@ class FriendFoldableCell: FoldableCell {
     override func setupHalfUnfolded() {
         super.setupHalfUnfolded()
         
+        
+        removeHalfUnfoldedSubviews()
         addHalfUnfoldedSubviews()
         anchorHalfUnfoldedSubviews()
         
         addTargetlessButton()
+    }
+    
+    private func removeHalfUnfoldedSubviews() {
+        smallProfileImageView.removeFromSuperview()
     }
     
     private func addHalfUnfoldedSubviews() {
@@ -116,13 +124,16 @@ class FriendFoldableCell: FoldableCell {
         addSubview(profileImageView)
         addSubview(nameLabel)
         addSubview(descriptionLabel)
-        addSubview(detailsContianerView)    }
+        addSubview(detailsContianerView)
+        addSubview(smallProfileImageView)
+    }
     
     private func anchorFullyUnfoldedSubviews() {
         anchorProfileImageViewFullyUnfolded()
         anchorNameLabelFullyUnfolded()
         anchorDescriptionLabelFullyUnfolded()
         anchorDetailsContainerViewFullyUnfolded()
+        anchorSmallProfileImageViewFullyUnfolded()
     }
     // END: Fold Setup
     
@@ -174,6 +185,24 @@ class FriendFoldableCell: FoldableCell {
         profileImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: self.frame.height / 2).isActive = true
         sendSubview(toBack: profileImageView)
+    }
+    
+    let smallProfileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = Size.oneFinger
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = Colors.highlight.cgColor
+        return imageView
+    }()
+    
+    private func anchorSmallProfileImageViewFullyUnfolded() {
+        smallProfileImageView.heightAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+        smallProfileImageView.widthAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+        smallProfileImageView.centerXAnchor.constraint(equalTo: detailsContianerView.leftAnchor, constant: 0).isActive = true
+        smallProfileImageView.centerYAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 0).isActive = true
     }
     
     let heartButton: SpringButton = {

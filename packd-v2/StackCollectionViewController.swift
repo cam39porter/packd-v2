@@ -173,7 +173,6 @@ class StackCollectionViewController: FoldableViewController {
     }
     
     private func setup(cell: FoldableCell, withIndexPath indexPath: IndexPath) {
-        cell.indexPath = indexPath
         cell.collectionViewController = self
         
         switch foldStatesOfCells[indexPath.section][indexPath.item] {
