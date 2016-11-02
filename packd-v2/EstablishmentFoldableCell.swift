@@ -43,10 +43,15 @@ class EstablishmentFoldableCell: FoldableCell {
         
         alphaProfileImageViewFolded()
         
+        removeFoldedSubviews()
         addFoldedSubViews()
         anchorFoldedSubViews()
         addTargets()
 
+    }
+    
+    private func removeFoldedSubviews() {
+        lessButton.removeFromSuperview()
     }
     
     private func addFoldedSubViews() {
@@ -72,13 +77,50 @@ class EstablishmentFoldableCell: FoldableCell {
     
     override func setupHalfUnfolded() {
         super.setupHalfUnfolded()
+        
+        addHalfUnfoldedSubviews()
+        anchorHalfUnfoldedSubviews()
+        
+        addTargetlessButton()
+    }
+    
+    private func addHalfUnfoldedSubviews() {
+        addSubview(lessButton)
+    }
+    
+    private func anchorHalfUnfoldedSubviews() {
+        anchorlessButtonHalfUnfolded()
     }
     
     override func setupFullyUnfolded() {
         super.setupFullyUnfolded()
+        
+        removeSubviewsForFullyUnfolded()
+        addFullyUnfoldedSubViews()
+        anchorFullyUnfoldedSubviews()
+        
+        alphaProfileImageViewFullyUnfolded()
+        
+    }
+    
+    private func removeSubviewsForFullyUnfolded() {
+        profileImageView.removeFromSuperview()
+        nameLabel.removeFromSuperview()
+        descriptionLabel.removeFromSuperview()
+        moreButton.removeFromSuperview()
     }
     
     private func addFullyUnfoldedSubViews() {
+        addSubview(profileImageView)
+        addSubview(nameLabel)
+        addSubview(descriptionLabel)
+        addSubview(detailsContianerView)    }
+    
+    private func anchorFullyUnfoldedSubviews() {
+        anchorProfileImageViewFullyUnfolded()
+        anchorNameLabelFullyUnfolded()
+        anchorDescriptionLabelFullyUnfolded()
+        anchorDetailsContainerViewFullyUnfolded()
     }
     // END: Fold Setup
     
@@ -109,11 +151,19 @@ class EstablishmentFoldableCell: FoldableCell {
         profileImageView.alpha = 0.10
     }
     
+    private func alphaProfileImageViewFullyUnfolded() {
+        profileImageView.alpha = 1
+    }
+    
     private func anchorProfileImageViewFolded() {
         profileImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         profileImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: self.frame.height).isActive = true
+        profileImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    private func anchorProfileImageViewHalfUnfolded() {
+        anchorProfileImageViewFolded()
     }
     
     private func anchorProfileImageViewFullyUnfolded() {
@@ -121,6 +171,7 @@ class EstablishmentFoldableCell: FoldableCell {
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         profileImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: self.frame.height / 2).isActive = true
+        sendSubview(toBack: profileImageView)
     }
     
     let heartButton: SpringButton = {
@@ -236,14 +287,35 @@ class EstablishmentFoldableCell: FoldableCell {
     }()
     
     private func anchorMoreButtonFolded() {
-        moreButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Size.minPadding).isActive = true
-        moreButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        moreButton.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
-        moreButton.widthAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        moreButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Size.minPadding).isActive = true
+        moreButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Size.minPadding).isActive = true
+        moreButton.heightAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
+        moreButton.widthAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
     }
     
     private func addTargetMoreButton() {
         moreButton.addTarget(self, action: #selector(unfold), for: .touchUpInside)
+    }
+    
+    let lessButton: SpringButton = {
+        let button = SpringButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let icon = #imageLiteral(resourceName: "less_icon")
+        let tintIcon = icon.withRenderingMode(.alwaysTemplate)
+        button.setBackgroundImage(tintIcon, for: .normal)
+        button.tintColor = Colors.contrast
+        return button
+    }()
+    
+    private func anchorlessButtonHalfUnfolded() {
+        lessButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Size.minPadding).isActive = true
+        lessButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Size.minPadding).isActive = true
+        lessButton.heightAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
+        lessButton.widthAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
+    }
+    
+    private func addTargetlessButton() {
+        lessButton.addTarget(self, action: #selector(fold), for: .touchUpInside)
     }
     // END: View Components
 }
