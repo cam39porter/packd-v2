@@ -11,6 +11,8 @@ import UIKit
 class EstablishmentFoldableCell: FoldableCell {
     
     // START: Model
+    static let identifier = "establishmentCell"
+    
     var establishment: Establishment? = nil {
         didSet {
             nameLabel.text = establishment?.name
