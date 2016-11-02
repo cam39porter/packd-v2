@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class FriendCell: FoldableCell {
 
@@ -26,6 +27,7 @@ class FriendCell: FoldableCell {
         friend?.getProfileImage(withCompletionHandler: { (image) in
             DispatchQueue.main.async {
                 self.profileImageView.image = #imageLiteral(resourceName: "friends_bg")
+                self.profileImageView.alpha = 0.5
                 self.smallProfileImageView.image = image
                 self.friendsViewController?.loadingStateOfCellsByUID[(self.friend?.uid)!] = false
                 self.friendsViewController?.cellIsLoading = (self.friendsViewController?.currentLoadState)!
@@ -138,4 +140,58 @@ class FriendCell: FoldableCell {
         descriptionLabel.widthAnchor.constraint(equalToConstant: self.bounds.width * 2/3).isActive = true
     }
     // END: View
+    
+    // START: Touches
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            if is3DTouchAvailble() && friendsViewController?.isAddingCellToStack == false {
+                if touch.force == touch.maximumPossibleForce {
+                    friendsViewController?.isAddingCellToStack = true
+                    AudioServicesPlaySystemSound(1520)
+                    addCellToStack()
+                    friendsViewController?.mainViewController?.stackButton.animation = Spring.AnimationPreset.Wobble.rawValue
+                    friendsViewController?.mainViewController?.stackButton.animate()
+                }
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        friendsViewController?.isAddingCellToStack = false
+    }
+    
+    private func is3DTouchAvailble() -> Bool {
+        if #available(iOS 9.0, *) {
+            if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+                return true
+            }
+        }
+        return false
+    }
+    // END: Touches
+    
+    // START: Stack
+    private func addCellToStack() {
+        insertCellOnStack()
+        removeCellFromCollectionView()
+    }
+    
+    private func removeCellFromCollectionView() {
+        friendsViewController?.friends.remove(at: (friendsViewController?.collectionView?.indexPath(for: self)?.item)!)
+        friendsViewController?.loadingStateOfCellsByUID[(friend?.uid)!] = nil
+        friendsViewController?.collectionView?.deleteItems(at: [(friendsViewController?.collectionView?.indexPath(for: self))!])
+        
+    }
+    
+    private func insertCellOnStack() {
+        if friendsViewController?.mainViewController?.setOfFriendsUIDsOnStack.contains((self.friend?.uid)!) == false {
+            friendsViewController?.mainViewController?.setOfFriendsUIDsOnStack.insert((self.friend?.uid)!)
+            friendsViewController?.mainViewController?.stackOfFriends.push(self.friend!)
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = nil
+    }
 }

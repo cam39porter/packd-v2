@@ -45,7 +45,7 @@ class StackCollectionViewController: FoldableViewController {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.contrast
-        button.setTitle("x", for: .normal)
+        button.setTitle("-", for: .normal)
         button.setTitleColor(Colors.highlight, for: .normal)
         button.layer.masksToBounds = false
         button.layer.cornerRadius = Size.oneFinger

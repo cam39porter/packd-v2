@@ -42,6 +42,9 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     // START: Model
     var stackOfEstablishments = Stack<Establishment>()
     var setOfEstablishmentUIDsOnStack = Set<String>()
+    
+    var stackOfFriends = Stack<User>()
+    var setOfFriendsUIDsOnStack = Set<String>()
     // END: Model
     
     // START: View
@@ -159,6 +162,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     private func setupFriendsViewController() {
         friendsCollectionViewController = FriendsViewController(collectionViewLayout: MainViewConstants.pageableLayout)
         friendsCollectionViewController?.setupViewController()
+        friendsCollectionViewController?.mainViewController = self
         
         let friendsView = (friendsCollectionViewController?.view)!
         friendsContainerView.addSubview(friendsView)
