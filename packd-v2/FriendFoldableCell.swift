@@ -55,6 +55,7 @@ class FriendFoldableCell: FoldableCell {
     
     private func removeFoldedSubviews() {
         lessButton.removeFromSuperview()
+        smallProfileImageView.removeFromSuperview()
     }
     
     private func addFoldedSubViews() {
