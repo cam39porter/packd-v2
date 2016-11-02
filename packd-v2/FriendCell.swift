@@ -25,7 +25,8 @@ class FriendCell: FoldableCell {
         
         friend?.getProfileImage(withCompletionHandler: { (image) in
             DispatchQueue.main.async {
-                self.profileImageView.image = image
+                self.profileImageView.image = #imageLiteral(resourceName: "friends_bg")
+                self.smallProfileImageView.image = image
                 self.friendsViewController?.loadingStateOfCellsByUID[(self.friend?.uid)!] = false
                 self.friendsViewController?.cellIsLoading = (self.friendsViewController?.currentLoadState)!
                 UIView.animate(withDuration: 1, animations: {
@@ -38,11 +39,8 @@ class FriendCell: FoldableCell {
         descriptionLabel.text = friend?.email
         
         addSubviews()
+        anchorSubviews()
         
-        anchorProfileImageView()
-        anchorNameLabel()
-        anchorDescriptionLabel()
-        anchorDetailsContainerView()
     }
     
     private func addSubviews() {
@@ -50,6 +48,15 @@ class FriendCell: FoldableCell {
         self.addSubview(descriptionLabel)
         self.addSubview(profileImageView)
         self.addSubview(detailsContianerView)
+        self.addSubview(smallProfileImageView)
+    }
+    
+    private func anchorSubviews() {
+        anchorProfileImageView()
+        anchorNameLabel()
+        anchorDescriptionLabel()
+        anchorDetailsContainerView()
+        anchorSmallProfileImageView()
     }
     
     let detailsContianerView: UIView = {
@@ -79,6 +86,24 @@ class FriendCell: FoldableCell {
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         profileImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: self.frame.height / 2).isActive = true
+    }
+    
+    let smallProfileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = Size.oneFinger
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = Colors.highlight.cgColor
+        return imageView
+    }()
+    
+    private func anchorSmallProfileImageView() {
+        smallProfileImageView.heightAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+        smallProfileImageView.widthAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+        smallProfileImageView.centerXAnchor.constraint(equalTo: detailsContianerView.leftAnchor, constant: 0).isActive = true
+        smallProfileImageView.centerYAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 0).isActive = true
     }
     
     let nameLabel: UILabel = {
