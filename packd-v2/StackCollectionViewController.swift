@@ -86,13 +86,33 @@ class StackCollectionViewController: FoldableViewController {
     
     // START: Collection View DataSource Delegate
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
         
         header.setupHeader()
+        
+        switch indexPath.section {
+        case 0:
+            if (mainViewController?.stackOfEstablishments.count)! == 0 {
+                header.titleLabel.text = "Go back and choose somewhere to go..."
+                header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger / 2)
+                header.titleLabel.textAlignment = .center
+            } else {
+                header.titleLabel.text = "WHERE"
+                header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger)
+                header.titleLabel.textAlignment = .left
+            }
+        case 1:
+                header.titleLabel.text = "And maybe a friend to go there with..."
+                header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger / 2)
+                header.titleLabel.textAlignment = .center
+
+        default:
+            break
+        }
         
         return header
     }
@@ -102,7 +122,15 @@ class StackCollectionViewController: FoldableViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (mainViewController?.stackOfEstablishments.count)!
+        
+        switch section {
+        case 0:
+            return (mainViewController?.stackOfEstablishments.count)!
+        case 1:
+            return 0
+        default:
+            return 0
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

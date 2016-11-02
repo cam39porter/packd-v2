@@ -35,7 +35,6 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         label.textColor = Colors.contrast
         label.font = Fonts.lightFont(ofSize: Size.oneFinger)
         label.textAlignment = .left
-        label.text = "WHERE"
         return label
     }()
     
