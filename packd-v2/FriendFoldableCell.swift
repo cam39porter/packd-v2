@@ -19,7 +19,6 @@ class FriendFoldableCell: FoldableCell {
             descriptionLabel.text = friend?.email
             friend?.getProfileImage(withCompletionHandler: { (image) in
                 self.profileImageView.image = #imageLiteral(resourceName: "friends_bg")
-                self.profileImageView.alpha = 0.5
                 self.smallProfileImageView.image = image
             })
         }
@@ -165,7 +164,7 @@ class FriendFoldableCell: FoldableCell {
     }
     
     private func alphaProfileImageViewFullyUnfolded() {
-        profileImageView.alpha = 1
+        profileImageView.alpha = 0.5
     }
     
     private func anchorProfileImageViewFolded() {
