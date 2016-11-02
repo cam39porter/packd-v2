@@ -39,6 +39,7 @@
 		E3DCE2161DCA86DD001A52CC /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DCE2131DCA86DD001A52CC /* DateCollectionViewCell.swift */; };
 		E3DCE2171DCA86DD001A52CC /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DCE2141DCA86DD001A52CC /* DateTimePicker.swift */; };
 		E3DCE2181DCA86DD001A52CC /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DCE2151DCA86DD001A52CC /* StepCollectionViewFlowLayout.swift */; };
+		E3DCE21D1DCA889F001A52CC /* DateAndTimeCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DCE21C1DCA889F001A52CC /* DateAndTimeCellCollectionViewCell.swift */; };
 		E3F2DC221DB3F70F000DC6C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */; };
 		E3F2DC271DB5B524000DC6C6 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2DC261DB5B524000DC6C6 /* Authorization.swift */; };
 		E3F4461E1DC7CE8800B31D26 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F446001DC7CE8800B31D26 /* AsyncButton.swift */; };
@@ -110,6 +111,7 @@
 		E3DCE2131DCA86DD001A52CC /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3DCE2141DCA86DD001A52CC /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		E3DCE2151DCA86DD001A52CC /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		E3DCE21C1DCA889F001A52CC /* DateAndTimeCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateAndTimeCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E3F2DC261DB5B524000DC6C6 /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		E3F446001DC7CE8800B31D26 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */,
+				E3DCE21C1DCA889F001A52CC /* DateAndTimeCellCollectionViewCell.swift */,
 				E342EBA61DC168FF00A9C79F /* EstablishmentFoldableCell.swift */,
 				E3DCE2101DCA7EED001A52CC /* FriendFoldableCell.swift */,
 				E3F4463D1DC9759900B31D26 /* HeaderCollectionReusableView.swift */,
@@ -551,6 +554,7 @@
 				E3D518CE1DA7397000363CB0 /* EstablishmentsViewController.swift in Sources */,
 				E3DCE2181DCA86DD001A52CC /* StepCollectionViewFlowLayout.swift in Sources */,
 				E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */,
+				E3DCE21D1DCA889F001A52CC /* DateAndTimeCellCollectionViewCell.swift in Sources */,
 				E3DA36561DB163C8001B0F5C /* UIImageViewExtension.swift in Sources */,
 				E3F4463E1DC9759900B31D26 /* HeaderCollectionReusableView.swift in Sources */,
 				E3F446301DC7CE8800B31D26 /* Spring.swift in Sources */,

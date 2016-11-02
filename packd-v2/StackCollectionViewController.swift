@@ -25,6 +25,7 @@ class StackCollectionViewController: FoldableViewController {
         
         collectionView?.register(EstablishmentFoldableCell.self, forCellWithReuseIdentifier: EstablishmentFoldableCell.identifier)
         collectionView?.register(FriendFoldableCell.self, forCellWithReuseIdentifier: FriendFoldableCell.identifier)
+        collectionView?.register(DateAndTimeCellCollectionViewCell.self, forCellWithReuseIdentifier: DateAndTimeCellCollectionViewCell.identifier)
         
         collectionView?.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
         
@@ -130,7 +131,7 @@ class StackCollectionViewController: FoldableViewController {
             }
 
         default:
-            header.titleLabel.text = "P.S. a date and time never hurt..."
+            header.titleLabel.text = "P.S. a day and time never hurt anyone..."
             header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger / 2)
             header.titleLabel.textAlignment = .center
         }
@@ -142,6 +143,21 @@ class StackCollectionViewController: FoldableViewController {
         return CGSize(width: collectionView.frame.width, height: Size.oneFinger)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        switch indexPath.section {
+        case 0, 1:
+            let height = FoldableCellConstants.heightOfCell(forState: foldStatesOfCells[indexPath.section][indexPath.item])
+            let width = FoldableCellConstants.width
+            return CGSize(width: width, height: height)
+
+        default:
+            let height = 300.0
+            let width = Double((self.collectionView?.frame.width)!)
+            return CGSize(width: width, height: height)
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch section {
@@ -150,7 +166,7 @@ class StackCollectionViewController: FoldableViewController {
         case 1:
             return (mainViewController?.stackOfFriends.count)!
         default:
-            return 0
+            return 1
         }
     }
     
@@ -168,7 +184,9 @@ class StackCollectionViewController: FoldableViewController {
             setup(cell: cell, withIndexPath: indexPath)
             return cell
         default:
-            return FoldableCell()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DateAndTimeCellCollectionViewCell.identifier, for: indexPath) as! DateAndTimeCellCollectionViewCell
+            cell.setup()
+            return cell
         }
         
         
