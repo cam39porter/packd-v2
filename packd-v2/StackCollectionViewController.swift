@@ -146,22 +146,35 @@ class StackCollectionViewController: FoldableViewController {
         case 0:
             return (mainViewController?.stackOfEstablishments.count)!
         case 1:
-            return 0
+            return (mainViewController?.stackOfFriends.count)!
         default:
             return 0
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EstablishmentFoldableCell.identifier, for: indexPath) as! EstablishmentFoldableCell
         
-        // foldable cell setup
+        switch indexPath.section {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EstablishmentFoldableCell.identifier, for: indexPath) as! EstablishmentFoldableCell
+            cell.establishment = mainViewController?.stackOfEstablishments.items[indexPath.item]
+            setup(cell: cell, withIndexPath: indexPath)
+            return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendFoldableCell.identifier, for: indexPath) as! FriendFoldableCell
+            cell.friend = mainViewController?.stackOfFriends.items[indexPath.item]
+            setup(cell: cell, withIndexPath: indexPath)
+            return cell
+        default:
+            return FoldableCell()
+        }
+        
+        
+    }
+    
+    private func setup(cell: FoldableCell, withIndexPath indexPath: IndexPath) {
         cell.indexPath = indexPath
         cell.collectionViewController = self
-        
-        // establishment cell setup
-        cell.establishment = mainViewController?.stackOfEstablishments.items[indexPath.item]
-        
         
         switch foldStatesOfCells[indexPath.section][indexPath.item] {
         case FoldableCellConstants.FoldState.folded:
@@ -171,9 +184,6 @@ class StackCollectionViewController: FoldableViewController {
         case FoldableCellConstants.FoldState.fullyUnfolded:
             cell.setupFullyUnfolded()
         }
-                
-        return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
