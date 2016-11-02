@@ -35,6 +35,7 @@
 		E3DA36601DB1B8D0001B0F5C /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA365F1DB1B8D0001B0F5C /* FriendCell.swift */; };
 		E3DA36621DB2D667001B0F5C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36611DB2D667001B0F5C /* User.swift */; };
 		E3DA36641DB3E9D1001B0F5C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA36631DB3E9D1001B0F5C /* Colors.swift */; };
+		E3DCE2111DCA7EED001A52CC /* FriendFoldableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DCE2101DCA7EED001A52CC /* FriendFoldableCell.swift */; };
 		E3F2DC221DB3F70F000DC6C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */; };
 		E3F2DC271DB5B524000DC6C6 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2DC261DB5B524000DC6C6 /* Authorization.swift */; };
 		E3F4461E1DC7CE8800B31D26 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F446001DC7CE8800B31D26 /* AsyncButton.swift */; };
@@ -102,6 +103,7 @@
 		E3DA365F1DB1B8D0001B0F5C /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		E3DA36611DB2D667001B0F5C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3DA36631DB3E9D1001B0F5C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E3DCE2101DCA7EED001A52CC /* FriendFoldableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFoldableCell.swift; sourceTree = "<group>"; };
 		E3F2DC211DB3F70F000DC6C6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E3F2DC261DB5B524000DC6C6 /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		E3F446001DC7CE8800B31D26 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */,
 				E342EBA61DC168FF00A9C79F /* EstablishmentFoldableCell.swift */,
+				E3DCE2101DCA7EED001A52CC /* FriendFoldableCell.swift */,
 				E3F4463D1DC9759900B31D26 /* HeaderCollectionReusableView.swift */,
 			);
 			name = Stack;
@@ -493,6 +496,7 @@
 				E3DA365C1DB1873E001B0F5C /* FriendsViewController.swift in Sources */,
 				E3F446331DC7CE8800B31D26 /* SpringImageView.swift in Sources */,
 				E3F446231DC7CE8800B31D26 /* DesignableImageView.swift in Sources */,
+				E3DCE2111DCA7EED001A52CC /* FriendFoldableCell.swift in Sources */,
 				E342EBA51DC13FC200A9C79F /* CircularTransition.swift in Sources */,
 				E3DA364B1DAFE989001B0F5C /* Establishment.swift in Sources */,
 				E3DA36581DB16D36001B0F5C /* Fonts.swift in Sources */,

@@ -24,6 +24,7 @@ class StackCollectionViewController: FoldableViewController {
         setupFoldStatesOfCells()
         
         collectionView?.register(EstablishmentFoldableCell.self, forCellWithReuseIdentifier: EstablishmentFoldableCell.identifier)
+        
         collectionView?.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
         
         setupSubViews()
