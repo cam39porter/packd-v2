@@ -98,7 +98,7 @@ class StackCollectionViewController: FoldableViewController {
     
     // START: Collection View DataSource Delegate
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -130,7 +130,9 @@ class StackCollectionViewController: FoldableViewController {
             }
 
         default:
-            break
+            header.titleLabel.text = "P.S. a date and time never hurt..."
+            header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger / 2)
+            header.titleLabel.textAlignment = .center
         }
         
         return header
