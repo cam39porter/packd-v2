@@ -16,6 +16,8 @@ class StackCollectionViewController: FoldableViewController {
     // START: View
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        foldStatesOfCells = [Array<FoldableCellConstants.FoldState>(), Array<FoldableCellConstants.FoldState>()]
 
         collectionView?.backgroundColor = Colors.highlight
         
@@ -32,9 +34,17 @@ class StackCollectionViewController: FoldableViewController {
     }
     
     private func setupFoldStatesOfCells() {
-        let cellCount = (mainViewController?.stackOfEstablishments.count)!
-        if cellCount == 0 { return }
-        for _ in 1...cellCount { foldStatesOfCells.append(FoldableCellConstants.FoldState.folded) }
+        var cellCount = (mainViewController?.stackOfEstablishments.count)!
+        if cellCount != 0 {
+            for _ in 1...cellCount { foldStatesOfCells[0].append(FoldableCellConstants.FoldState.folded) }
+        }
+        
+        cellCount = (mainViewController?.stackOfFriends.count)!
+        if cellCount != 0 {
+            for _ in 1...cellCount { foldStatesOfCells[1].append(FoldableCellConstants.FoldState.folded) }
+        }
+        
+        
     }
     
     private func setupSubViews() {
@@ -144,7 +154,7 @@ class StackCollectionViewController: FoldableViewController {
         cell.establishment = mainViewController?.stackOfEstablishments.items[indexPath.item]
         
         
-        switch foldStatesOfCells[indexPath.item] {
+        switch foldStatesOfCells[indexPath.section][indexPath.item] {
         case FoldableCellConstants.FoldState.folded:
             cell.setupFolded()
         case FoldableCellConstants.FoldState.halfUnfolded:

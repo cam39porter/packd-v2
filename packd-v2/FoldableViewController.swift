@@ -12,7 +12,7 @@ import UIKit
 class FoldableViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     // START: Model
-    var foldStatesOfCells = Array<FoldableCellConstants.FoldState>()
+    var foldStatesOfCells = [Array<FoldableCellConstants.FoldState>()]
     var unfoldedCell: IndexPath? = nil
     // END: Model
     
@@ -29,7 +29,7 @@ class FoldableViewController: UICollectionViewController, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = FoldableCellConstants.heightOfCell(forState: foldStatesOfCells[indexPath.item])
+        let height = FoldableCellConstants.heightOfCell(forState: foldStatesOfCells[indexPath.section][indexPath.item])
         let width = FoldableCellConstants.width
         return CGSize(width: width, height: height)
     }

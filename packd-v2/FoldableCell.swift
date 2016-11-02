@@ -111,16 +111,16 @@ class FoldableCell: UICollectionViewCell {
         if isFolded {
             // fold the currently unfolded cell
             if let oldUnfoldedCell = collectionViewController?.unfoldedCell {
-                collectionViewController?.foldStatesOfCells[oldUnfoldedCell.item] = FoldableCellConstants.FoldState.folded
+                collectionViewController?.foldStatesOfCells[oldUnfoldedCell.section][oldUnfoldedCell.item] = FoldableCellConstants.FoldState.folded
             }
             collectionViewController?.unfoldedCell = indexPath
-            collectionViewController?.foldStatesOfCells[(indexPath?.item)!] = FoldableCellConstants.FoldState.halfUnfolded
+            collectionViewController?.foldStatesOfCells[(indexPath?.section)!][(indexPath?.item)!] = FoldableCellConstants.FoldState.halfUnfolded
             collectionViewController?.collectionView?.reloadData()
         }
         
         if isHalfUnfolded {
             collectionViewController?.unfoldedCell = indexPath
-            collectionViewController?.foldStatesOfCells[(indexPath?.item)!] = FoldableCellConstants.FoldState.fullyUnfolded
+            collectionViewController?.foldStatesOfCells[(indexPath?.section)!][(indexPath?.item)!] = FoldableCellConstants.FoldState.fullyUnfolded
             collectionViewController?.collectionView?.reloadData()
         }
         
@@ -134,13 +134,13 @@ class FoldableCell: UICollectionViewCell {
         
         if isHalfUnfolded {
             collectionViewController?.unfoldedCell = nil
-            collectionViewController?.foldStatesOfCells[(indexPath?.item)!] = FoldableCellConstants.FoldState.folded
+            collectionViewController?.foldStatesOfCells[(indexPath?.section)!][(indexPath?.item)!] = FoldableCellConstants.FoldState.folded
             collectionViewController?.collectionView?.reloadData()
         }
         
         if isFullyUnfolded {
             collectionViewController?.unfoldedCell = nil
-            collectionViewController?.foldStatesOfCells[(indexPath?.item)!] = FoldableCellConstants.FoldState.folded
+            collectionViewController?.foldStatesOfCells[(indexPath?.section)!][(indexPath?.item)!] = FoldableCellConstants.FoldState.folded
             collectionViewController?.collectionView?.reloadData()
         }
     }
