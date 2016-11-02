@@ -246,5 +246,4 @@ class EstablishmentFoldableCell: FoldableCell {
         moreButton.addTarget(self, action: #selector(unfold), for: .touchUpInside)
     }
     // END: View Components
-
 }

@@ -107,9 +107,7 @@ class StackCollectionViewController: FoldableViewController {
         case FoldableCellConstants.FoldState.fullyUnfolded:
             cell.setupFullyUnfolded()
         }
-        
-        cell.setupFolded()
-        
+                
         return cell
         
     }
