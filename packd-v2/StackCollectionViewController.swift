@@ -24,6 +24,7 @@ class StackCollectionViewController: FoldableViewController {
         setupFoldStatesOfCells()
         
         collectionView?.register(EstablishmentFoldableCell.self, forCellWithReuseIdentifier: EstablishmentFoldableCell.identifier)
+        collectionView?.register(FriendFoldableCell.self, forCellWithReuseIdentifier: FriendFoldableCell.identifier)
         
         collectionView?.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
         
@@ -52,8 +53,8 @@ class StackCollectionViewController: FoldableViewController {
         setupStackButton()
     }
     
-    let stackButton: UIButton = {
-        let button = UIButton(type: .custom)
+    let stackButton: SpringButton = {
+        let button = SpringButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.contrast
         button.setTitle("-", for: .normal)
@@ -117,9 +118,16 @@ class StackCollectionViewController: FoldableViewController {
                 header.titleLabel.textAlignment = .left
             }
         case 1:
+            
+            if (mainViewController?.stackOfFriends.count)! == 0 {
                 header.titleLabel.text = "And maybe a friend to go there with..."
                 header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger / 2)
                 header.titleLabel.textAlignment = .center
+            } else {
+                header.titleLabel.text = "WITH"
+                header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger)
+                header.titleLabel.textAlignment = .left
+            }
 
         default:
             break
