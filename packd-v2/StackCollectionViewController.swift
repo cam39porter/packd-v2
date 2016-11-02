@@ -22,6 +22,7 @@ class StackCollectionViewController: FoldableViewController {
         setupFoldStatesOfCells()
         
         collectionView?.register(EstablishmentFoldableCell.self, forCellWithReuseIdentifier: FoldableCellConstants.reuseIdentifier)
+        collectionView?.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
         
         setupSubViews()
     }
@@ -84,6 +85,21 @@ class StackCollectionViewController: FoldableViewController {
     // END: View
     
     // START: Collection View DataSource Delegate
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
+        
+        print("here")
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 100)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (mainViewController?.stackOfEstablishments.count)!
     }

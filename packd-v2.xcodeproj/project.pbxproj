@@ -66,6 +66,7 @@
 		E3F446381DC7CE8800B31D26 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4461B1DC7CE8800B31D26 /* TransitionManager.swift */; };
 		E3F446391DC7CE8800B31D26 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4461C1DC7CE8800B31D26 /* TransitionZoom.swift */; };
 		E3F4463A1DC7CE8800B31D26 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4461D1DC7CE8800B31D26 /* UnwindSegue.swift */; };
+		E3F4463E1DC9759900B31D26 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4463D1DC9759900B31D26 /* HeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +134,7 @@
 		E3F4461B1DC7CE8800B31D26 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		E3F4461C1DC7CE8800B31D26 /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
 		E3F4461D1DC7CE8800B31D26 /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
+		E3F4463D1DC9759900B31D26 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			children = (
 				E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */,
 				E342EBA61DC168FF00A9C79F /* EstablishmentFoldableCell.swift */,
+				E3F4463D1DC9759900B31D26 /* HeaderCollectionReusableView.swift */,
 			);
 			name = Stack;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				E3D518CE1DA7397000363CB0 /* EstablishmentsViewController.swift in Sources */,
 				E3D518BE1DA6EEB900363CB0 /* UIViewExtension.swift in Sources */,
 				E3DA36561DB163C8001B0F5C /* UIImageViewExtension.swift in Sources */,
+				E3F4463E1DC9759900B31D26 /* HeaderCollectionReusableView.swift in Sources */,
 				E3F446301DC7CE8800B31D26 /* Spring.swift in Sources */,
 				E3F4461F1DC7CE8800B31D26 /* AsyncImageView.swift in Sources */,
 				E3F446371DC7CE8800B31D26 /* SpringView.swift in Sources */,
