@@ -35,7 +35,11 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
     }
     
     private func anchorSubviews() {
-        anchorPickerButtonStart()
+        if dateTimeLabel.text != nil {
+            anchorPickerButtonEnd()
+        } else {
+            anchorPickerButtonStart()
+        }
     }
     
     private func addTargets() {
