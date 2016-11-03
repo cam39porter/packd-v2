@@ -117,6 +117,8 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
     
     // START: Picker 
     @objc private func showPicker() {
+        collectionViewController?.collectionView?.scrollToItem(at: (collectionViewController?.collectionView?.indexPath(for: self))!, at: .bottom, animated: true)
+                
         let min = Date().addingTimeInterval(-60 * 60 * 24 * 2)
         let max = Date().addingTimeInterval(60 * 60 * 24 * 365)
         let picker = DateTimePicker.show(selected: self.currentDate, minimumDate: min, maximumDate: max)

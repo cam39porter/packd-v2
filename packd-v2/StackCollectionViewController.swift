@@ -152,7 +152,7 @@ class StackCollectionViewController: FoldableViewController {
             return CGSize(width: width, height: height)
 
         default:
-            let height = 300.0
+            let height = 430.0
             let width = Double((self.collectionView?.frame.width)!)
             return CGSize(width: width, height: height)
         }
