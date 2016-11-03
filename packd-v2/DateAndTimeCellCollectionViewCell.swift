@@ -35,7 +35,7 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
     }
     
     private func anchorSubviews() {
-        if dateTimeLabel.text != nil {
+        if timeLabel.text != nil {
             anchorPickerButtonEnd()
         } else {
             anchorPickerButtonStart()
@@ -72,27 +72,44 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
     }
     
     private func anchorPickerButtonEnd() {
-        pickerButton.topAnchor.constraint(equalTo: dateTimeLabel.bottomAnchor, constant: Size.minPadding).isActive = true
+        pickerButton.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: Size.minPadding).isActive = true
         pickerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
         pickerButton.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
         pickerButton.widthAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
     }
     
-    let dateTimeLabel: SpringLabel = {
+    let dateLabel: SpringLabel = {
+        let label = SpringLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = UIColor.clear
+        label.textColor = Colors.contrast
+        label.font = Fonts.font(ofSize: Size.oneFinger / 2)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private func anchorDateLabel() {
+        dateLabel.leftAnchor.constraint(equalTo: self.centerXAnchor, constant: Size.minPadding / 2).isActive = true
+        dateLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Size.minPadding).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        dateLabel.widthAnchor.constraint(equalToConstant: Size.oneFinger * 4).isActive = true
+    }
+    
+    let timeLabel: SpringLabel = {
         let label = SpringLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor.clear
         label.textColor = Colors.contrast
         label.font = Fonts.boldFont(ofSize: Size.oneFinger / 2)
-        label.textAlignment = .center
+        label.textAlignment = .right
         return label
     }()
     
-    private func anchorDateTimeLabel() {
-        dateTimeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
-        dateTimeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Size.minPadding).isActive = true
-        dateTimeLabel.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
-        dateTimeLabel.widthAnchor.constraint(equalToConstant: Size.oneFinger * 4).isActive = true
+    private func anchorTimeLabel() {
+        timeLabel.rightAnchor.constraint(equalTo: self.centerXAnchor, constant: -Size.minPadding / 2).isActive = true
+        timeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Size.minPadding).isActive = true
+        timeLabel.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        timeLabel.widthAnchor.constraint(equalToConstant: Size.oneFinger * 4).isActive = true
     }
     
     // END: View Components
@@ -104,18 +121,23 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
         let max = Date().addingTimeInterval(60 * 60 * 24 * 365)
         let picker = DateTimePicker.show(selected: self.currentDate, minimumDate: min, maximumDate: max)
         picker.highlightColor = Colors.highlight
-        picker.doneButtonTitle = "!! DONE DONE !!"
-        picker.todayButtonTitle = "Today👌Today"
+        picker.doneButtonTitle = "Call it a date"
+        picker.todayButtonTitle = "Now    "
         picker.completionHandler = { date in
             
             
             self.currentDate = date
             let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm dd/MM/YYYY"
             
-            self.dateTimeLabel.text = formatter.string(from: date)
-            self.addSubview(self.dateTimeLabel)
-            self.anchorDateTimeLabel()
+            formatter.dateFormat = "HH:mm"
+            self.timeLabel.text = formatter.string(from: date)
+            self.addSubview(self.timeLabel)
+            self.anchorTimeLabel()
+            
+            formatter.dateFormat = "dd/MM"
+            self.dateLabel.text = formatter.string(from: date)
+            self.addSubview(self.dateLabel)
+            self.anchorDateLabel()
             
             self.pickerButton.removeFromSuperview()
             self.addSubview(self.pickerButton)
