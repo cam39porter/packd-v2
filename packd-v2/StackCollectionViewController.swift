@@ -185,6 +185,7 @@ class StackCollectionViewController: FoldableViewController {
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DateAndTimeCellCollectionViewCell.identifier, for: indexPath) as! DateAndTimeCellCollectionViewCell
+            cell.collectionViewController = self
             cell.setup()
             return cell
         }
