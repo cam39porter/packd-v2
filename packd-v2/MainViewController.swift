@@ -128,6 +128,8 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     private func addSubviews() {
         establishmentContainerView.addSubview(establishmentLabel)
         friendsContainerView.addSubview(friendsLabel)
+        
+        addAnimationTo(label: friendsLabel)
     }
     
     private func anchorSubviews() {
@@ -300,6 +302,34 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     
     
     // START: Collection View Switching
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        switch targetContentOffset.pointee.y {
+            
+        case MainViewConstants.establishmentFrameY:
+            establishmentLabel.animate()
+            addAnimationTo(label: friendsLabel)
+            
+        case MainViewConstants.friendsFrameY:
+            friendsLabel.animate()
+            addAnimationTo(label: establishmentLabel)
+
+            
+        case MainViewConstants.perksFrameY:
+            addAnimationTo(label: friendsLabel)
+            
+        default:
+            break
+        }
+    }
+    
+    
+    private func addAnimationTo(label: SpringLabel) {
+        label.animation = Spring.AnimationPreset.SqueezeLeft.rawValue
+        label.curve  = Spring.AnimationCurve.EaseOutCubic.rawValue
+        label.duration = 1
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         switch scrollView.contentOffset.y {
         case MainViewConstants.establishmentFrameY:

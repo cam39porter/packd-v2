@@ -51,7 +51,7 @@ class StackCollectionViewController: FoldableViewController {
     }
     
     private func setupSubViews() {
-        setupStackButton()
+        setupStackButtons()
     }
     
     let stackButton: SpringButton = {
@@ -69,26 +69,86 @@ class StackCollectionViewController: FoldableViewController {
         return button
     }()
     
-    private func setupStackButton() {
-        addStackButtonToFront(ofView: view)
-        anchorStackButton()
-        addTargetToStackButton()
+    let sendButton: SpringButton = {
+        let button = SpringButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = Colors.contrast
+        button.setTitle("S", for: .normal)
+        button.setTitleColor(Colors.highlight, for: .normal)
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = Size.oneFinger / 2
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 2
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        return button
+    }()
+    
+    let clearButton: SpringButton = {
+        let button = SpringButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = Colors.contrast
+        button.setTitle("C", for: .normal)
+        button.setTitleColor(Colors.highlight, for: .normal)
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = Size.oneFinger / 2
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 2
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        return button
+    }()
+    
+    private func setupStackButtons() {
+        addStackButtonsToFront(ofView: view)
+        anchorStackButtons()
+        addTargetToStackButtons()
     }
     
-    private func addStackButtonToFront(ofView view: UIView) {
+    private func addStackButtonsToFront(ofView view: UIView) {
         view.addSubview(stackButton)
         view.bringSubview(toFront: stackButton)
+        
+        view.addSubview(sendButton)
+        view.bringSubview(toFront: sendButton)
+        
+        view.addSubview(clearButton)
+        view.bringSubview(toFront: clearButton)
     }
     
-    private func anchorStackButton() {
+    private func anchorStackButtons() {
         stackButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Size.oneFinger).isActive = true
         stackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         stackButton.heightAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
         stackButton.widthAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+        
+        sendButton.leftAnchor.constraint(equalTo: stackButton.rightAnchor, constant: Size.oneFinger).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: stackButton.centerYAnchor, constant: 0).isActive = true
+        sendButton.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        sendButton.widthAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        
+        clearButton.rightAnchor.constraint(equalTo: stackButton.leftAnchor, constant: -Size.oneFinger).isActive = true
+        clearButton.centerYAnchor.constraint(equalTo: stackButton.centerYAnchor, constant: 0).isActive = true
+        clearButton.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        clearButton.widthAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
     }
     
-    private func addTargetToStackButton() {
+    private func addTargetToStackButtons() {
         stackButton.addTarget(self, action: #selector(dismissStackView), for: .touchUpInside)
+        sendButton.addTarget(self, action: #selector(send), for: .touchUpInside)
+        clearButton.addTarget(self, action: #selector(clear), for: .touchUpInside)
+    }
+    
+    @objc private func send() {
+        sendButton.animation = Spring.AnimationPreset.Wobble.rawValue
+        sendButton.force = 0.25
+        sendButton.animate()
+    }
+    
+    @objc private func clear() {
+        clearButton.animation = Spring.AnimationPreset.Wobble.rawValue
+        clearButton.force = 0.25
+        clearButton.animate()
     }
     
     @objc private func dismissStackView() {
