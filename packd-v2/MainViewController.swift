@@ -119,6 +119,20 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
         mainScrollView.contentSize = CGSize(width: mainScrollView.frame.size.width,
                                             height: mainScrollView.frame.size.height * CGFloat(MainViewConstants.backgroundImageDictionary.count))
         
+        addSubviews()
+        anchorSubviews()
+        
+    }
+    
+    
+    private func addSubviews() {
+        establishmentContainerView.addSubview(establishmentLabel)
+        friendsContainerView.addSubview(friendsLabel)
+    }
+    
+    private func anchorSubviews() {
+        anchorEstablishmentLabel()
+        anchorFriendsLabel()
     }
     
     var frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -129,6 +143,42 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
+    
+    let establishmentLabel: SpringLabel = {
+        let label = SpringLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = UIColor.clear
+        label.textColor = Colors.highlight
+        label.font = Fonts.lightFont(ofSize: Size.oneFinger)
+        label.textAlignment = .left
+        label.text = "PLACES"
+        return label
+    }()
+    
+    private func anchorEstablishmentLabel() {
+        establishmentLabel.topAnchor.constraint(equalTo: establishmentContainerView.topAnchor, constant: Size.minPadding * 2).isActive = true
+        establishmentLabel.leftAnchor.constraint(equalTo: establishmentContainerView.leftAnchor, constant: Size.minPadding).isActive = true
+        establishmentLabel.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        establishmentLabel.widthAnchor.constraint(equalToConstant: Size.oneFinger * 4).isActive = true
+    }
+    
+    let friendsLabel: SpringLabel = {
+        let label = SpringLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = UIColor.clear
+        label.textColor = Colors.highlight
+        label.font = Fonts.lightFont(ofSize: Size.oneFinger)
+        label.textAlignment = .left
+        label.text = "PEOPLE"
+        return label
+    }()
+    
+    private func anchorFriendsLabel() {
+        friendsLabel.topAnchor.constraint(equalTo: friendsContainerView.topAnchor, constant: Size.minPadding * 2).isActive = true
+        friendsLabel.leftAnchor.constraint(equalTo: friendsContainerView.leftAnchor, constant: Size.minPadding).isActive = true
+        friendsLabel.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        friendsLabel.widthAnchor.constraint(equalToConstant: Size.oneFinger * 4).isActive = true
+    }
     
     var establishmentContainerView = UIView()
     
