@@ -143,12 +143,22 @@ class StackCollectionViewController: FoldableViewController {
         sendButton.animation = Spring.AnimationPreset.Wobble.rawValue
         sendButton.force = 0.25
         sendButton.animate()
+        
+        
     }
     
     @objc private func clear() {
         clearButton.animation = Spring.AnimationPreset.Wobble.rawValue
         clearButton.force = 0.25
         clearButton.animate()
+        
+        mainViewController?.setOfFriendsUIDsOnStack.removeAll()
+        mainViewController?.stackOfFriends.items.removeAll()
+        
+        mainViewController?.setOfEstablishmentUIDsOnStack.removeAll()
+        mainViewController?.stackOfEstablishments.items.removeAll()
+        
+        collectionView?.reloadData()
     }
     
     @objc private func dismissStackView() {
