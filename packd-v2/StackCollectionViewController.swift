@@ -162,7 +162,7 @@ class StackCollectionViewController: FoldableViewController {
         
         mainViewController?.setOfEstablishmentUIDsOnStack.removeAll()
         mainViewController?.stackOfEstablishments.items.removeAll()
-                
+        
         collectionView?.reloadData()
     }
     
@@ -206,7 +206,7 @@ class StackCollectionViewController: FoldableViewController {
             }
 
         default:
-            header.titleLabel.text = "P.S. a day and time never hurt anyone..."
+            header.titleLabel.text = "P.S. pick a time to meet up..."
             header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger / 2)
             header.titleLabel.textAlignment = .center
         }
