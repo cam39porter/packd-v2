@@ -158,7 +158,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     }()
     
     private func anchorEstablishmentLabel() {
-        establishmentLabel.topAnchor.constraint(equalTo: establishmentContainerView.topAnchor, constant: Size.minPadding * 2).isActive = true
+        establishmentLabel.topAnchor.constraint(equalTo: establishmentContainerView.topAnchor, constant: Size.oneFinger).isActive = true
         establishmentLabel.leftAnchor.constraint(equalTo: establishmentContainerView.leftAnchor, constant: Size.minPadding).isActive = true
         establishmentLabel.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
         establishmentLabel.widthAnchor.constraint(equalToConstant: Size.oneFinger * 4).isActive = true
@@ -176,7 +176,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     }()
     
     private func anchorFriendsLabel() {
-        friendsLabel.topAnchor.constraint(equalTo: friendsContainerView.topAnchor, constant: Size.minPadding * 2).isActive = true
+        friendsLabel.topAnchor.constraint(equalTo: friendsContainerView.topAnchor, constant: Size.oneFinger).isActive = true
         friendsLabel.leftAnchor.constraint(equalTo: friendsContainerView.leftAnchor, constant: Size.minPadding).isActive = true
         friendsLabel.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
         friendsLabel.widthAnchor.constraint(equalToConstant: Size.oneFinger * 4).isActive = true
