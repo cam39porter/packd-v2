@@ -11,6 +11,8 @@ import UIKit
 class StackCollectionViewController: FoldableViewController {
     // START: Model
     var mainViewController: MainViewController? = nil
+    
+    var dateAndTimeCell: DateAndTimeCellCollectionViewCell? = nil
     // END: Model
     
     // START: View
@@ -160,7 +162,7 @@ class StackCollectionViewController: FoldableViewController {
         
         mainViewController?.setOfEstablishmentUIDsOnStack.removeAll()
         mainViewController?.stackOfEstablishments.items.removeAll()
-        
+                
         collectionView?.reloadData()
     }
     
@@ -258,6 +260,7 @@ class StackCollectionViewController: FoldableViewController {
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DateAndTimeCellCollectionViewCell.identifier, for: indexPath) as! DateAndTimeCellCollectionViewCell
+            dateAndTimeCell = cell
             cell.collectionViewController = self
             cell.setup()
             return cell

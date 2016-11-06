@@ -23,6 +23,7 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
             if minutes == 0 {
                 timeLabel.text = "Right now!"
                 inLabel.text = ""
+                
             } else {
                 
                 let hours = minutes / 60
