@@ -72,9 +72,10 @@ class StackCollectionViewController: FoldableViewController {
     let sendButton: SpringButton = {
         let button = SpringButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = Colors.contrast
-        button.setTitle("S", for: .normal)
-        button.setTitleColor(Colors.highlight, for: .normal)
+        let icon = #imageLiteral(resourceName: "send_icon")
+        let tintIcon = icon.withRenderingMode(.alwaysTemplate)
+        button.setBackgroundImage(tintIcon, for: .normal)
+        button.tintColor = Colors.contrast
         button.layer.masksToBounds = false
         button.layer.cornerRadius = Size.oneFinger / 2
         button.layer.shadowColor = UIColor.black.cgColor
@@ -87,9 +88,11 @@ class StackCollectionViewController: FoldableViewController {
     let clearButton: SpringButton = {
         let button = SpringButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = Colors.contrast
-        button.setTitle("C", for: .normal)
-        button.setTitleColor(Colors.highlight, for: .normal)
+        let icon = #imageLiteral(resourceName: "clear_icon")
+        let tintIcon = icon.withRenderingMode(.alwaysTemplate)
+        button.setBackgroundImage(tintIcon, for: .normal)
+        button.tintColor = Colors.contrast
+        button.contentMode = .scaleAspectFit
         button.layer.masksToBounds = false
         button.layer.cornerRadius = Size.oneFinger / 2
         button.layer.shadowColor = UIColor.black.cgColor
