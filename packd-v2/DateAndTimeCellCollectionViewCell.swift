@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AudioToolbox
 
 class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
     
@@ -147,9 +146,7 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
         
     }
     
-    @objc private func performHighlight(button: SpringButton) {
-        AudioServicesPlaySystemSound(1520)
-        
+    @objc func performHighlight(button: SpringButton) {        
         button.backgroundColor = Colors.highlight
         button.setTitleColor(Colors.contrast, for: .normal)
         button.layer.shadowColor = Colors.contrast.cgColor
@@ -172,7 +169,7 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @objc private func performUnhighlight(button: SpringButton) {
+    @objc func performUnhighlight(button: SpringButton) {
         button.backgroundColor = Colors.contrast
         button.setTitleColor(Colors.highlight, for: .normal)
         button.layer.shadowColor = UIColor.clear.cgColor

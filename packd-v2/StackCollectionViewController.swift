@@ -262,9 +262,28 @@ class StackCollectionViewController: FoldableViewController {
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DateAndTimeCellCollectionViewCell.identifier, for: indexPath) as! DateAndTimeCellCollectionViewCell
+            
             if let dateAndTimeCell = mainViewController?.dateAndTimeCell {
-                return dateAndTimeCell
+                if dateAndTimeCell.fiveMinButton.backgroundColor == Colors.highlight {
+                    cell.performHighlight(button: cell.fiveMinButton)
+                }
+                if dateAndTimeCell.tenMinButton.backgroundColor == Colors.highlight {
+                    cell.performHighlight(button: cell.tenMinButton)
+                }
+                if dateAndTimeCell.fifteenMinButton.backgroundColor == Colors.highlight {
+                    cell.performHighlight(button: cell.fifteenMinButton)
+                }
+                if dateAndTimeCell.thirtyMinButton.backgroundColor == Colors.highlight {
+                    cell.performHighlight(button: cell.thirtyMinButton)
+                }
+                if dateAndTimeCell.oneHourButton.backgroundColor == Colors.highlight {
+                    cell.performHighlight(button: cell.oneHourButton)
+                }
+                if dateAndTimeCell.twoHourButton.backgroundColor == Colors.highlight {
+                    cell.performHighlight(button: cell.twoHourButton)
+                }
             }
+            
             dateAndTimeCell = cell
             cell.collectionViewController = self
             cell.setup()
