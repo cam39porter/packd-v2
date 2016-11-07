@@ -45,6 +45,8 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIViewControll
     
     var stackOfFriends = Stack<User>()
     var setOfFriendsUIDsOnStack = Set<String>()
+    
+    var dateAndTimeCell: DateAndTimeCellCollectionViewCell? = nil
     // END: Model
     
     // START: View

@@ -163,6 +163,8 @@ class StackCollectionViewController: FoldableViewController {
         mainViewController?.setOfEstablishmentUIDsOnStack.removeAll()
         mainViewController?.stackOfEstablishments.items.removeAll()
         
+        mainViewController?.dateAndTimeCell = nil
+        
         collectionView?.reloadData()
     }
     
@@ -260,9 +262,13 @@ class StackCollectionViewController: FoldableViewController {
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DateAndTimeCellCollectionViewCell.identifier, for: indexPath) as! DateAndTimeCellCollectionViewCell
+            if let dateAndTimeCell = mainViewController?.dateAndTimeCell {
+                return dateAndTimeCell
+            }
             dateAndTimeCell = cell
             cell.collectionViewController = self
             cell.setup()
+            mainViewController?.dateAndTimeCell = cell
             return cell
         }
         

@@ -13,13 +13,13 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
     
     // START: Model
     
-    var collectionViewController: UICollectionViewController? = nil
+    var collectionViewController: StackCollectionViewController? = nil
     
     static let identifier = "dateAndTimeCell"
     
     var minutes = 0 {
         didSet {
-            
+                        
             if minutes == 0 {
                 timeLabel.text = "Right now!"
                 inLabel.text = ""
