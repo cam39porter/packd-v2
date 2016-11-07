@@ -52,6 +52,26 @@ class DateAndTimeCellCollectionViewCell: UICollectionViewCell {
     
     
     // START: View Components
+    override func prepareForReuse() {
+        if fiveMinButton.backgroundColor == Colors.highlight {
+            performUnhighlight(button: fiveMinButton)
+        }
+        if tenMinButton.backgroundColor == Colors.highlight {
+            performUnhighlight(button: tenMinButton)
+        }
+        if fifteenMinButton.backgroundColor == Colors.highlight {
+            performUnhighlight(button: fifteenMinButton)
+        }
+        if thirtyMinButton.backgroundColor == Colors.highlight {
+            performUnhighlight(button: thirtyMinButton)
+        }
+        if oneHourButton.backgroundColor == Colors.highlight {
+            performUnhighlight(button: oneHourButton)
+        }
+        if twoHourButton.backgroundColor == Colors.highlight {
+            performUnhighlight(button: twoHourButton)
+        }
+    }
     
     func setup() {
         addSubviews()
