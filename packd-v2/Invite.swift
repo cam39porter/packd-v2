@@ -40,5 +40,18 @@ class Invite: DatabaseObject {
         let inviteCompletion  = inviteToSnapshotCompletion(completion)
         DatabaseObject.getAllObjects(withCompletionHandler: inviteCompletion)
     }
+    
+    static func getInviteBy(uid: String, withCompletionHandler completion: @escaping (Invite?) -> Void) {
+        DatabaseObject.objectsReference = invitesReference
+        let inviteCompletion = inviteToSnapshotCompletion(completion)
+        DatabaseObject.getObjectBy(uid: uid, withCompletionHandler: inviteCompletion)
+    }
     // END: database -> invites
+    
+    // START: Send
+    func send(withCompletonHandler completion: (Bool) -> Void) {
+        if recipientUIDs.count > 0 && establishmentUIDs.count > 0 {
+        } else { completion(false) }
+    }
+    // END: Send
 }
