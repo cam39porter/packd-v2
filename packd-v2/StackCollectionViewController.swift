@@ -208,9 +208,16 @@ class StackCollectionViewController: FoldableViewController {
             }
 
         default:
-            header.titleLabel.text = "P.S. pick a time to meet up..."
-            header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger / 2)
-            header.titleLabel.textAlignment = .center
+            
+            if (mainViewController?.stackOfFriends.count)! + (mainViewController?.stackOfEstablishments.count)! > 0 {
+                header.titleLabel.text = "WHEN"
+                header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger)
+                header.titleLabel.textAlignment = .left
+            } else {
+                header.titleLabel.text = "P.S. pick a time to meet up..."
+                header.titleLabel.font = Fonts.lightFont(ofSize: Size.oneFinger / 2)
+                header.titleLabel.textAlignment = .center
+            }
         }
         
         return header

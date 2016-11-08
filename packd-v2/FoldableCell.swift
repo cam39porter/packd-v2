@@ -132,9 +132,7 @@ class FoldableCell: UICollectionViewCell {
     }
     
     func fold() {
-        if isFolded {
-            return
-        }
+        if isFolded { return }
         
         if isHalfUnfolded {
             collectionViewController?.unfoldedCell = nil

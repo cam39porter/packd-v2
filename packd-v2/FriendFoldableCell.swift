@@ -63,7 +63,6 @@ class FriendFoldableCell: FoldableCell {
         addSubview(nameLabel)
         addSubview(descriptionLabel)
         addSubview(heartButton)
-        addSubview(moreButton)
     }
     
     private func anchorFoldedSubViews() {
@@ -71,12 +70,13 @@ class FriendFoldableCell: FoldableCell {
         anchorNameLabelFolded()
         anchorDescriptionLabelFolded()
         anchorHeartButtonFolded()
-        anchorMoreButtonFolded()
     }
     
     private func addTargets() {
 //        addTargetToHeartButton()
-        addTargetMoreButton()
+        
+        let unfoldGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(unfold))
+        self.addGestureRecognizer(unfoldGestureRecognizer)
     }
     
     override func setupHalfUnfolded() {
@@ -117,7 +117,6 @@ class FriendFoldableCell: FoldableCell {
         profileImageView.removeFromSuperview()
         nameLabel.removeFromSuperview()
         descriptionLabel.removeFromSuperview()
-        moreButton.removeFromSuperview()
     }
     
     private func addFullyUnfoldedSubViews() {
@@ -305,27 +304,6 @@ class FriendFoldableCell: FoldableCell {
         descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Size.minPadding).isActive = true
         descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Size.minPadding).isActive = true
         descriptionLabel.widthAnchor.constraint(equalToConstant: self.bounds.width * 2/3).isActive = true
-    }
-    
-    let moreButton: SpringButton = {
-        let button = SpringButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        let icon = #imageLiteral(resourceName: "more_icon")
-        let tintIcon = icon.withRenderingMode(.alwaysTemplate)
-        button.setBackgroundImage(tintIcon, for: .normal)
-        button.tintColor = Colors.contrast
-        return button
-    }()
-    
-    private func anchorMoreButtonFolded() {
-        moreButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Size.minPadding).isActive = true
-        moreButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Size.minPadding).isActive = true
-        moreButton.heightAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
-        moreButton.widthAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
-    }
-    
-    private func addTargetMoreButton() {
-        moreButton.addTarget(self, action: #selector(unfold), for: .touchUpInside)
     }
     
     let lessButton: SpringButton = {

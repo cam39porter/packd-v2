@@ -61,7 +61,6 @@ class EstablishmentFoldableCell: FoldableCell {
         addSubview(nameLabel)
         addSubview(descriptionLabel)
         addSubview(heartButton)
-        addSubview(moreButton)
     }
     
     private func anchorFoldedSubViews() {
@@ -69,12 +68,14 @@ class EstablishmentFoldableCell: FoldableCell {
         anchorNameLabelFolded()
         anchorDescriptionLabelFolded()
         anchorHeartButtonFolded()
-        anchorMoreButtonFolded()
     }
     
     private func addTargets() {
+        
+        let unfoldGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(unfold))
+        self.addGestureRecognizer(unfoldGestureRecognizer)
+        
         addTargetToHeartButton()
-        addTargetMoreButton()
     }
     
     override func setupHalfUnfolded() {
@@ -109,7 +110,6 @@ class EstablishmentFoldableCell: FoldableCell {
         profileImageView.removeFromSuperview()
         nameLabel.removeFromSuperview()
         descriptionLabel.removeFromSuperview()
-        moreButton.removeFromSuperview()
     }
     
     private func addFullyUnfoldedSubViews() {
@@ -278,26 +278,6 @@ class EstablishmentFoldableCell: FoldableCell {
         descriptionLabel.widthAnchor.constraint(equalToConstant: self.bounds.width * 2/3).isActive = true
     }
     
-    let moreButton: SpringButton = {
-        let button = SpringButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        let icon = #imageLiteral(resourceName: "more_icon")
-        let tintIcon = icon.withRenderingMode(.alwaysTemplate)
-        button.setBackgroundImage(tintIcon, for: .normal)
-        button.tintColor = Colors.contrast
-        return button
-    }()
-    
-    private func anchorMoreButtonFolded() {
-        moreButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Size.minPadding).isActive = true
-        moreButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Size.minPadding).isActive = true
-        moreButton.heightAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
-        moreButton.widthAnchor.constraint(equalToConstant: Size.oneFinger / 2).isActive = true
-    }
-    
-    private func addTargetMoreButton() {
-        moreButton.addTarget(self, action: #selector(unfold), for: .touchUpInside)
-    }
     
     let lessButton: SpringButton = {
         let button = SpringButton()
@@ -320,4 +300,13 @@ class EstablishmentFoldableCell: FoldableCell {
         lessButton.addTarget(self, action: #selector(fold), for: .touchUpInside)
     }
     // END: View Components
+    
+    
+    override func unfold() {
+        if let cv = collectionViewController as? StackCollectionViewController {
+            cv.mainViewController?.dateAndTimeCell = cv.collectionView?.cellForItem(at: IndexPath(item: 0, section: 2)) as! DateAndTimeCellCollectionViewCell?
+        }
+        
+        super.unfold()
+    }
 }
