@@ -51,9 +51,6 @@ class Invite: DatabaseObject {
     // START: Send
     func send(withCompletonHandler completion: @escaping (Bool) -> Void) {
         
-        print(recipientUIDs.count)
-        print(establishmentUIDs.count)
-        
         if recipientUIDs.count > 0 && establishmentUIDs.count > 0 {
             
             // ********* Make this storing async with dispatch *********

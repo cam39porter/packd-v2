@@ -158,9 +158,7 @@ class StackCollectionViewController: FoldableViewController {
         invite.startTime = Timestamp.getTimestampFor(minutesInTheFuture: (mainViewController?.dateAndTimeCell?.minutes)!)
         
         invite.send { (success) in
-            if success {
-                self.clear()
-            }
+            if success { self.clear() }
         }
     }
     
