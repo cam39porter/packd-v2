@@ -51,7 +51,26 @@ class Invite: DatabaseObject {
     // START: Send
     func send(withCompletonHandler completion: (Bool) -> Void) {
         if recipientUIDs.count > 0 && establishmentUIDs.count > 0 {
+            
+            
+            // Make this storing async with dispatch
+            
+            let ref = Invite.invitesReference?.childByAutoId()
+            self.uid = ref?.key
+            
+            ref?.child("senderUID").setValue(self.senderUID)
+            ref?.child("recipientUIDs").setValue(self.establishmentUIDs)
+            ref?.child("establishmentUIDs").setValue(self.recipientUIDs)
+            ref?.child("startTime").setValue(self.startTime)
+            
+            
+            
         } else { completion(false) }
     }
     // END: Send
 }
+
+
+
+
+
