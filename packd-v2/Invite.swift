@@ -53,17 +53,26 @@ class Invite: DatabaseObject {
         if recipientUIDs.count > 0 && establishmentUIDs.count > 0 {
             
             
-            // Make this storing async with dispatch
+            // ********* Make this storing async with dispatch *********
             
-            let ref = Invite.invitesReference?.childByAutoId()
-            self.uid = ref?.key
+            let inviteRef = Invite.invitesReference?.childByAutoId()
+            self.uid = inviteRef?.key
+            inviteRef?.child("senderUID").setValue(self.senderUID)
+            inviteRef?.child("recipientUIDs").setValue(self.establishmentUIDs)
+            inviteRef?.child("establishmentUIDs").setValue(self.recipientUIDs)
+            inviteRef?.child("startTime").setValue(self.startTime)
+        
             
-            ref?.child("senderUID").setValue(self.senderUID)
-            ref?.child("recipientUIDs").setValue(self.establishmentUIDs)
-            ref?.child("establishmentUIDs").setValue(self.recipientUIDs)
-            ref?.child("startTime").setValue(self.startTime)
+            let userInvitesRef = DatabaseObject.ref?.child("user-invites")
+            userInvitesRef?.child(self.senderUID!).child(self.uid!).setValue(self.startTime)
+            for recipientUID in recipientUIDs {
+                userInvitesRef?.child(recipientUID!).child(self.uid!).setValue(self.startTime)
+            }
             
-            
+            let establishmentInvitesRef = DatabaseObject.ref?.child("establishment-invites")
+            for establishmentUID in establishmentUIDs {
+                establishmentInvitesRef?.child(establishmentUID!).child(self.uid!).setValue(self.startTime)
+            }
             
         } else { completion(false) }
     }
