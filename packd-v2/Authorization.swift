@@ -35,4 +35,10 @@ class Authorization: NSObject {
             return false 
         }
     }
+    
+    static var currentUserUID: String? {
+        get {
+            return FIRAuth.auth()?.currentUser?.uid
+        }
+    }
 }

@@ -49,17 +49,20 @@ class Invite: DatabaseObject {
     // END: database -> invites
     
     // START: Send
-    func send(withCompletonHandler completion: (Bool) -> Void) {
+    func send(withCompletonHandler completion: @escaping (Bool) -> Void) {
+        
+        print(recipientUIDs.count)
+        print(establishmentUIDs.count)
+        
         if recipientUIDs.count > 0 && establishmentUIDs.count > 0 {
-            
             
             // ********* Make this storing async with dispatch *********
             
             let inviteRef = Invite.invitesReference?.childByAutoId()
             self.uid = inviteRef?.key
             inviteRef?.child("senderUID").setValue(self.senderUID)
-            inviteRef?.child("recipientUIDs").setValue(self.establishmentUIDs)
-            inviteRef?.child("establishmentUIDs").setValue(self.recipientUIDs)
+            inviteRef?.child("establishmentUIDs").setValue(self.establishmentUIDs)
+            inviteRef?.child("recipientUIDs").setValue(self.recipientUIDs)
             inviteRef?.child("startTime").setValue(self.startTime)
         
             
@@ -74,7 +77,15 @@ class Invite: DatabaseObject {
                 establishmentInvitesRef?.child(establishmentUID!).child(self.uid!).setValue(self.startTime)
             }
             
-        } else { completion(false) }
+            DispatchQueue.main.async {
+                completion(true)
+            }
+            
+        } else {
+            DispatchQueue.main.async {
+                completion(false)
+            }
+        }
     }
     // END: Send
 }

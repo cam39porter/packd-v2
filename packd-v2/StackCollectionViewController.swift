@@ -11,8 +11,6 @@ import UIKit
 class StackCollectionViewController: FoldableViewController {
     // START: Model
     var mainViewController: MainViewController? = nil
-    
-    var dateAndTimeCell: DateAndTimeCellCollectionViewCell? = nil
     // END: Model
     
     // START: View
@@ -149,7 +147,21 @@ class StackCollectionViewController: FoldableViewController {
         sendButton.force = 0.25
         sendButton.animate()
         
+        let invite = Invite()
+        for recipientUID in (mainViewController?.setOfFriendsUIDsOnStack)! {
+            invite.recipientUIDs.append(recipientUID)
+        }
+        for establishmentUID in (mainViewController?.setOfEstablishmentUIDsOnStack)! {
+            invite.establishmentUIDs.append(establishmentUID)
+        }
+        invite.senderUID = Authorization.currentUserUID
+        invite.startTime = Timestamp.getTimestampFor(minutesInTheFuture: (mainViewController?.dateAndTimeCell?.minutes)!)
         
+        invite.send { (success) in
+            if success {
+                self.clear()
+            }
+        }
     }
     
     @objc private func clear() {
@@ -291,7 +303,6 @@ class StackCollectionViewController: FoldableViewController {
                 }
             }
             
-            dateAndTimeCell = cell
             cell.collectionViewController = self
             cell.setup()
             mainViewController?.dateAndTimeCell = cell
