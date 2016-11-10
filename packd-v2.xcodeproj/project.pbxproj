@@ -13,6 +13,11 @@
 		E342EBA51DC13FC200A9C79F /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342EBA41DC13FC200A9C79F /* CircularTransition.swift */; };
 		E342EBA71DC168FF00A9C79F /* EstablishmentFoldableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342EBA61DC168FF00A9C79F /* EstablishmentFoldableCell.swift */; };
 		E39A76EC1DD2572F0039F6E6 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A76EB1DD2572F0039F6E6 /* Invite.swift */; };
+		E39A77471DD50E8E0039F6E6 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39A77461DD50E8E0039F6E6 /* Messages.framework */; };
+		E39A774A1DD50E8E0039F6E6 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A77491DD50E8E0039F6E6 /* MessagesViewController.swift */; };
+		E39A774D1DD50E8E0039F6E6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E39A774B1DD50E8E0039F6E6 /* MainInterface.storyboard */; };
+		E39A774F1DD50E8E0039F6E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E39A774E1DD50E8E0039F6E6 /* Assets.xcassets */; };
+		E39A77531DD50E8E0039F6E6 /* packd-messaging.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E39A77451DD50E8E0039F6E6 /* packd-messaging.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E3B781521DB7E18800D088BC /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B781511DB7E18800D088BC /* Stack.swift */; };
 		E3B781551DB7EA9300D088BC /* StackCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */; };
 		E3D518A81DA6E74400363CB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D518A71DA6E74400363CB0 /* AppDelegate.swift */; };
@@ -75,6 +80,30 @@
 		E3F4463E1DC9759900B31D26 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4463D1DC9759900B31D26 /* HeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E39A77511DD50E8E0039F6E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3D5189C1DA6E74400363CB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E39A77441DD50E8E0039F6E6;
+			remoteInfo = "packd-messaging";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E39A77571DD50E8F0039F6E6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E39A77531DD50E8E0039F6E6 /* packd-messaging.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0A69FE0D2AF329264549FAFD /* Pods-packd-v2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-packd-v2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-packd-v2/Pods-packd-v2.debug.xcconfig"; sourceTree = "<group>"; };
 		504E94DA1CBAD62808049288 /* Pods-packd-v2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-packd-v2.release.xcconfig"; path = "Pods/Target Support Files/Pods-packd-v2/Pods-packd-v2.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +113,12 @@
 		E342EBA41DC13FC200A9C79F /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		E342EBA61DC168FF00A9C79F /* EstablishmentFoldableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstablishmentFoldableCell.swift; sourceTree = "<group>"; };
 		E39A76EB1DD2572F0039F6E6 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		E39A77451DD50E8E0039F6E6 /* packd-messaging.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "packd-messaging.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E39A77461DD50E8E0039F6E6 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		E39A77491DD50E8E0039F6E6 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		E39A774C1DD50E8E0039F6E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		E39A774E1DD50E8E0039F6E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E39A77501DD50E8E0039F6E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3B781511DB7E18800D088BC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		E3B781541DB7EA9300D088BC /* StackCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCollectionViewController.swift; sourceTree = "<group>"; };
 		E3D518A41DA6E74400363CB0 /* packd-v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "packd-v2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +185,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E39A77421DD50E8E0039F6E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E39A77471DD50E8E0039F6E6 /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3D518A11DA6E74400363CB0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -174,8 +217,20 @@
 			isa = PBXGroup;
 			children = (
 				BA361FAB6D4E546B4E237334 /* Pods_packd_v2.framework */,
+				E39A77461DD50E8E0039F6E6 /* Messages.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E39A77481DD50E8E0039F6E6 /* packd-messaging */ = {
+			isa = PBXGroup;
+			children = (
+				E39A77491DD50E8E0039F6E6 /* MessagesViewController.swift */,
+				E39A774B1DD50E8E0039F6E6 /* MainInterface.storyboard */,
+				E39A774E1DD50E8E0039F6E6 /* Assets.xcassets */,
+				E39A77501DD50E8E0039F6E6 /* Info.plist */,
+			);
+			path = "packd-messaging";
 			sourceTree = "<group>";
 		};
 		E3B781531DB7EA7900D088BC /* Stack */ = {
@@ -193,6 +248,7 @@
 		E3D5189B1DA6E74400363CB0 = {
 			isa = PBXGroup;
 			children = (
+				E39A77481DD50E8E0039F6E6 /* packd-messaging */,
 				E3D518A61DA6E74400363CB0 /* packd-v2 */,
 				E3D518A51DA6E74400363CB0 /* Products */,
 				8D1272F334342EFDB7C6F95F /* Pods */,
@@ -204,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D518A41DA6E74400363CB0 /* packd-v2.app */,
+				E39A77451DD50E8E0039F6E6 /* packd-messaging.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -410,6 +467,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E39A77441DD50E8E0039F6E6 /* packd-messaging */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E39A77561DD50E8F0039F6E6 /* Build configuration list for PBXNativeTarget "packd-messaging" */;
+			buildPhases = (
+				E39A77411DD50E8E0039F6E6 /* Sources */,
+				E39A77421DD50E8E0039F6E6 /* Frameworks */,
+				E39A77431DD50E8E0039F6E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "packd-messaging";
+			productName = "packd-messaging";
+			productReference = E39A77451DD50E8E0039F6E6 /* packd-messaging.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 		E3D518A31DA6E74400363CB0 /* packd-v2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3D518B61DA6E74400363CB0 /* Build configuration list for PBXNativeTarget "packd-v2" */;
@@ -420,10 +494,12 @@
 				E3D518A21DA6E74400363CB0 /* Resources */,
 				1EFE05A1CC79AD781E84B066 /* [CP] Embed Pods Frameworks */,
 				CF4DCE4B10E2AE8FEF5701DF /* [CP] Copy Pods Resources */,
+				E39A77571DD50E8F0039F6E6 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E39A77521DD50E8E0039F6E6 /* PBXTargetDependency */,
 			);
 			name = "packd-v2";
 			productName = "packd-v2";
@@ -436,10 +512,15 @@
 		E3D5189C1DA6E74400363CB0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Cameron Porter";
 				TargetAttributes = {
+					E39A77441DD50E8E0039F6E6 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 8QDA7X8A4L;
+						ProvisioningStyle = Automatic;
+					};
 					E3D518A31DA6E74400363CB0 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 8QDA7X8A4L;
@@ -461,11 +542,21 @@
 			projectRoot = "";
 			targets = (
 				E3D518A31DA6E74400363CB0 /* packd-v2 */,
+				E39A77441DD50E8E0039F6E6 /* packd-messaging */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E39A77431DD50E8E0039F6E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E39A774F1DD50E8E0039F6E6 /* Assets.xcassets in Resources */,
+				E39A774D1DD50E8E0039F6E6 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3D518A21DA6E74400363CB0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -528,6 +619,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E39A77411DD50E8E0039F6E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E39A774A1DD50E8E0039F6E6 /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3D518A01DA6E74400363CB0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -598,7 +697,56 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E39A77521DD50E8E0039F6E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E39A77441DD50E8E0039F6E6 /* packd-messaging */;
+			targetProxy = E39A77511DD50E8E0039F6E6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E39A774B1DD50E8E0039F6E6 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E39A774C1DD50E8E0039F6E6 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		E39A77541DD50E8F0039F6E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				DEVELOPMENT_TEAM = 8QDA7X8A4L;
+				INFOPLIST_FILE = "packd-messaging/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.packdapp.packd-v2.packd-messaging";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E39A77551DD50E8F0039F6E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				DEVELOPMENT_TEAM = 8QDA7X8A4L;
+				INFOPLIST_FILE = "packd-messaging/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.packdapp.packd-v2.packd-messaging";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		E3D518B41DA6E74400363CB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -696,6 +844,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A69FE0D2AF329264549FAFD /* Pods-packd-v2.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8QDA7X8A4L;
 				INFOPLIST_FILE = "packd-v2/Info.plist";
@@ -710,6 +859,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 504E94DA1CBAD62808049288 /* Pods-packd-v2.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8QDA7X8A4L;
 				INFOPLIST_FILE = "packd-v2/Info.plist";
@@ -723,6 +873,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E39A77561DD50E8F0039F6E6 /* Build configuration list for PBXNativeTarget "packd-messaging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E39A77541DD50E8F0039F6E6 /* Debug */,
+				E39A77551DD50E8F0039F6E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E3D5189F1DA6E74400363CB0 /* Build configuration list for PBXProject "packd-v2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
