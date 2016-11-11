@@ -9,13 +9,76 @@
 import UIKit
 import Messages
 
+
 class MessagesViewController: MSMessagesAppViewController {
+    
+    // MARK: - Model
+    
+    // MARK: - View
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = Colors.highlight
+        
+        setupSubviews()
     }
     
+    private func setupSubviews() {
+        addSubviews()
+        anchorPackdButton()
+        addTargets()
+    }
+    
+    private func addSubviews() {
+        view.addSubview(packdButton)
+    }
+    
+    private func anchorSubviews() {
+        anchorPackdButton()
+    }
+    
+    private func addTargets() {
+        addTargetPackdButton()
+    }
+    
+    let packdButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.clear
+        button.setTitle("PACKD", for: .normal)
+        button.titleLabel?.font =  Fonts.boldFont(ofSize: Size.oneFinger / 2)
+        button.titleLabel?.textAlignment = .center
+        button.setTitleColor(UIColor.black, for: .normal)
+        return button
+    }()
+    
+    private func anchorPackdButton() {
+        packdButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Size.oneFinger).isActive = true
+        packdButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        packdButton.heightAnchor.constraint(equalToConstant: Size.oneFinger).isActive = true
+        packdButton.widthAnchor.constraint(equalToConstant: Size.oneFinger * 2).isActive = true
+    }
+    
+    private func addTargetPackdButton() {
+        packdButton.addTarget(self, action: #selector(sendCustomMessage), for: .touchUpInside)
+    }
+    
+    // MARK: - Targets 
+    @objc private func sendCustomMessage() {
+        
+        let layout = MSMessageTemplateLayout()
+        layout.image = #imageLiteral(resourceName: "message_nav_icon")
+        layout.caption = "PACKD"
+        
+        let message = MSMessage(session: MSSession())
+        message.layout = layout
+        message.url = URL(fileURLWithPath: "test")
+        
+        activeConversation?.insert(message, completionHandler: nil)
+    }
+    
+        
     // MARK: - Conversation Handling
     
     override func willBecomeActive(with conversation: MSConversation) {
@@ -53,15 +116,22 @@ class MessagesViewController: MSMessagesAppViewController {
     }
     
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        // Called before the extension transitions to a new presentation style.
-    
-        // Use this method to prepare for the change in presentation style.
+        switch presentationStyle {
+        case .compact:
+            return
+        case .expanded:
+            return
+        }
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        // Called after the extension transitions to a new presentation style.
-    
-        // Use this method to finalize any behaviors associated with the change in presentation style.
+        
+        switch presentationStyle {
+        case .compact:
+            return
+        case .expanded:
+            return
+        }
     }
 
 }

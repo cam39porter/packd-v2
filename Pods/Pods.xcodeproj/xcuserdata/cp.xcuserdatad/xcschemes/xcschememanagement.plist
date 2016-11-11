@@ -4,17 +4,65 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>GTMSessionFetcher-iOS10.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GTMSessionFetcher-iOS10.1.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac-iOS10.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac-iOS10.1.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-packd-messaging.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-packd-v2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>492FD52D4F93A39779B41D51B7E7BE12</key>
+		<key>5553673A002B21AEB032286C2C8C1CD3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5F3B1A755656A59BC0867672842E06E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>908DAC9015AFC12CABAFE37EF05B26E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>944D7EC1AF0926A9A5A8579145AAAF99</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C492A70AC05F80FED4D48BA8B42F72C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EF6F8796916D955C30A2B133CDB620B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
